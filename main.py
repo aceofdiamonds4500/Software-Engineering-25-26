@@ -1,14 +1,15 @@
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 import plotly.express as px
 
+from read_file import pd_read
+
+
 # runner
 def main():
-    file_name = 'mtsamples.csv'
-    df = pd.read_csv(file_name)
+    df = pd_read('mtsamples.csv')
 
     #chart
     class_counts = df['medical_specialty'].value_counts()
@@ -20,7 +21,7 @@ def main():
 
     #word cleaning
 
-    '''
+    
     #indexing each medical_specialty
     possible_labels = df.medical_specialty.unique()
     label_dict = {}
@@ -29,7 +30,7 @@ def main():
     label_dict
 
     df['label'] = df.medical_specialty.replace(label_dict)
-    '''
+    
 
     df['transcription'] = df['transcription'].astype(str)
     print(df.head())
