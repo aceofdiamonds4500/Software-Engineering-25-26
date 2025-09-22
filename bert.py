@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow as tf #team fortress
 from transformers import BertForSequenceClassification, BertTokenizer, BertConfig
 # from transformers import AutoTokenizer, AutoModel
 import torch
@@ -10,7 +10,7 @@ import text_clean_and_insert as tci
 
 def bert():
     if __name__ == "__main__":
-        df = pd_read('mtsamples.csv')
+        df = pd_read('mtsamples.csv') 
 
     device_name = tf.test.gpu_device_name()
     print("Torch version:",torch.__version__)
