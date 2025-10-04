@@ -19,7 +19,17 @@ namespace GUI_SoftwareEng
 
         public void ToggleTheme()
         {
-            BackColor = Color.FromArgb(24, 30, 54);
+            if (History.ForeColor == Color.Black)
+            {
+                BackColor = Color.FromArgb(24, 30, 54);
+                History.ForeColor = Color.White;
+            }
+            else
+            {
+                BackColor = Color.FromArgb(220, 224, 228);
+                History.ForeColor = Color.Black;
+            }
+            
         }
     }
 }

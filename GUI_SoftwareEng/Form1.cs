@@ -36,7 +36,7 @@ namespace GUI_SoftwareEng
             sidebar.BorderStyle = BorderStyle.FixedSingle;
 
             // Sidebar button click buttons
-            button1.Click += button1_Click; // Transcribe
+            button1.Click += button1_Click;   // Transcribe
             button2.Click += button2_Click;   // Download/Upload
             button3.Click += button3_Click;   // History
             button4.Click += button4_Click;   // Settings
@@ -210,20 +210,22 @@ namespace GUI_SoftwareEng
         // ===== settings toggles =====
         public void BroadcastToggleTheme()
         {
-            // inststantiate pages if null, so we can toggle their themes
-            mainPage = new FormMain();
-            transcribePage = new FormTranscribe();
-            downloaduploadPage = new FormDownloadUpload(transcribePage);
-            settingsPage = new FormSettings(this);
-            historyPage = new FormHistory();
+            if (mainPage == null) mainPage = new FormMain();
+            if (transcribePage == null) transcribePage = new FormTranscribe();
+            if (downloaduploadPage == null) downloaduploadPage = new FormDownloadUpload(transcribePage);
+            if (historyPage == null) historyPage = new FormHistory();
+            if (settingsPage == null) settingsPage = new FormSettings(this);
+            // First, toggle Form1 (top bar/sidebar/etc.)
+            ToggleTheme();
 
-            ToggleTheme();           
+            // Now toggle only pages that already exist
             mainPage?.ToggleTheme();
             transcribePage?.ToggleTheme();
-            downloaduploadPage.ToggleTheme();
+            downloaduploadPage?.ToggleTheme();
             historyPage?.ToggleTheme();
             settingsPage?.ToggleTheme();
         }
+
 
 
         public void ToggleTheme()

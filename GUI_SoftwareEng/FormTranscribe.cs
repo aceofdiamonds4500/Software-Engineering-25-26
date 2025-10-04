@@ -31,7 +31,27 @@ namespace GUI_SoftwareEng
 
         public void ToggleTheme()
         {
-            BackColor = Color.FromArgb(24, 30, 54);
+            if (Transcribe.ForeColor == Color.Black)
+            {
+                BackColor = Color.FromArgb(24, 30, 54);
+                label1.ForeColor = Color.White;
+                label2.ForeColor = Color.White;
+                Transcribe.ForeColor = Color.White;
+                button1.BackColor = Color.FromArgb(32, 42, 72);
+                button1.ForeColor = Color.White;
+            }
+            else
+            {
+                BackColor = Color.FromArgb(220, 224, 228);
+                label1.ForeColor = Color.Black;
+                label2.ForeColor = Color.Black;
+                Transcribe.ForeColor = Color.Black;
+                richTextBox1.BackColor = Color.White;
+                button1.BackColor = Color.FromArgb(210, 232, 247);
+                button1.ForeColor = Color.Black;
+            }
+            
+            
         }
     }
 }

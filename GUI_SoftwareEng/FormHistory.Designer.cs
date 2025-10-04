@@ -38,7 +38,7 @@
             History.BackColor = Color.Transparent;
             History.Font = new Font("Segoe UI", 25.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             History.ForeColor = Color.Black;
-            History.Location = new Point(326, 70);
+            History.Location = new Point(335, 65);
             History.Name = "History";
             History.Size = new Size(171, 57);
             History.TabIndex = 11;
@@ -47,7 +47,7 @@
             // richTextBox2
             // 
             richTextBox2.Enabled = false;
-            richTextBox2.Location = new Point(77, 137);
+            richTextBox2.Location = new Point(85, 137);
             richTextBox2.Name = "richTextBox2";
             richTextBox2.Size = new Size(670, 269);
             richTextBox2.TabIndex = 17;

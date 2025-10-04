@@ -95,7 +95,24 @@ namespace GUI_SoftwareEng
 
         public void ToggleTheme()
         {
-            BackColor = Color.FromArgb(24, 30, 54);
+            if (DownloadUpload.ForeColor == Color.Black)
+            {
+                BackColor = Color.FromArgb(24, 30, 54);
+                DownloadUpload.ForeColor = Color.White;
+                button1.BackColor = Color.FromArgb(32, 42, 72);
+                button1.ForeColor = Color.White;
+                button2.BackColor = Color.FromArgb(32, 42, 72);
+                button2.ForeColor = Color.White;
+            }
+            else
+            {
+                BackColor = Color.FromArgb(220, 224, 228);
+                DownloadUpload.ForeColor = Color.Black;
+                button1.BackColor = Color.FromArgb(210, 232, 247);
+                button1.ForeColor = Color.Black;
+                button2.BackColor = Color.FromArgb(210, 232, 247);
+                button2.ForeColor = Color.Black;
+            }
         }
     }
 }
