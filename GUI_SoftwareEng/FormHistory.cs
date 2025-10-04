@@ -17,9 +17,9 @@ namespace GUI_SoftwareEng
             InitializeComponent();
         }
 
-        private void FormHistory_Load(object sender, EventArgs e)
+        public void ToggleTheme()
         {
-
+            BackColor = Color.FromArgb(24, 30, 54);
         }
     }
 }

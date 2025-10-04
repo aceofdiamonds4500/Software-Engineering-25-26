@@ -63,7 +63,6 @@
             Controls.Add(History);
             Name = "FormHistory";
             Text = "FormHistory";
-            Load += FormHistory_Load;
             ResumeLayout(false);
             PerformLayout();
         }

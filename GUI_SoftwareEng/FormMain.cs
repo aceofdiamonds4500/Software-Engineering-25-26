@@ -16,5 +16,21 @@ namespace GUI_SoftwareEng
         {
             InitializeComponent();
         }
+
+        public void ToggleTheme()
+        {
+            if (Welcome.ForeColor == Color.Black)
+            {
+                BackColor = Color.FromArgb(24, 30, 54);
+                Welcome.ForeColor = Color.White;
+                label1.ForeColor = Color.White;
+            }
+            else
+            {
+                BackColor = Color.FromArgb(220, 224, 228);
+                Welcome.ForeColor = Color.Black;
+                label1.ForeColor = Color.Black;
+            }
+        }
     }
 }

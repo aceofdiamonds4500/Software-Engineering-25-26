@@ -60,7 +60,7 @@
             button1.TabStop = false;
             button1.Text = "Download Current Transcription";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_1;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -74,7 +74,7 @@
             button2.Size = new Size(261, 64);
             button2.TabIndex = 1;
             button2.TabStop = false;
-            button2.Text = "Upload Transcription";
+            button2.Text = "Upload Patient Details";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
@@ -100,7 +100,6 @@
             Controls.Add(button1);
             Controls.Add(DownloadUpload);
             Name = "FormDownloadUpload";
-            Text = "FormDownloadUpload";
             ResumeLayout(false);
             PerformLayout();
         }

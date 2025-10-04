@@ -18,31 +18,46 @@ namespace GUI_SoftwareEng
         }
 
         // save transcription to a txt file
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            string textToSave = _transcribe.OutputText;
-
-
-            using (var sfd = new SaveFileDialog())
+            // Safety: make sure we can read text
+            if (_transcribe == null)
             {
-                sfd.Title = "Save transcription";
-                sfd.Filter = "Text Files (*.txt)|*.txt";
-                sfd.DefaultExt = "txt";
-                sfd.FileName = "transcription.txt";
+                label1.Text = "Error: transcribe page not available.";
+                return;
+            }
 
-                if (sfd.ShowDialog(this) == DialogResult.OK)
+            string textToSave = _transcribe.OutputText ?? string.Empty;
+
+            if (string.IsNullOrWhiteSpace(textToSave))
+            {
+                label1.Text = "Nothing to save (transcription is empty).";
+                return;
+            }
+
+            try
+            {
+                using (var sfd = new SaveFileDialog())
                 {
-                    try
+                    sfd.Title = "Save transcription";
+                    sfd.Filter = "Text Files (*.txt)|*.txt";
+                    sfd.DefaultExt = "txt";
+                    sfd.FileName = "transcription.txt";
+
+                    var result = sfd.ShowDialog(this);
+                    if (result != DialogResult.OK)
                     {
-                        File.WriteAllText(sfd.FileName, textToSave);
-                        label1.Text = $"Saved: {Path.GetFileName(sfd.FileName)}";
+                        label1.Text = "Save canceled.";
+                        return;
                     }
-                    // get ererors
-                    catch (Exception ex)
-                    {
-                        label1.Text = $"Error saving file: {ex.Message}";
-                    }
+
+                    File.WriteAllText(sfd.FileName, textToSave);
+                    label1.Text = $"Saved: {Path.GetFileName(sfd.FileName)}";
                 }
+            }
+            catch (Exception ex)
+            {
+                label1.Text = $"Error saving file: {ex.Message}";
             }
         }
 
@@ -76,6 +91,11 @@ namespace GUI_SoftwareEng
                     }
                 }
             }
+        }
+
+        public void ToggleTheme()
+        {
+            BackColor = Color.FromArgb(24, 30, 54);
         }
     }
 }

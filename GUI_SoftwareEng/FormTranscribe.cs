@@ -28,5 +28,10 @@ namespace GUI_SoftwareEng
             get => richTextBox2.Text;
             set => richTextBox2.Text = value;
         }
+
+        public void ToggleTheme()
+        {
+            BackColor = Color.FromArgb(24, 30, 54);
+        }
     }
 }

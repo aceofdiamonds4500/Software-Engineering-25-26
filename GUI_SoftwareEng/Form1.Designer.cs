@@ -70,7 +70,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(58, 13);
+            label1.Location = new Point(63, 11);
             label1.Name = "label1";
             label1.Size = new Size(148, 25);
             label1.TabIndex = 3;
@@ -122,7 +122,7 @@
             sidebar.Controls.Add(panel5);
             sidebar.Location = new Point(-3, 40);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(55, 410);
+            sidebar.Size = new Size(50, 410);
             sidebar.TabIndex = 2;
             // 
             // panel2
@@ -139,14 +139,14 @@
             button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(-3, -10);
+            button1.Location = new Point(-4, -10);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 10, 0);
             button1.Size = new Size(280, 70);
             button1.TabIndex = 5;
             button1.Text = "Transcribe";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_1;
+            button1.Click += button1_Click;
             // 
             // panel3
             // 
@@ -162,7 +162,7 @@
             button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.Image = (Image)resources.GetObject("button2.Image");
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(-3, -12);
+            button2.Location = new Point(-4, -12);
             button2.Name = "button2";
             button2.Padding = new Padding(10, 0, 0, 0);
             button2.Size = new Size(280, 70);
@@ -185,7 +185,7 @@
             button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button3.Image = (Image)resources.GetObject("button3.Image");
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(-3, -13);
+            button3.Location = new Point(-4, -13);
             button3.Name = "button3";
             button3.Padding = new Padding(10, 0, 10, 0);
             button3.Size = new Size(280, 70);
@@ -207,7 +207,7 @@
             button4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(-3, -10);
+            button4.Location = new Point(-4, -10);
             button4.Name = "button4";
             button4.Padding = new Padding(10, 0, 10, 0);
             button4.Size = new Size(280, 70);

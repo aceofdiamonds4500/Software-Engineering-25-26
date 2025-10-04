@@ -13,6 +13,7 @@ namespace GUI_SoftwareEng
         private const int HTCAPTION = 0x2;
 
         // ===== Page instances =====
+        private Form1? form1;
         private FormTranscribe? transcribePage;
         private FormDownloadUpload? downloaduploadPage;
         private FormHistory? historyPage;
@@ -35,7 +36,7 @@ namespace GUI_SoftwareEng
             sidebar.BorderStyle = BorderStyle.FixedSingle;
 
             // Sidebar button click buttons
-            button1.Click += button1_Click_1; // Transcribe
+            button1.Click += button1_Click; // Transcribe
             button2.Click += button2_Click;   // Download/Upload
             button3.Click += button3_Click;   // History
             button4.Click += button4_Click;   // Settings
@@ -95,7 +96,7 @@ namespace GUI_SoftwareEng
             if (sidebarExpand)
             {
                 sidebar.Width -= 10;
-                if (sidebar.Width <= 55)
+                if (sidebar.Width <= 50)
                 {
                     sidebarExpand = false;
                     sidebarTransition.Stop();
@@ -147,10 +148,13 @@ namespace GUI_SoftwareEng
         // Collapse only if currently expanded
         private void CollapseSidebarIfOpen()
         {
-            if (sidebarTransition.Enabled) return;
+            if (sidebarTransition.Enabled)
+            {
+                return;
+            }
             if (sidebarExpand)
             {
-                sidebarTransition.Start(); 
+                sidebarTransition.Start();
             }
         }
 
@@ -158,43 +162,105 @@ namespace GUI_SoftwareEng
         private void ShowHomePage()
         {
             if (mainPage == null || mainPage.IsDisposed)
+            {
                 mainPage = new FormMain();
+            }
             ShowPage(mainPage);
         }
 
         private void label1_Click(object? sender, EventArgs e) => ShowHomePage();
-
-        private void button1_Click_1(object? sender, EventArgs e)
+        private void button1_Click(object? sender, EventArgs e)
         {
             if (transcribePage == null || transcribePage.IsDisposed)
+            {
                 transcribePage = new FormTranscribe();
-
+            }
             ShowPage(transcribePage);
         }
 
         private void button2_Click(object? sender, EventArgs e)
         {
-            if (transcribePage == null || transcribePage.IsDisposed)
-                transcribePage = new FormTranscribe();
 
             if (downloaduploadPage == null || downloaduploadPage.IsDisposed)
+            {
                 downloaduploadPage = new FormDownloadUpload(transcribePage);
-
+            }
             ShowPage(downloaduploadPage);
         }
 
         private void button3_Click(object? sender, EventArgs e)
         {
             if (historyPage == null || historyPage.IsDisposed)
+            {
                 historyPage = new FormHistory();
+            }
             ShowPage(historyPage);
         }
 
         private void button4_Click(object? sender, EventArgs e)
         {
             if (settingsPage == null || settingsPage.IsDisposed)
-                settingsPage = new FormSettings();
+            {
+                settingsPage = new FormSettings(this); 
+            }
             ShowPage(settingsPage);
+        }
+
+
+        // ===== settings toggles =====
+        public void BroadcastToggleTheme()
+        {
+            // inststantiate pages if null, so we can toggle their themes
+            mainPage = new FormMain();
+            transcribePage = new FormTranscribe();
+            downloaduploadPage = new FormDownloadUpload(transcribePage);
+            settingsPage = new FormSettings(this);
+            historyPage = new FormHistory();
+
+            ToggleTheme();           
+            mainPage?.ToggleTheme();
+            transcribePage?.ToggleTheme();
+            downloaduploadPage.ToggleTheme();
+            historyPage?.ToggleTheme();
+            settingsPage?.ToggleTheme();
+        }
+
+
+        public void ToggleTheme()
+        {
+            if (panel1.BackColor == Color.FromArgb(123, 170, 224))
+            {
+                panel1.BackColor = Color.FromArgb(20, 28, 48);
+                pictureBox2.BackColor = Color.FromArgb(20, 28, 48);
+                pictureBox3.BackColor = Color.FromArgb(20, 28, 48);
+                sidebar.BackColor = Color.FromArgb(32, 42, 72);
+                button1.BackColor = Color.FromArgb(32, 42, 72);
+                button2.BackColor = Color.FromArgb(32, 42, 72);
+                button3.BackColor = Color.FromArgb(32, 42, 72);
+                button4.BackColor = Color.FromArgb(32, 42, 72);
+                label1.ForeColor = Color.White;
+                button1.ForeColor = Color.White;
+                button2.ForeColor = Color.White;
+                button3.ForeColor = Color.White;
+                button4.ForeColor = Color.White;
+            }
+            else
+            {
+                panel1.BackColor = Color.FromArgb(123, 170, 224);
+                pictureBox2.BackColor = Color.FromArgb(123, 170, 224);
+                pictureBox3.BackColor = Color.FromArgb(123, 170, 224);
+                sidebar.BackColor = Color.FromArgb(210, 232, 247);
+                button1.BackColor = Color.FromArgb(210, 232, 247);
+                button2.BackColor = Color.FromArgb(210, 232, 247);
+                button3.BackColor = Color.FromArgb(210, 232, 247);
+                button4.BackColor = Color.FromArgb(210, 232, 247);
+                label1.ForeColor = Color.Black;
+                button1.ForeColor = Color.Black;
+                button2.ForeColor = Color.Black;
+                button3.ForeColor = Color.Black;
+                button4.ForeColor = Color.Black;
+
+            }
         }
     }
 }
