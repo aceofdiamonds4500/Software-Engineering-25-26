@@ -40,11 +40,11 @@
             // 
             Transcribe.AutoSize = true;
             Transcribe.BackColor = Color.Transparent;
-            Transcribe.Font = new Font("Segoe UI", 25.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Transcribe.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             Transcribe.ForeColor = Color.Black;
-            Transcribe.Location = new Point(305, 80);
+            Transcribe.Location = new Point(340, 95);
             Transcribe.Name = "Transcribe";
-            Transcribe.Size = new Size(228, 57);
+            Transcribe.Size = new Size(163, 41);
             Transcribe.TabIndex = 11;
             Transcribe.Text = "Transcribe";
             Transcribe.TextAlign = ContentAlignment.MiddleCenter;
@@ -81,6 +81,7 @@
             button1.TabIndex = 15;
             button1.Text = "Calculate Information";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // richTextBox2
             // 

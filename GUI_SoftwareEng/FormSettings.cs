@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Media;
 
 namespace GUI_SoftwareEng
 {
@@ -7,12 +8,14 @@ namespace GUI_SoftwareEng
     {
         private readonly Form1 _form1;
         private readonly FormDownloadUpload _formDownloadUpload;
+        private SoundPlayer _soundplayer;
         public FormSettings(Form1 form1)
         {
             InitializeComponent();
             InitToggleButton(button1);
             InitToggleButton(button2);
             _form1 = form1;
+            _soundplayer = new SoundPlayer("click.wav");
         }
 
         private void InitToggleButton(Button btn)
@@ -23,30 +26,18 @@ namespace GUI_SoftwareEng
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ToggleEnlargeText(button1);
+            _soundplayer.Play();
+            _form1.BroadcastToggleEnlargeText();
+            ToggleButtonImage(button1);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ToggleDarkMode(button2);
-
-        }
-
-        private void ToggleEnlargeText(Button btn)
-        {
-            // This method can be expanded to actually toggle dark mode settings
-            
-            ToggleButtonImage(btn);
-        }
-
-        private void ToggleDarkMode(Button btn)
-        {
-            // This method can be expanded to actually toggle dark mode settings
+            _soundplayer.Play();
             _form1.BroadcastToggleTheme();
-            ToggleButtonImage(btn);
+            ToggleButtonImage(button2);
+
         }
-
-
 
         private void ToggleButtonImage(Button btn)
         {
@@ -62,6 +53,7 @@ namespace GUI_SoftwareEng
             }
         }
 
+        // =========== toggle functions for dark mode & enlarge text============
         public void ToggleTheme()
         {
             if (Settings.ForeColor == Color.Black)
@@ -83,7 +75,26 @@ namespace GUI_SoftwareEng
                 button2.BackColor = Color.FromArgb(210, 232, 247);
                 button2.ForeColor = Color.Black;
             }
-            
+        }
+
+        public void ToggleEnlargeText()
+        {
+            if (Settings.Font.Size == 18)
+            {
+                Settings.Font = new Font(Settings.Font.FontFamily, 20, FontStyle.Bold);
+                button1.Font = new Font(button1.Font.FontFamily, 12);
+                button2.Font = new Font(button2.Font.FontFamily, 12);
+                button1.Size = new Size(228, 58);
+                button2.Size = new Size(228, 58);
+            }
+            else
+            {
+                Settings.Font = new Font(Settings.Font.FontFamily, 18, FontStyle.Bold);
+                button1.Font = new Font(button1.Font.FontFamily, 10);
+                button2.Font = new Font(button2.Font.FontFamily, 10);
+                button1.Size = new Size(210, 50);
+                button2.Size = new Size(210, 50);
+            }
         }
     }
 }

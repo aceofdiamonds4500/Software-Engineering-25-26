@@ -2,6 +2,7 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.Media;
 
 namespace GUI_SoftwareEng
 {
@@ -10,17 +11,19 @@ namespace GUI_SoftwareEng
     {
         private readonly FormTranscribe _transcribe;
         public string uploadedTxtPath = string.Empty;
+        private SoundPlayer _soundplayer;
 
         public FormDownloadUpload(FormTranscribe transcribe)
         {
             InitializeComponent();
             _transcribe = transcribe;
+            _soundplayer = new SoundPlayer("click.wav");
         }
 
         // save transcription to a txt file
         private void button1_Click(object sender, EventArgs e)
         {
-            // Safety: make sure we can read text
+            _soundplayer.Play();
             if (_transcribe == null)
             {
                 label1.Text = "Error: transcribe page not available.";
@@ -64,6 +67,7 @@ namespace GUI_SoftwareEng
         // Upload the stuff
         private void button2_Click(object sender, EventArgs e)
         {
+            _soundplayer.Play();
             {
                 using (var ofd = new OpenFileDialog())
                 {
@@ -93,6 +97,7 @@ namespace GUI_SoftwareEng
             }
         }
 
+        // =========== toggle functions for dark mode & enlarge text============
         public void ToggleTheme()
         {
             if (DownloadUpload.ForeColor == Color.Black)
@@ -112,6 +117,26 @@ namespace GUI_SoftwareEng
                 button1.ForeColor = Color.Black;
                 button2.BackColor = Color.FromArgb(210, 232, 247);
                 button2.ForeColor = Color.Black;
+            }
+        }
+
+        public void ToggleEnlargeText()
+        {
+            if (DownloadUpload.Font.Size == 18)
+            {
+                DownloadUpload.Font = new Font(DownloadUpload.Font.FontFamily, 20, FontStyle.Bold);
+                button1.Font = new Font(button1.Font.FontFamily, 13);
+                button2.Font = new Font(button2.Font.FontFamily, 13);
+                button1.Size = new Size(285, 70);
+                button2.Size = new Size(285, 70);
+            }
+            else
+            {
+                DownloadUpload.Font = new Font(DownloadUpload.Font.FontFamily, 18, FontStyle.Bold);
+                button1.Font = new Font(button1.Font.FontFamily, 10);
+                button2.Font = new Font(button2.Font.FontFamily, 10);
+                button1.Size = new Size(261, 64);
+                button2.Size = new Size(261, 64);
             }
         }
     }

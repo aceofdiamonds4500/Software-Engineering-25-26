@@ -94,3 +94,31 @@ C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering
 C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.pdb
 C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.genruntimeconfig.cache
 C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\ref\GUI_SoftwareEng.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.exe
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.deps.json
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.runtimeconfig.json
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\ReaLTaiizor.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.AssemblyReference.cache
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Form1.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormDownloadUpload.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormHistory.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormMain.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormSettings.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormTranscribe.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Properties.Resources.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.GenerateResource.cache
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.GeneratedMSBuildEditorConfig.editorconfig
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfoInputs.cache
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfo.cs
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.CoreCompileInputs.cache
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.sourcelink.json
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_Soft.40685EC0.Up2Date
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\refint\GUI_SoftwareEng.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.genruntimeconfig.cache
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\ref\GUI_SoftwareEng.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\Interop.WMPLib.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.ResolveComReference.cache

@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Media;
 
 namespace GUI_SoftwareEng
 {
@@ -22,7 +23,12 @@ namespace GUI_SoftwareEng
         private Form? currentPage;
         private Panel? contentHost;
 
+        // expand sidebar
         private bool sidebarExpand = true;
+
+        // sound
+        private SoundPlayer _soundplayer;
+        private SoundPlayer _soundplayer1;
 
         public Form1()
         {
@@ -36,16 +42,20 @@ namespace GUI_SoftwareEng
             sidebar.BorderStyle = BorderStyle.FixedSingle;
 
             // Sidebar button click buttons
-            button1.Click += button1_Click;   // Transcribe
-            button2.Click += button2_Click;   // Download/Upload
-            button3.Click += button3_Click;   // History
-            button4.Click += button4_Click;   // Settings
+            button1.Click += button1_Click; // Transcribe
+            button2.Click += button2_Click; // Download/Upload
+            button3.Click += button3_Click; // History
+            button4.Click += button4_Click; // Settings
 
             // Timer for sidebar
             sidebarTransition.Tick += sidebarTransition_Tick;
 
             // opens home on startup
             Shown += (_, __) => ShowHomePage();
+
+            // sound effects 😎
+            _soundplayer = new SoundPlayer("click.wav");
+            _soundplayer1 = new SoundPlayer("slide.wav");
         }
 
         // make border for style!
@@ -60,7 +70,7 @@ namespace GUI_SoftwareEng
             }
         }
 
-        // Ensure it has content host panel to dock pages into
+        // makes sure it has content host panel to dock pages into
         private void EnsureContentHost()
         {
             if (contentHost != null) return;
@@ -88,11 +98,15 @@ namespace GUI_SoftwareEng
         private void pictureBox3_Click(object? sender, EventArgs e) => WindowState = FormWindowState.Minimized;
 
         // ===== Sidebar toggle =====
-        private void pictureBox1_Click(object? sender, EventArgs e) => sidebarTransition.Start();
+        private void pictureBox1_Click(object? sender, EventArgs e) 
+        {
+            _soundplayer1.Play();
+            sidebarTransition.Start();
+        }
 
         private void sidebarTransition_Tick(object? sender, EventArgs e)
         {
-            // Smooooooth expand/collapse
+            // Smoooooth expand/collapse 👌
             if (sidebarExpand)
             {
                 sidebar.Width -= 10;
@@ -137,13 +151,11 @@ namespace GUI_SoftwareEng
             // Bring the requested page to the front and focus it
             page.BringToFront();
             page.Focus();
-
             currentPage = page;
 
             // Collapse the sidebar after button presed
             CollapseSidebarIfOpen();
         }
-
 
         // Collapse only if currently expanded
         private void CollapseSidebarIfOpen()
@@ -152,6 +164,7 @@ namespace GUI_SoftwareEng
             {
                 return;
             }
+
             if (sidebarExpand)
             {
                 sidebarTransition.Start();
@@ -168,9 +181,15 @@ namespace GUI_SoftwareEng
             ShowPage(mainPage);
         }
 
-        private void label1_Click(object? sender, EventArgs e) => ShowHomePage();
+        private void label1_Click(object? sender, EventArgs e)
+        {
+            _soundplayer.Play();
+            ShowHomePage();
+        }
+
         private void button1_Click(object? sender, EventArgs e)
         {
+            _soundplayer.Play();
             if (transcribePage == null || transcribePage.IsDisposed)
             {
                 transcribePage = new FormTranscribe();
@@ -180,7 +199,7 @@ namespace GUI_SoftwareEng
 
         private void button2_Click(object? sender, EventArgs e)
         {
-
+            _soundplayer.Play();
             if (downloaduploadPage == null || downloaduploadPage.IsDisposed)
             {
                 downloaduploadPage = new FormDownloadUpload(transcribePage);
@@ -190,6 +209,7 @@ namespace GUI_SoftwareEng
 
         private void button3_Click(object? sender, EventArgs e)
         {
+            _soundplayer.Play();
             if (historyPage == null || historyPage.IsDisposed)
             {
                 historyPage = new FormHistory();
@@ -199,13 +219,13 @@ namespace GUI_SoftwareEng
 
         private void button4_Click(object? sender, EventArgs e)
         {
+            _soundplayer.Play();
             if (settingsPage == null || settingsPage.IsDisposed)
             {
-                settingsPage = new FormSettings(this); 
+                settingsPage = new FormSettings(this);
             }
             ShowPage(settingsPage);
         }
-
 
         // ===== settings toggles =====
         public void BroadcastToggleTheme()
@@ -215,10 +235,10 @@ namespace GUI_SoftwareEng
             if (downloaduploadPage == null) downloaduploadPage = new FormDownloadUpload(transcribePage);
             if (historyPage == null) historyPage = new FormHistory();
             if (settingsPage == null) settingsPage = new FormSettings(this);
-            // First, toggle Form1 (top bar/sidebar/etc.)
-            ToggleTheme();
 
-            // Now toggle only pages that already exist
+
+            // toggle all the pages theme
+            ToggleTheme();
             mainPage?.ToggleTheme();
             transcribePage?.ToggleTheme();
             downloaduploadPage?.ToggleTheme();
@@ -226,8 +246,23 @@ namespace GUI_SoftwareEng
             settingsPage?.ToggleTheme();
         }
 
+        public void BroadcastToggleEnlargeText()
+        {
+            if (mainPage == null) mainPage = new FormMain();
+            if (transcribePage == null) transcribePage = new FormTranscribe();
+            if (downloaduploadPage == null) downloaduploadPage = new FormDownloadUpload(transcribePage);
+            if (historyPage == null) historyPage = new FormHistory();
+            if (settingsPage == null) settingsPage = new FormSettings(this);
 
+            // toggles text size
+            mainPage?.ToggleEnlargeText();
+            transcribePage?.ToggleEnlargeText();
+            downloaduploadPage?.ToggleEnlargeText();
+            historyPage?.ToggleEnlargeText();
+            settingsPage?.ToggleEnlargeText();
+        }
 
+        // =========== toggle functions for dark mode ============
         public void ToggleTheme()
         {
             if (panel1.BackColor == Color.FromArgb(123, 170, 224))
@@ -261,7 +296,6 @@ namespace GUI_SoftwareEng
                 button2.ForeColor = Color.Black;
                 button3.ForeColor = Color.Black;
                 button4.ForeColor = Color.Black;
-
             }
         }
     }

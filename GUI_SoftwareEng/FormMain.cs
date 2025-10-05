@@ -17,6 +17,7 @@ namespace GUI_SoftwareEng
             InitializeComponent();
         }
 
+        // =========== toggle functions for dark mode & enlarge text============
         public void ToggleTheme()
         {
             if (Welcome.ForeColor == Color.Black)
@@ -30,6 +31,23 @@ namespace GUI_SoftwareEng
                 BackColor = Color.FromArgb(220, 224, 228);
                 Welcome.ForeColor = Color.Black;
                 label1.ForeColor = Color.Black;
+            }
+        }
+
+        public void ToggleEnlargeText()
+        {
+            if (Welcome.Font.Size == 18)
+            {
+                Welcome.Font = new Font(Welcome.Font.FontFamily, 20, FontStyle.Bold);
+                label1.Font = new Font(label1.Font.FontFamily, 15);
+                label1.Location = new Point(70, 150);
+                
+            }
+            else
+            {
+                Welcome.Font = new Font(Welcome.Font.FontFamily, 18, FontStyle.Bold);
+                label1.Font = new Font(label1.Font.FontFamily, 10);
+                label1.Location = new Point(165, 150);
             }
         }
     }

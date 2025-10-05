@@ -67,11 +67,11 @@
             // 
             Settings.AutoSize = true;
             Settings.BackColor = Color.Transparent;
-            Settings.Font = new Font("Segoe UI", 25.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Settings.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             Settings.ForeColor = Color.Black;
-            Settings.Location = new Point(318, 75);
+            Settings.Location = new Point(340, 75);
             Settings.Name = "Settings";
-            Settings.Size = new Size(185, 57);
+            Settings.Size = new Size(134, 41);
             Settings.TabIndex = 10;
             Settings.Text = "Settings";
             // 

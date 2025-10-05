@@ -36,11 +36,11 @@
             // 
             History.AutoSize = true;
             History.BackColor = Color.Transparent;
-            History.Font = new Font("Segoe UI", 25.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            History.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             History.ForeColor = Color.Black;
-            History.Location = new Point(335, 65);
+            History.Location = new Point(365, 65);
             History.Name = "History";
-            History.Size = new Size(171, 57);
+            History.Size = new Size(122, 41);
             History.TabIndex = 11;
             History.Text = "History";
             // 

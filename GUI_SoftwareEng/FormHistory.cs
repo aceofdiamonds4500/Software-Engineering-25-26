@@ -17,6 +17,14 @@ namespace GUI_SoftwareEng
             InitializeComponent();
         }
 
+
+
+
+
+
+
+
+        // =========== toggle functions for dark mode & enlarge text============
         public void ToggleTheme()
         {
             if (History.ForeColor == Color.Black)
@@ -30,6 +38,18 @@ namespace GUI_SoftwareEng
                 History.ForeColor = Color.Black;
             }
             
+        }
+
+        public void ToggleEnlargeText()
+        {
+            if (History.Font.Size == 18)
+            {
+                History.Font = new Font(History.Font.FontFamily, 25, FontStyle.Bold);
+            }
+            else
+            {
+                History.Font = new Font(History.Font.FontFamily, 18, FontStyle.Bold);
+            }
         }
     }
 }

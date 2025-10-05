@@ -38,11 +38,11 @@
             // 
             DownloadUpload.AutoSize = true;
             DownloadUpload.BackColor = Color.Transparent;
-            DownloadUpload.Font = new Font("Segoe UI", 25.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DownloadUpload.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             DownloadUpload.ForeColor = Color.Black;
-            DownloadUpload.Location = new Point(240, 80);
+            DownloadUpload.Location = new Point(285, 80);
             DownloadUpload.Name = "DownloadUpload";
-            DownloadUpload.Size = new Size(389, 57);
+            DownloadUpload.Size = new Size(278, 41);
             DownloadUpload.TabIndex = 12;
             DownloadUpload.Text = "Download/Upload";
             // 
