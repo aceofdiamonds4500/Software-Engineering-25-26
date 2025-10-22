@@ -171,12 +171,28 @@ namespace GUI_SoftwareEng
             }
         }
 
-        // ===== loads home page first =====
+        // ===== loads all pages =====
         private void ShowHomePage()
         {
             if (mainPage == null || mainPage.IsDisposed)
             {
                 mainPage = new FormMain();
+            }
+            if (transcribePage == null || transcribePage.IsDisposed)
+            {
+                transcribePage = new FormTranscribe();
+            }
+            if (downloaduploadPage == null || downloaduploadPage.IsDisposed)
+            {
+                downloaduploadPage = new FormDownloadUpload(transcribePage);
+            }
+            if (historyPage == null || historyPage.IsDisposed)
+            {
+                historyPage = new FormHistory();
+            }
+            if (settingsPage == null || settingsPage.IsDisposed)
+            {
+                settingsPage = new FormSettings(this);
             }
             ShowPage(mainPage);
         }
@@ -190,40 +206,24 @@ namespace GUI_SoftwareEng
         private void button1_Click(object? sender, EventArgs e)
         {
             _soundplayer.Play();
-            if (transcribePage == null || transcribePage.IsDisposed)
-            {
-                transcribePage = new FormTranscribe();
-            }
             ShowPage(transcribePage);
         }
 
         private void button2_Click(object? sender, EventArgs e)
         {
             _soundplayer.Play();
-            if (downloaduploadPage == null || downloaduploadPage.IsDisposed)
-            {
-                downloaduploadPage = new FormDownloadUpload(transcribePage);
-            }
             ShowPage(downloaduploadPage);
         }
 
         private void button3_Click(object? sender, EventArgs e)
         {
             _soundplayer.Play();
-            if (historyPage == null || historyPage.IsDisposed)
-            {
-                historyPage = new FormHistory();
-            }
             ShowPage(historyPage);
         }
 
         private void button4_Click(object? sender, EventArgs e)
         {
             _soundplayer.Play();
-            if (settingsPage == null || settingsPage.IsDisposed)
-            {
-                settingsPage = new FormSettings(this);
-            }
             ShowPage(settingsPage);
         }
 
