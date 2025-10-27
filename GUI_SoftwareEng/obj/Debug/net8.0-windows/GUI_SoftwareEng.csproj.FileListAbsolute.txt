@@ -122,3 +122,32 @@ E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\D
 E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\ref\GUI_SoftwareEng.dll
 E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\Interop.WMPLib.dll
 E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.ResolveComReference.cache
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.AssemblyReference.cache
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\Interop.WMPLib.dll
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.ResolveComReference.cache
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Form1.resources
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormDownloadUpload.resources
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormHistory.resources
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormMain.resources
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormSettings.resources
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormTranscribe.resources
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Properties.Resources.resources
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.GenerateResource.cache
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfoInputs.cache
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfo.cs
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.CoreCompileInputs.cache
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.sourcelink.json
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.dll
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\refint\GUI_SoftwareEng.dll
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.exe
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.deps.json
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.runtimeconfig.json
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.dll
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\ReaLTaiizor.dll
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\SimpleTCP.dll
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_Soft.40685EC0.Up2Date
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.genruntimeconfig.cache
+C:\Users\brett\source\repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\ref\GUI_SoftwareEng.dll

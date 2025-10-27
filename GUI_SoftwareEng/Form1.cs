@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Media;
+using SimpleTCP;
 
 namespace GUI_SoftwareEng
 {
@@ -12,6 +13,9 @@ namespace GUI_SoftwareEng
         [DllImport("user32.dll")] private static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HTCAPTION = 0x2;
+
+        //TCP Client
+        SimpleTcpClient client;
 
         // ===== Page instances =====
         private Form1? form1;
@@ -56,6 +60,10 @@ namespace GUI_SoftwareEng
             // sound effects 😎
             _soundplayer = new SoundPlayer("click.wav");
             _soundplayer1 = new SoundPlayer("slide.wav");
+
+            //tcp connection
+            client = new SimpleTcpClient();
+            client.StringEncoder = System.Text.Encoding.UTF8;
         }
 
         // make border for style!
@@ -98,7 +106,7 @@ namespace GUI_SoftwareEng
         private void pictureBox3_Click(object? sender, EventArgs e) => WindowState = FormWindowState.Minimized;
 
         // ===== Sidebar toggle =====
-        private void pictureBox1_Click(object? sender, EventArgs e) 
+        private void pictureBox1_Click(object? sender, EventArgs e)
         {
             _soundplayer1.Play();
             sidebarTransition.Start();
@@ -192,7 +200,7 @@ namespace GUI_SoftwareEng
             _soundplayer.Play();
             if (transcribePage == null || transcribePage.IsDisposed)
             {
-                transcribePage = new FormTranscribe();
+                transcribePage = new FormTranscribe(client);
             }
             ShowPage(transcribePage);
         }
@@ -231,7 +239,7 @@ namespace GUI_SoftwareEng
         public void BroadcastToggleTheme()
         {
             if (mainPage == null) mainPage = new FormMain();
-            if (transcribePage == null) transcribePage = new FormTranscribe();
+            if (transcribePage == null) transcribePage = new FormTranscribe(client);
             if (downloaduploadPage == null) downloaduploadPage = new FormDownloadUpload(transcribePage);
             if (historyPage == null) historyPage = new FormHistory();
             if (settingsPage == null) settingsPage = new FormSettings(this);
@@ -249,7 +257,7 @@ namespace GUI_SoftwareEng
         public void BroadcastToggleEnlargeText()
         {
             if (mainPage == null) mainPage = new FormMain();
-            if (transcribePage == null) transcribePage = new FormTranscribe();
+            if (transcribePage == null) transcribePage = new FormTranscribe(client);
             if (downloaduploadPage == null) downloaduploadPage = new FormDownloadUpload(transcribePage);
             if (historyPage == null) historyPage = new FormHistory();
             if (settingsPage == null) settingsPage = new FormSettings(this);
@@ -298,5 +306,6 @@ namespace GUI_SoftwareEng
                 button4.ForeColor = Color.Black;
             }
         }
+
     }
 }

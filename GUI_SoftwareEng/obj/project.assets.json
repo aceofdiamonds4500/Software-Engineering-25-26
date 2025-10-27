@@ -17,6 +17,15 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WindowsForms"
         ]
+      },
+      "SimpleTCP/1.0.24": {
+        "type": "package",
+        "compile": {
+          "lib/net45/SimpleTCP.dll": {}
+        },
+        "runtime": {
+          "lib/net45/SimpleTCP.dll": {}
+        }
       }
     }
   },
@@ -50,31 +59,44 @@
         "realtaiizor.3.8.1.3.nupkg.sha512",
         "realtaiizor.nuspec"
       ]
+    },
+    "SimpleTCP/1.0.24": {
+      "sha512": "mQEKbXruksWRmKeUuID7S+Ltg092EiWXwnomnVYohkY+/rTRiIp4PUTE/bdBEj6oh1gIt0lp4l0GBlwtOhqU5w==",
+      "type": "package",
+      "path": "simpletcp/1.0.24",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/SimpleTCP.dll",
+        "simpletcp.1.0.24.nupkg.sha512",
+        "simpletcp.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "ReaLTaiizor >= 3.8.1.3"
+      "ReaLTaiizor >= 3.8.1.3",
+      "SimpleTCP >= 1.0.24"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mcjuk\\.nuget\\packages\\": {},
+    "C:\\Users\\brett\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Coding Projects\\Github Repos\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
+      "projectUniqueName": "C:\\Users\\brett\\source\\repos\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
       "projectName": "GUI_SoftwareEng",
-      "projectPath": "E:\\Coding Projects\\Github Repos\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
-      "packagesPath": "C:\\Users\\mcjuk\\.nuget\\packages\\",
-      "outputPath": "E:\\Coding Projects\\Github Repos\\Software-Engineering-25-26\\GUI_SoftwareEng\\obj\\",
+      "projectPath": "C:\\Users\\brett\\source\\repos\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
+      "packagesPath": "C:\\Users\\brett\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\brett\\Source\\Repos\\Software-Engineering-25-26\\GUI_SoftwareEng\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\mcjuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\brett\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -101,7 +123,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -110,6 +132,10 @@
           "ReaLTaiizor": {
             "target": "Package",
             "version": "[3.8.1.3, )"
+          },
+          "SimpleTCP": {
+            "target": "Package",
+            "version": "[1.0.24, )"
           }
         },
         "imports": [
@@ -131,8 +157,20 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'SimpleTCP 1.0.24' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "SimpleTCP",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }

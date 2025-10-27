@@ -14,6 +14,7 @@ from evaluate import load
 
 from read_file import pd_read
 import text_clean_and_insert as tci
+
 import pandas as pd
 
 import matplotlib.pyplot as plt
@@ -98,12 +99,12 @@ def bert():
     for p in params[-4:]:
         print("{:<55} {:>12}".format(p[0], str(tuple(p[1].size()))))
 
-    optimizer = AdamW(model.parameters(), lr = 2e-5, eps = 1e-8)   #
-    epochs = 4                                                     #
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=2)  #uses AdamW optimizer and a learning rate scheduler to adjust the learning rate during training
+    optimizer = AdamW(model.parameters(), lr = 1e-4, eps = 1e-8)   #
+    epochs = 8                                                     #
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1)  #uses AdamW optimizer and a learning rate scheduler to adjust the learning rate during training
     
     # Set the seed value all over the place to make this reproducible.
-    seed_val = 245
+    seed_val = 24
 
     random.seed(seed_val)
     np.random.seed(seed_val)
@@ -146,8 +147,8 @@ def bert():
         # For each batch of training data...
         for step, batch in enumerate(train_dataloader):
 
-            # Progress update every 8 batches.
-            if step % 8 == 0 and not step == 0:
+            # Progress update every 16 batches.
+            if step % 16 == 0 and not step == 0:
                 # Calculate elapsed time in minutes.
                 elapsed = format_time(time.time() - t0)
 
@@ -217,7 +218,7 @@ def bert():
 
         print("")
         print("  Average training loss: {0:.2f}".format(avg_train_loss))
-        print("  Training epcoh took: {:}".format(training_time))
+        print("  Training epoch took: {:}".format(training_time))
 
         # ========================================
         #               Validation
@@ -311,6 +312,7 @@ def bert():
     print("Training complete!")
 
     print("Total training took {:} (h:mm:ss)".format(format_time(time.time()-total_t0)))
+    save_model(model)                                     #Saves the trained model to a directory
 
 def flat_accuracy(preds, labels):
     pred_flat = np.argmax(preds, axis=1).flatten()
@@ -352,7 +354,7 @@ def tokenize_dataset(sentences, labels, tokenizer):
 
 
 def save_model(model):
-    model.save_pretrained("./medical_classificaion_model", from_pt=True) #Saves the model to the specified directory
+    model.save_pretrained("./medical_classification_model", from_pt=True) #Saves the model to the specified directory
 
 
 def serialize_specialty(df):
@@ -361,6 +363,7 @@ def serialize_specialty(df):
     
     #Iterates over all the values in possible_labels and assigns the name of the specialty as the key to the dictionary. It assigns i as the value, 
     for i, possible_label in enumerate(possible_labels):
+        print(possible_label, i)
         label_dict[possible_label] = i
     label_dict
 
@@ -370,7 +373,7 @@ def training_validation_split(input_ids, attention_masks, labels):  #
 
     dataset = TensorDataset(input_ids, attention_masks, labels)     #
 
-    train_size = int(0.85* len(dataset))                            #
+    train_size = int(0.80* len(dataset))                            # 80-20 split between training and validation sets
     validation_size = len(dataset) - train_size                     #
 
     train_dataset, validation_dataset = random_split(dataset, [train_size, validation_size])    #

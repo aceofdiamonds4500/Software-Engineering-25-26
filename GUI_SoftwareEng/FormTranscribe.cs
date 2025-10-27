@@ -8,24 +8,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using SimpleTCP;
+using System.Net;
 
 namespace GUI_SoftwareEng
 {
     public partial class FormTranscribe : Form
     {
         private SoundPlayer _soundplayer;
-        public FormTranscribe()
+        private SimpleTcpClient _client;
+        private bool _isConnected;
+        public FormTranscribe(SimpleTcpClient client)
         {
             InitializeComponent();
             _soundplayer = new SoundPlayer("click.wav");
+            _client = client;
+            _isConnected = false;
+            _client.DataReceived += Client_DataReceived;
         }
 
         // transcription button
         private void button1_Click(object sender, EventArgs e)
         {
             _soundplayer.Play();
-        }
 
+            if (!_isConnected)
+            {
+                try
+                {
+                    _client.Connect("127.0.0.1", 65067);
+                    _isConnected = true;
+                }
+                catch (Exception ex)
+                {
+                    richTextBox2.Text = "Error: Could not connect\r\n";
+                    return;
+                }
+            }
+            if (_isConnected)
+            {
+                _client.WriteLineAndGetReply(richTextBox1.Text, TimeSpan.FromSeconds(3));
+            }
+        }
+        private void Client_DataReceived(object sender, SimpleTCP.Message e)
+        {
+            richTextBox2.Invoke((MethodInvoker)delegate
+            {
+                richTextBox2.Text = e.MessageString.Replace("\u0013", string.Empty) + "\r\n";
+            });
+        }
         // setters & getters for textboxes 
         public string InputText
         {
