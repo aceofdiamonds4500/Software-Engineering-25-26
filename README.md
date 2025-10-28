@@ -129,7 +129,7 @@ How it works:
 - Loads the tokenizer from `encoder_base` (fallback: `bert_base`, then default).
 - Tokenizes the input, runs the model, and returns the predicted specialty with confidence.
 
-Programmatic usage:
+Usage:
 
 ```python
 from inference import load_trained_model, predict
