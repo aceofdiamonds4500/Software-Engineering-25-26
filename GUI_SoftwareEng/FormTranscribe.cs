@@ -27,15 +27,40 @@ namespace GUI_SoftwareEng
         }
 
         // setters & getters for textboxes 
-        public string InputText
+        public string Description {get => richTextBox1.Text; set => richTextBox1.Text = value;}
+        public string SampleName {get => richTextBox2.Text; set => richTextBox2.Text = value;}
+        public string Transcription {get => richTextBox3.Text; set => richTextBox3.Text = value;}
+        public string Keywords {get => richTextBox4.Text; set => richTextBox4.Text = value;}
+        public string OutputTranscription {get => richTextBox5.Text; set => richTextBox5.Text = value;}
+        public string Specialty
         {
-            get => richTextBox1.Text;
-            set => richTextBox1.Text = value;
-        }
-        public string OutputText
-        {
-            get => richTextBox2.Text;
-            set => richTextBox2.Text = value;
+            get => comboBox1.Text;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    comboBox1.SelectedIndex = -1;
+                    comboBox1.Text = string.Empty;
+                    return;
+                }
+
+                int matchIndex = -1;
+                for (int i = 0; i < comboBox1.Items.Count; i++)
+                {
+                    var itemText = comboBox1.Items[i]?.ToString();
+                    if (string.Equals(itemText, value, StringComparison.OrdinalIgnoreCase))
+                    {
+                        matchIndex = i;
+                        break;
+                    }
+                }
+                if (matchIndex >= 0)
+                {
+                    comboBox1.SelectedIndex = matchIndex;
+                }
+                else
+                    comboBox1.Text = value; 
+            }
         }
 
         // =========== toggle functions for dark mode & enlarge text============
@@ -80,7 +105,5 @@ namespace GUI_SoftwareEng
                 button1.Font = new Font(button1.Font.FontFamily, 10);
             }
         }
-
-        
     }
 }
