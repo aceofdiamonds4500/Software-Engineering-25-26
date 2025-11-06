@@ -39,7 +39,7 @@
             button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.Image = Properties.Resources.x;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(305, 225);
+            button2.Location = new Point(315, 225);
             button2.Name = "button2";
             button2.Padding = new Padding(10, 0, 0, 0);
             button2.Size = new Size(210, 50);
@@ -54,7 +54,7 @@
             button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.Image = Properties.Resources.x;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(305, 160);
+            button1.Location = new Point(315, 160);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
             button1.Size = new Size(210, 50);
@@ -69,7 +69,7 @@
             Settings.BackColor = Color.Transparent;
             Settings.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             Settings.ForeColor = Color.Black;
-            Settings.Location = new Point(340, 75);
+            Settings.Location = new Point(355, 50);
             Settings.Name = "Settings";
             Settings.Size = new Size(134, 41);
             Settings.TabIndex = 10;

@@ -42,6 +42,8 @@
             richTextBox4 = new RichTextBox();
             label6 = new Label();
             richTextBox5 = new RichTextBox();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // Transcribe
@@ -50,7 +52,7 @@
             Transcribe.BackColor = Color.Transparent;
             Transcribe.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             Transcribe.ForeColor = Color.Black;
-            Transcribe.Location = new Point(355, 75);
+            Transcribe.Location = new Point(345, 50);
             Transcribe.Name = "Transcribe";
             Transcribe.Size = new Size(163, 41);
             Transcribe.TabIndex = 11;
@@ -59,7 +61,7 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(62, 75);
+            richTextBox1.Location = new Point(61, 340);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(247, 70);
             richTextBox1.TabIndex = 12;
@@ -69,7 +71,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 10F);
-            label1.Location = new Point(62, 267);
+            label1.Location = new Point(61, 211);
             label1.Name = "label1";
             label1.Size = new Size(112, 20);
             label1.TabIndex = 14;
@@ -82,10 +84,10 @@
             button1.Font = new Font("Microsoft Sans Serif", 10F);
             button1.Image = Properties.Resources.Speech_Bubble;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(325, 203);
+            button1.Location = new Point(355, 447);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(228, 58);
+            button1.Size = new Size(415, 58);
             button1.TabIndex = 15;
             button1.Text = "Calculate Information";
             button1.UseVisualStyleBackColor = false;
@@ -93,10 +95,10 @@
             // 
             // richTextBox2
             // 
-            richTextBox2.Location = new Point(62, 233);
+            richTextBox2.HideSelection = false;
+            richTextBox2.Location = new Point(61, 106);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.ReadOnly = true;
-            richTextBox2.Size = new Size(213, 28);
+            richTextBox2.Size = new Size(247, 28);
             richTextBox2.TabIndex = 16;
             richTextBox2.Text = "";
             // 
@@ -104,7 +106,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 10F);
-            label2.Location = new Point(563, 52);
+            label2.Location = new Point(559, 83);
             label2.Name = "label2";
             label2.Size = new Size(76, 20);
             label2.TabIndex = 17;
@@ -115,14 +117,14 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Allergy / Immunology", "Bariatrics", "Cardiovascular / Pulmonary", "Chiropractic", "Consult - History and Phy.", "Cosmetic / Plastic Surgery", "Dentistry", "Dermatology", "Dietetics / Nutrition", "Discharge Summary", "Emergency Room Reports", "Endocrinology", "ENT - Otolaryngology", "Family Medicine", "Gastroenterology", "General Medicine", "Hematology - Oncology", "Infectious Disease", "Internal Medicine", "Lab Medicine - Pathology", "Letters", "Nephrology", "Neurology", "Neurosurgery", "Obstetrics / Gynecology", "Office Notes", "Ophthalmology", "Orthopedic", "Pain Management", "Pediatrics - Neonatal", "Physical Medicine - Rehab", "Podiatry", "Psychiatry / Psychology", "Radiology", "Rheumatology", "Sleep Medicine", "Speech - Language", "Surgery", "Urology" });
-            comboBox1.Location = new Point(62, 182);
+            comboBox1.Location = new Point(61, 168);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(247, 28);
             comboBox1.TabIndex = 18;
             // 
             // richTextBox3
             // 
-            richTextBox3.Location = new Point(62, 290);
+            richTextBox3.Location = new Point(61, 234);
             richTextBox3.Name = "richTextBox3";
             richTextBox3.Size = new Size(247, 70);
             richTextBox3.TabIndex = 20;
@@ -132,7 +134,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 10F);
-            label3.Location = new Point(62, 372);
+            label3.Location = new Point(61, 424);
             label3.Name = "label3";
             label3.Size = new Size(87, 20);
             label3.TabIndex = 21;
@@ -143,7 +145,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 10F);
-            label4.Location = new Point(62, 159);
+            label4.Location = new Point(61, 145);
             label4.Name = "label4";
             label4.Size = new Size(82, 20);
             label4.TabIndex = 22;
@@ -154,7 +156,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 10F);
-            label5.Location = new Point(62, 213);
+            label5.Location = new Point(61, 83);
             label5.Name = "label5";
             label5.Size = new Size(119, 20);
             label5.TabIndex = 23;
@@ -163,7 +165,7 @@
             // 
             // richTextBox4
             // 
-            richTextBox4.Location = new Point(62, 395);
+            richTextBox4.Location = new Point(61, 447);
             richTextBox4.Name = "richTextBox4";
             richTextBox4.Size = new Size(247, 41);
             richTextBox4.TabIndex = 24;
@@ -173,7 +175,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 10F);
-            label6.Location = new Point(62, 52);
+            label6.Location = new Point(61, 317);
             label6.Name = "label6";
             label6.Size = new Size(100, 20);
             label6.TabIndex = 25;
@@ -182,18 +184,28 @@
             // 
             // richTextBox5
             // 
-            richTextBox5.Location = new Point(563, 75);
+            richTextBox5.Location = new Point(559, 106);
             richTextBox5.Name = "richTextBox5";
-            richTextBox5.Size = new Size(211, 361);
+            richTextBox5.Size = new Size(211, 317);
             richTextBox5.TabIndex = 26;
             richTextBox5.Text = "";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Help1;
+            pictureBox1.Location = new Point(745, 79);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(25, 26);
+            pictureBox1.TabIndex = 27;
+            pictureBox1.TabStop = false;
             // 
             // FormTranscribe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 224, 228);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 522);
+            Controls.Add(pictureBox1);
             Controls.Add(richTextBox5);
             Controls.Add(label6);
             Controls.Add(richTextBox4);
@@ -210,6 +222,7 @@
             Controls.Add(Transcribe);
             Name = "FormTranscribe";
             Text = "FormTranscribe";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -230,5 +243,6 @@
         private RichTextBox richTextBox4;
         private Label label6;
         private RichTextBox richTextBox5;
+        private PictureBox pictureBox1;
     }
 }

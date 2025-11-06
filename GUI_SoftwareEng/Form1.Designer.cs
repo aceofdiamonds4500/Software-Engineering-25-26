@@ -63,7 +63,7 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(-6, -4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(806, 45);
+            panel1.Size = new Size(826, 45);
             panel1.TabIndex = 1;
             // 
             // label1
@@ -93,7 +93,7 @@
             pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox3.BackColor = Color.FromArgb(123, 170, 224);
             pictureBox3.Image = Properties.Resources.Minus;
-            pictureBox3.Location = new Point(740, 6);
+            pictureBox3.Location = new Point(758, 6);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(24, 24);
             pictureBox3.TabIndex = 4;
@@ -105,7 +105,7 @@
             pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox2.BackColor = Color.FromArgb(123, 170, 224);
             pictureBox2.Image = Properties.Resources.Close;
-            pictureBox2.Location = new Point(770, 6);
+            pictureBox2.Location = new Point(788, 6);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(24, 24);
             pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -122,7 +122,7 @@
             sidebar.Controls.Add(panel5);
             sidebar.Location = new Point(-3, 40);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(50, 410);
+            sidebar.Size = new Size(50, 487);
             sidebar.TabIndex = 2;
             // 
             // panel2
@@ -225,7 +225,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 224, 228);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(818, 525);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);

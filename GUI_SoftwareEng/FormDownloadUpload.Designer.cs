@@ -40,7 +40,7 @@
             DownloadUpload.BackColor = Color.Transparent;
             DownloadUpload.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             DownloadUpload.ForeColor = Color.Black;
-            DownloadUpload.Location = new Point(285, 80);
+            DownloadUpload.Location = new Point(285, 50);
             DownloadUpload.Name = "DownloadUpload";
             DownloadUpload.Size = new Size(278, 41);
             DownloadUpload.TabIndex = 12;
@@ -52,7 +52,7 @@
             button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.Image = Properties.Resources.Download1;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(100, 200);
+            button1.Location = new Point(290, 160);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
             button1.Size = new Size(261, 64);
@@ -68,7 +68,7 @@
             button2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.Image = Properties.Resources.Upload;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(500, 200);
+            button2.Location = new Point(290, 235);
             button2.Name = "button2";
             button2.Padding = new Padding(10, 0, 0, 0);
             button2.Size = new Size(261, 64);
@@ -83,7 +83,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(0, 192, 0);
-            label1.Location = new Point(300, 275);
+            label1.Location = new Point(275, 312);
             label1.Name = "label1";
             label1.Size = new Size(0, 25);
             label1.TabIndex = 16;

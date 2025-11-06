@@ -81,9 +81,10 @@ namespace GUI_SoftwareEng
         {
             if (Settings.Font.Size == 18)
             {
-                Settings.Font = new Font(Settings.Font.FontFamily, 20, FontStyle.Bold);
+                Settings.Font = new Font(Settings.Font.FontFamily, 25, FontStyle.Bold);
                 button1.Font = new Font(button1.Font.FontFamily, 12);
                 button2.Font = new Font(button2.Font.FontFamily, 12);
+                Settings.Location = new Point(340, 50);
                 button1.Size = new Size(228, 58);
                 button2.Size = new Size(228, 58);
             }
@@ -92,6 +93,7 @@ namespace GUI_SoftwareEng
                 Settings.Font = new Font(Settings.Font.FontFamily, 18, FontStyle.Bold);
                 button1.Font = new Font(button1.Font.FontFamily, 10);
                 button2.Font = new Font(button2.Font.FontFamily, 10);
+                Settings.Location = new Point(355, 50);
                 button1.Size = new Size(210, 50);
                 button2.Size = new Size(210, 50);
             }

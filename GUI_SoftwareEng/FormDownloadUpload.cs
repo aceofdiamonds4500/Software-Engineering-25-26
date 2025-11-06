@@ -187,6 +187,7 @@ namespace GUI_SoftwareEng
                 DownloadUpload.Font = new Font(DownloadUpload.Font.FontFamily, 20, FontStyle.Bold);
                 button1.Font = new Font(button1.Font.FontFamily, 13);
                 button2.Font = new Font(button2.Font.FontFamily, 13);
+                DownloadUpload.Location = new Point(275, 50);
                 button1.Size = new Size(285, 70);
                 button2.Size = new Size(285, 70);
             }
@@ -195,6 +196,7 @@ namespace GUI_SoftwareEng
                 DownloadUpload.Font = new Font(DownloadUpload.Font.FontFamily, 18, FontStyle.Bold);
                 button1.Font = new Font(button1.Font.FontFamily, 10);
                 button2.Font = new Font(button2.Font.FontFamily, 10);
+                DownloadUpload.Location = new Point(285, 50);
                 button1.Size = new Size(261, 64);
                 button2.Size = new Size(261, 64);
             }

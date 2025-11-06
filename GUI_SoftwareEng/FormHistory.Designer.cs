@@ -49,7 +49,7 @@
             richTextBox2.Enabled = false;
             richTextBox2.Location = new Point(85, 137);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(670, 269);
+            richTextBox2.Size = new Size(670, 301);
             richTextBox2.TabIndex = 17;
             richTextBox2.Text = "";
             // 

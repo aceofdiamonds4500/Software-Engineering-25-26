@@ -45,10 +45,12 @@ namespace GUI_SoftwareEng
             if (History.Font.Size == 18)
             {
                 History.Font = new Font(History.Font.FontFamily, 25, FontStyle.Bold);
+                History.Location = new Point(355, 65);
             }
             else
             {
                 History.Font = new Font(History.Font.FontFamily, 18, FontStyle.Bold);
+                History.Location = new Point(365, 65);
             }
         }
     }
