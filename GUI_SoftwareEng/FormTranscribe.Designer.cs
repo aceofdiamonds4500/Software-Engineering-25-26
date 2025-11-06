@@ -43,6 +43,7 @@
             label6 = new Label();
             richTextBox5 = new RichTextBox();
             pictureBox1 = new PictureBox();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -84,12 +85,12 @@
             button1.Font = new Font("Microsoft Sans Serif", 10F);
             button1.Image = Properties.Resources.Speech_Bubble;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(355, 447);
+            button1.Location = new Point(515, 447);
             button1.Name = "button1";
             button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(415, 58);
+            button1.Size = new Size(255, 58);
             button1.TabIndex = 15;
-            button1.Text = "Calculate Information";
+            button1.Text = "Calculate Info";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
@@ -186,6 +187,7 @@
             // 
             richTextBox5.Location = new Point(559, 106);
             richTextBox5.Name = "richTextBox5";
+            richTextBox5.ReadOnly = true;
             richTextBox5.Size = new Size(211, 317);
             richTextBox5.TabIndex = 26;
             richTextBox5.Text = "";
@@ -199,12 +201,28 @@
             pictureBox1.TabIndex = 27;
             pictureBox1.TabStop = false;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(210, 232, 247);
+            button2.Font = new Font("Microsoft Sans Serif", 10F);
+            button2.Image = Properties.Resources.Broom_25x25;
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(345, 447);
+            button2.Name = "button2";
+            button2.Padding = new Padding(10, 0, 0, 0);
+            button2.Size = new Size(153, 58);
+            button2.TabIndex = 28;
+            button2.Text = "Clear info";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // FormTranscribe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 224, 228);
             ClientSize = new Size(800, 522);
+            Controls.Add(button2);
             Controls.Add(pictureBox1);
             Controls.Add(richTextBox5);
             Controls.Add(label6);
@@ -244,5 +262,6 @@
         private Label label6;
         private RichTextBox richTextBox5;
         private PictureBox pictureBox1;
+        private Button button2;
     }
 }

@@ -89,8 +89,6 @@ namespace GUI_SoftwareEng
             }
         }
 
-
-
         // setters & getters for textboxes 
         public string Description { get => richTextBox1.Text; set => richTextBox1.Text = value; }
         public string SampleName { get => richTextBox2.Text; set => richTextBox2.Text = value; }
@@ -143,6 +141,8 @@ namespace GUI_SoftwareEng
                 Transcribe.ForeColor = Color.White;
                 button1.BackColor = Color.FromArgb(32, 42, 72);
                 button1.ForeColor = Color.White;
+                button2.BackColor = Color.FromArgb(32, 42, 72);
+                button2.ForeColor = Color.White;
             }
             else
             {
@@ -157,6 +157,8 @@ namespace GUI_SoftwareEng
                 richTextBox1.BackColor = Color.White;
                 button1.BackColor = Color.FromArgb(210, 232, 247);
                 button1.ForeColor = Color.Black;
+                button2.BackColor = Color.FromArgb(210, 232, 247);
+                button2.ForeColor = Color.Black;
             }
         }
         public void ToggleEnlargeText()
@@ -171,6 +173,7 @@ namespace GUI_SoftwareEng
                 label5.Font = new Font(label5.Font.FontFamily, 13);
                 label6.Font = new Font(label6.Font.FontFamily, 13);
                 button1.Font = new Font(button1.Font.FontFamily, 12);
+                button2.Font = new Font(button1.Font.FontFamily, 12);
                 label5.Location = new Point(label5.Location.X, 75);
                 label4.Location = new Point(label4.Location.X, 139);
                 label1.Location = new Point(label1.Location.X, 206);
@@ -188,6 +191,7 @@ namespace GUI_SoftwareEng
                 label5.Font = new Font(label5.Font.FontFamily, 10);
                 label6.Font = new Font(label6.Font.FontFamily, 10);
                 button1.Font = new Font(button1.Font.FontFamily, 10);
+                button2.Font = new Font(button1.Font.FontFamily, 10);
                 label5.Location = new Point(label5.Location.X, 83);
                 label4.Location = new Point(label4.Location.X, 145);
                 label1.Location = new Point(label1.Location.X, 211);
@@ -220,6 +224,16 @@ namespace GUI_SoftwareEng
                 }
             }
             return sb.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "";
+            richTextBox2.Text = "";
+            richTextBox3.Text = "";
+            richTextBox4.Text = "";
+            richTextBox5.Text = "";
+            comboBox1.SelectedIndex = -1;
         }
     }
 }
