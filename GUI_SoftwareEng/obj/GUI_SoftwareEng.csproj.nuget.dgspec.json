@@ -53,10 +53,6 @@
             "ReaLTaiizor": {
               "target": "Package",
               "version": "[3.8.1.3, )"
-            },
-            "SimpleTCP": {
-              "target": "Package",
-              "version": "[1.0.24, )"
             }
           },
           "imports": [

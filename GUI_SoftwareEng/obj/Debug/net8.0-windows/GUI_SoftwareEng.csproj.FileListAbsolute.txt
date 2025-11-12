@@ -131,7 +131,6 @@ C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\D
 C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.dll
 C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.pdb
 C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\ReaLTaiizor.dll
-C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\SimpleTCP.dll
 C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.AssemblyReference.cache
 C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\Interop.WMPLib.dll
 C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\Interop.SpeechLib.dll
