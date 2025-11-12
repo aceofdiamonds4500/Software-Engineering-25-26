@@ -21,7 +21,7 @@ Built for clinicians, educators, and researchers, the tool aims to reduce manual
 ## ⚙️ Key Features  
 - **Automated Transcription Enhancement:** Refines raw text by identifying common transcription errors using AI models trained on real-world medical data.  
 - **Specialty Classification:** Automatically determines the medical specialty context (e.g., cardiology, radiology, neurology) for better organization and reporting.  
-- **Entity Extraction:** Detects and highlights critical medical entities — diagnoses, medications, and procedures — using NLP pipelines.  
+- **Entity Extraction:** Detects and highlights critical medical entities diagnoses, medications, and procedures. 
 - **Error Detection and Correction:** Flags potential inaccuracies and suggests context-aware replacements.  
 - **User-Friendly GUI:**  
   - Built with **VB.NET WinForms**  
