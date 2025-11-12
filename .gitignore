@@ -1,0 +1,10 @@
+# Ignore common Visual Studio build and temporary files
+*.suo
+*.user
+*.bak
+*.log
+[Dd]ebug/
+[Rr]elease/
+bin/
+obj/
+.vs/
