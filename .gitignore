@@ -7,4 +7,14 @@
 [Rr]elease/
 bin/
 obj/
+
+# Ignore user-specific files
 .vs/
+*.suo
+*.user
+
+# Ignore packages
+packages/
+
+#ignore model
+medical_classification_model
