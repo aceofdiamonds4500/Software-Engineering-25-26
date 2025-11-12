@@ -1,5 +1,5 @@
 import socket
-import load_model as m
+import inference as m
 import json
 from transformers import AutoTokenizer
 

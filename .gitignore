@@ -3,6 +3,7 @@
 *.user
 *.bak
 obj/
+config/
 
 # Ignore user-specific files
 .vs/
@@ -13,4 +14,4 @@ obj/
 packages/
 
 #ignore model
-medical_classification_model
+medical_classification_model/
