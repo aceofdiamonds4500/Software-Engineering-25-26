@@ -19,6 +19,7 @@ namespace GUI_SoftwareEng
     public partial class FormTranscribe : Form
     {
         private SoundPlayer _soundplayer;
+        private Connection _connection;
 
         // Declare tooltip at the class level
         private ToolTip hoverTip;
@@ -27,6 +28,7 @@ namespace GUI_SoftwareEng
         {
             InitializeComponent();
             _soundplayer = new SoundPlayer("click.wav");
+            _connection = new Connection("127.0.0.1", 65067);
 
             // Initialize the tooltip 
             hoverTip = new ToolTip();
@@ -79,8 +81,9 @@ namespace GUI_SoftwareEng
 
                 File.WriteAllText(filePath, json, Encoding.UTF8);
 
-                MessageBox.Show($"JSON exported successfully:\n{filePath}",
-                    "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show($"JSON exported successfully:\n{filePath}",
+                    //"Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                OutputTranscription = _connection.ExchangeData(json);
             }
             catch (Exception ex)
             {
