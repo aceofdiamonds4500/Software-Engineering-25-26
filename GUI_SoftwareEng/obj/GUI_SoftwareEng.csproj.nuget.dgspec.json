@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\brett\\Source\\Repos\\Software-Engineering-25-26_(1)\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj": {}
+    "C:\\Users\\brett\\source\\repos\\Software-Engineering-25-26_(1)\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj": {}
   },
   "projects": {
-    "C:\\Users\\brett\\Source\\Repos\\Software-Engineering-25-26_(1)\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj": {
+    "C:\\Users\\brett\\source\\repos\\Software-Engineering-25-26_(1)\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\brett\\Source\\Repos\\Software-Engineering-25-26_(1)\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
+        "projectUniqueName": "C:\\Users\\brett\\source\\repos\\Software-Engineering-25-26_(1)\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
         "projectName": "GUI_SoftwareEng",
-        "projectPath": "C:\\Users\\brett\\Source\\Repos\\Software-Engineering-25-26_(1)\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
+        "projectPath": "C:\\Users\\brett\\source\\repos\\Software-Engineering-25-26_(1)\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
         "packagesPath": "C:\\Users\\brett\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\brett\\Source\\Repos\\Software-Engineering-25-26_(1)\\GUI_SoftwareEng\\obj\\",
+        "outputPath": "C:\\Users\\brett\\source\\repos\\Software-Engineering-25-26_(1)\\GUI_SoftwareEng\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
