@@ -32,5 +32,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
             print(f"Received: {timestamp}") # Print the decoded data as a string
             predicted_label, confidence_score, topk = m.predict(prompt, model, tokenizer, id_to_label, device='cpu', max_length=512)
-            result = f"Predicted specialty:  {pred_label} \n\nAutocorrected description: {autocorrect} \n\nKey terms: {keyterms}"
+            result = f"Predicted specialty:  {predicted_label} \n\nConfidence: {confidence_score} \n\nTop: {topk}"
             conn.sendall(result.encode("utf-8"))  # Send back model results
