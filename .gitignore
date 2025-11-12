@@ -2,10 +2,6 @@
 *.suo
 *.user
 *.bak
-*.log
-[Dd]ebug/
-[Rr]elease/
-bin/
 obj/
 
 # Ignore user-specific files
