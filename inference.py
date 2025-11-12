@@ -65,7 +65,7 @@ def load_trained_model(model_path, device='cuda'):
     return model, id_to_label
 
 
-def predict(text, model, tokenizer, id_to_label, device='cuda', max_length=512):
+def predict(text, model, id_to_label, tokenizer, device='cuda', max_length=512):
     """
     Make a prediction for a single text.
     
