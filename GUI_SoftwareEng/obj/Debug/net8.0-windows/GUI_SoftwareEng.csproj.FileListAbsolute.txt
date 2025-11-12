@@ -1,0 +1,157 @@
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.GenerateResource.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfoInputs.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfo.cs
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.CoreCompileInputs.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.exe
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.deps.json
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.runtimeconfig.json
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.dll
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Form1.resources
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.dll
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\refint\GUI_SoftwareEng.dll
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.genruntimeconfig.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\ref\GUI_SoftwareEng.dll
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Properties.Resources.resources
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\ReaLTaiizor.dll
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.AssemblyReference.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_Soft.40685EC0.Up2Date
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.exe
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.deps.json
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.runtimeconfig.json
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.dll
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\ReaLTaiizor.dll
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.AssemblyReference.cache
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Form1.resources
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Properties.Resources.resources
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.GenerateResource.cache
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.GeneratedMSBuildEditorConfig.editorconfig
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfoInputs.cache
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfo.cs
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.CoreCompileInputs.cache
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_Soft.40685EC0.Up2Date
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.dll
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\refint\GUI_SoftwareEng.dll
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.genruntimeconfig.cache
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\ref\GUI_SoftwareEng.dll
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormDownloadUpload.resources
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormHistory.resources
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormSettings.resources
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormTranscribe.resources
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.exe
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.deps.json
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.runtimeconfig.json
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.dll
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\bin\Debug\net8.0-windows\ReaLTaiizor.dll
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.AssemblyReference.cache
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Form1.resources
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormDownloadUpload.resources
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormHistory.resources
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormSettings.resources
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormTranscribe.resources
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Properties.Resources.resources
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.GenerateResource.cache
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.GeneratedMSBuildEditorConfig.editorconfig
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfoInputs.cache
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfo.cs
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.CoreCompileInputs.cache
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_Soft.40685EC0.Up2Date
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.dll
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\refint\GUI_SoftwareEng.dll
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.genruntimeconfig.cache
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\ref\GUI_SoftwareEng.dll
+D:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormMain.resources
+E:\Coding Projects\School\Sotware_Engineering\GUI_SoftwareEng\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormMain.resources
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.exe
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.deps.json
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.runtimeconfig.json
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.dll
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\ReaLTaiizor.dll
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.AssemblyReference.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Form1.resources
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormDownloadUpload.resources
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormHistory.resources
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormMain.resources
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormSettings.resources
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormTranscribe.resources
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Properties.Resources.resources
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.GenerateResource.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfoInputs.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfo.cs
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.CoreCompileInputs.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.sourcelink.json
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_Soft.40685EC0.Up2Date
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.dll
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\refint\GUI_SoftwareEng.dll
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.genruntimeconfig.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\ref\GUI_SoftwareEng.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.exe
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.deps.json
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.runtimeconfig.json
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\bin\Debug\net8.0-windows\ReaLTaiizor.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.AssemblyReference.cache
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Form1.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormDownloadUpload.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormHistory.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormMain.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormSettings.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormTranscribe.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Properties.Resources.resources
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.GenerateResource.cache
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.GeneratedMSBuildEditorConfig.editorconfig
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfoInputs.cache
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfo.cs
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.CoreCompileInputs.cache
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.sourcelink.json
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_Soft.40685EC0.Up2Date
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\refint\GUI_SoftwareEng.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.genruntimeconfig.cache
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\ref\GUI_SoftwareEng.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\Interop.WMPLib.dll
+E:\Coding Projects\Github Repos\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.ResolveComReference.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\Interop.WMPLib.dll
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.ResolveComReference.cache
+C:\Users\mcjuk\OneDrive\Desktop\School\Software Engineering\Software-Engineering-25-26\GUI_SoftwareEng\obj\Debug\net8.0-windows\Interop.SpeechLib.dll
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.exe
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.deps.json
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.runtimeconfig.json
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.dll
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\ReaLTaiizor.dll
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\bin\Debug\net8.0-windows\SimpleTCP.dll
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.AssemblyReference.cache
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\Interop.WMPLib.dll
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\Interop.SpeechLib.dll
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.ResolveComReference.cache
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Form1.resources
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormDownloadUpload.resources
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormHistory.resources
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormMain.resources
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormSettings.resources
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.FormTranscribe.resources
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.Properties.Resources.resources
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.GenerateResource.cache
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfoInputs.cache
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.AssemblyInfo.cs
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.csproj.CoreCompileInputs.cache
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.sourcelink.json
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_Soft.40685EC0.Up2Date
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.dll
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\refint\GUI_SoftwareEng.dll
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.pdb
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\GUI_SoftwareEng.genruntimeconfig.cache
+C:\Users\brett\Source\Repos\Software-Engineering-25-26_(1)\GUI_SoftwareEng\obj\Debug\net8.0-windows\ref\GUI_SoftwareEng.dll
