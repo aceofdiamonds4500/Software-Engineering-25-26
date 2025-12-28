@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mcjuk\\OneDrive\\Desktop\\School\\Software Engineering\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj": {}
+    "F:\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mcjuk\\OneDrive\\Desktop\\School\\Software Engineering\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj": {
+    "F:\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mcjuk\\OneDrive\\Desktop\\School\\Software Engineering\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
+        "projectUniqueName": "F:\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
         "projectName": "GUI_SoftwareEng",
-        "projectPath": "C:\\Users\\mcjuk\\OneDrive\\Desktop\\School\\Software Engineering\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
+        "projectPath": "F:\\Software-Engineering-25-26\\GUI_SoftwareEng\\GUI_SoftwareEng.csproj",
         "packagesPath": "C:\\Users\\mcjuk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mcjuk\\OneDrive\\Desktop\\School\\Software Engineering\\Software-Engineering-25-26\\GUI_SoftwareEng\\obj\\",
+        "outputPath": "F:\\Software-Engineering-25-26\\GUI_SoftwareEng\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -74,7 +74,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
