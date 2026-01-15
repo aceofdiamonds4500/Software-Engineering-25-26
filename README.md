@@ -1,75 +1,165 @@
-# Software Engineering – Fall 2025  
-## Project 2: Transcriptive – Harnessing AI for Smart Medical Transcription Enhancement  
+# Medical Specialty Classification
 
-### Team Members  
-- Christopher Khun  
-- Alexander Wilson  
-- Brian Moore  
-- Matthew Carden  
-- Brett Lawrence  
-- Nicholas Cieplensky  
+Modern, encoder-agnostic text classification for medical transcriptions using Hugging Face Transformers. This project trains a classifier to map each transcription to a medical specialty and provides an inference script for predictions.
 
----
+## Overview
 
-## 🧠 Project Overview  
-**Transcriptive** is an AI-powered medical transcription enhancement tool designed to improve accuracy, consistency, and efficiency in clinical documentation. The system leverages **Natural Language Processing (NLP)** and **Machine Learning (ML)** to interpret and refine medical transcriptions by detecting errors, classifying specialties, and extracting key medical entities such as diagnoses, medications, and procedures.
+- `AutoModel`/`AutoTokenizer` (e.g., `allenai/biomed_roberta_base`, ClinicalBERT, BERT).
+- Two classifier heads:
+  - Advanced: partially fine-tunes last layers and trains a deeper head.
+  - Simple: freezes the encoder and trains a lightweight head.
+- Pooling: automatically falls back to masked mean when an encoder lacks `pooler_output`.
+- Class-imbalance handling using Focal Loss, Class Weights, and Label Smoothing.
+- Deterministic label mapping by sorting specialties.
 
-Built for clinicians, educators, and researchers, the tool aims to reduce manual correction time while promoting standardized documentation across medical specialties.
+## Project Structure
 
----
+- `config/`: Training and inference configuration.
+- `data/`: Reading, preprocessing, tokenization, and labeling.
+- `models/`: Classifiers and utilities for saving/loading.
+- `training/`: Training loop.
+- `inference.py`: Loads a trained checkpoint and makes predictions.
+- `diagnose.py`: Optional helpers/debugging.
 
-## ⚙️ Key Features  
-- **Automated Transcription Enhancement:** Refines raw text by identifying common transcription errors using AI models trained on real-world medical data.  
-- **Specialty Classification:** Automatically determines the medical specialty context (e.g., cardiology, radiology, neurology) for better organization and reporting.  
-- **Entity Extraction:** Detects and highlights critical medical entities diagnoses, medications, and procedures. 
-- **Error Detection and Correction:** Flags potential inaccuracies and suggests context-aware replacements.  
-- **User-Friendly GUI:**  
-  - Built with **VB.NET WinForms**  
-  - Includes **Home**, **Transcribe**, **History**, and **Settings** tabs  
-  - Features **animated sidebar transitions**, **dark/light mode toggle**, and **sound effects** for interactive elements  
-  - Designed for **easy navigation** and **real-time feedback**  
-- **Secure Local Storage:** Patient data and transcription logs are stored locally for privacy compliance and offline access.
+## Requirements
 
----
+- Python 3.10+ (tested with 3.11)
+- PyTorch (CUDA recommended)
+- Transformers
+- scikit-learn
+- pandas, numpy
 
-## 🧩 Technologies Used  
-| Category | Tools / Frameworks |
-|-----------|-------------------|
-| Programming Languages | VB.NET, Python |
-| AI / NLP Frameworks | PyTorch, spaCy, NLTK |
-| Dataset | MTSamples (medical transcription dataset) |
-| GUI Framework | WinForms (.NET) |
-| Data Handling | JSON, CSV |
-| Version Control | GitHub |
+Install dependencies:
 
----
+If a `requirements.txt` is not present, install directly:
 
-## 🚀 How It Works  
-1. **Load or Record Transcription:** Users can input raw transcripts manually or upload a text/audio file.  
-2. **Processing Pipeline:**  
-   - The text is analyzed through a PyTorch NLP model.  
-   - The model performs specialty classification and entity recognition.  
-   - Detected errors or inconsistencies are flagged with suggested corrections.  
-3. **Enhanced Output:** A refined version of the transcript is generated, with entity highlights and an optional summary section.  
-4. **History Tracking:** All processed transcriptions are stored locally, accessible via the “History” tab.  
-5. **Customization:** Users can switch between dark/light themes, adjust preferences in “Settings,” and play sound cues for key interactions.
+```bash
+pip install torch transformers scikit-learn pandas numpy
+```
 
----
+## Configuration
 
-## 🧑‍💻 Project Goals  
-- Improve transcription accuracy and readability through AI augmentation.  
-- Reduce clinician workload by automating repetitive transcription cleanup.  
-- Provide an intuitive, accessible interface suitable for non-technical users.  
-- Demonstrate the integration of machine learning with GUI-based software design principles.
+Key options in `config/config.py`.
 
----
+- `TrainingConfig`
+  - `MODEL_NAME`: Encoder to use (e.g., `allenai/biomed_roberta_base`).
+  - `MAX_LENGTH`: Tokenizer sequence length (e.g., 512).
+  - `EPOCHS`: Training epochs.
+  - `MODEL_TYPE`: `simple` or `advanced`.
+  - `NUM_LABELS`: Number of specialties (set at runtime using dataset mapping).
+  - `DROPOUT_RATE`, `LABEL_SMOOTHING`, and other training hyperparameters.
+  - `FREEZE_LAYERS` (advanced model): Number of early encoder layers to freeze.
 
-## 📈 Future Enhancements  
-- Integration with live speech-to-text transcription.  
-- Cloud-based model deployment for multi-user access.  
-- Fine-tuning of models using domain-specific datasets.  
-- Addition of analytics dashboard for usage insights.  
+- `InferenceConfig`
+  - `MODEL_PATH`: Directory containing a trained checkpoint (e.g., `checkpoints/best`).
+  - `MAX_LENGTH`: Inference tokenization length.
 
----
+## Data Pipeline
 
-## 📂 Repository Structure  
+- Input CSV: `mtsamples.csv` (or your own, with `text` and `medical_specialty` columns after preprocessing).
+- Label mapping:
+  - Mapped by sorted unique specialties.
+  - Saved to `label_mapping.json` alongside checkpoints.
+- Tokenization:
+  - `AutoTokenizer.from_pretrained(TrainingConfig.MODEL_NAME)` for training.
+  - Encodes text to `input_ids` and `attention_mask` only (no `token_type_ids` needed for RoBERTa).
+
+## Models
+
+- Encoders loaded via `AutoModel.from_pretrained(MODEL_NAME)`.
+- Pooling:
+  - Uses `outputs.pooler_output` when present.
+  - Falls back to masked mean of `last_hidden_state` when not.
+- Loss:
+  - Focal Loss (`alpha`, `gamma`) with optional class weights and label smoothing.
+
+### Advanced Classifier
+
+- Freezes early encoder layers; fine-tunes the last layers. (Last 3 layers)
+- Custom classification head with batch normalization, ReLU, and dropout.
+
+### Simple Classifier
+
+- Freezes the entire encoder; trains a small classification head.
+
+## Training
+
+Run training:
+
+```bash
+python training/train.py
+```
+
+During training:
+- Loads `TrainingConfig`, tokenizer, and builds the chosen model.
+- Trains for `EPOCHS` with mixed precision on CUDA when available.
+- Saves checkpoints to `checkpoints/epoch_X/` and selects `checkpoints/best/`.
+- Saves:
+  - `pytorch_model.bin`: model weights plus config summary.
+  - `encoder_base/`: the encoder (tokenizer and model files) for portable inference.
+  - `label_mapping.json`: mapping of specialty name → id.
+
+Tips:
+- If GPU memory is limited, reduce `MAX_LENGTH` or batch size.
+- For imbalanced classes, tune focal loss `gamma` and use class weights.
+- Advanced model: experiment with `FREEZE_LAYERS` to balance speed and quality.
+
+## Evaluation
+
+During training and validation the script reports:
+- Accuracy: overall fraction of correct predictions.
+- F1 Macro: averaged F1 across classes (treats each class equally).
+- F1 Weighted: weighted by support (more influenced by frequent classes).
+
+Key notes for training:
+- Prefer F1 Macro when class balance/fairness matters.
+- Accuracy can drop while F1 Macro improves if minority classes get better.
+
+## Inference
+
+Make a single prediction:
+
+```bash
+python inference.py
+```
+
+How it works:
+- Loads the checkpoint from `InferenceConfig.MODEL_PATH`.
+- Builds the model with the correct `num_labels` and encoder `name_or_path`.
+- Loads the tokenizer from `encoder_base` (fallback: `bert_base`, then default).
+- Tokenizes the input, runs the model, and returns the predicted specialty with confidence.
+
+Usage:
+
+```python
+from inference import load_trained_model, predict
+from transformers import AutoTokenizer
+import torch
+
+model_path = "checkpoints/best"
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+model, id_to_label = load_trained_model(model_path, device)
+tokenizer = AutoTokenizer.from_pretrained(f"{model_path}/encoder_base")
+
+text = "Patient presents with shortness of breath and wheezing."
+label, conf = predict(text, model, tokenizer, id_to_label, device)
+print(label, conf)
+```
+
+## Reproducibility
+
+- Label mapping is deterministic by sorting specialties.
+- Checkpoints include encoder files to ensure consistent tokenization.
+- For exact repeatability, fix random seeds and environment settings.
+
+## Troubleshooting
+
+- "Tokenizer not found": ensure `encoder_base/` exists under your checkpoint; otherwise the script falls back to `bert_base/` or a default model.
+- CUDA OOM: lower `MAX_LENGTH` or batch size; consider gradient accumulation.
+- Poor F1: try a domain-specific encoder (e.g., biomedical models), tune `gamma`, or increase `EPOCHS`.
+
+## Notes
+
+- Current default encoder in `config/config.py` is `allenai/biomed_roberta_base`.
+- The training loop removes `token_type_ids` to support models that do not use them.

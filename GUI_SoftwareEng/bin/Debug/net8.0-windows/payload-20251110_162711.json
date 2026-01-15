@@ -1,0 +1,12 @@
+﻿{
+  "version": "1.0",
+  "source": "FormTranscribe",
+  "timestamp": "2025-11-10T21:27:11Z",
+  "fields": {
+    "Description": "Obesity hypoventilation syndrome",
+    "SampleName": "Sleep Apnea Follow-up",
+    "Transcription": "A 61-year-old woman with polyarteritis nodosa and severe sleep apnea returns for evaluation following an overnight sleep study. She reports poor sleep quality despite CPAP use. Study showed severe central sleep apnea.",
+    "Keywords": "sleep apnea, CPAP, obesity, opiate use",
+    "Specialty": "Pulmonology"
+  }
+}

@@ -1,0 +1,12 @@
+﻿{
+  "version": "1.0",
+  "source": "FormTranscribe",
+  "timestamp": "2025-11-10T21:18:10Z",
+  "fields": {
+    "Description": "description",
+    "SampleName": "sample",
+    "Transcription": "transcription",
+    "Keywords": "keywords",
+    "Specialty": "Cardiovascular / Pulmonary"
+  }
+}

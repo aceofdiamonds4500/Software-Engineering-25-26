@@ -1,6 +1,17 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+# Ignore common Visual Studio build and temporary files
+*.suo
+*.user
+*.bak
+obj/
+config/
 
-/.vs
-/pytorch/.venv
+# Ignore user-specific files
+.vs/
+*.suo
+*.user
+
+# Ignore packages
+packages/
+
+#ignore model
+medical_classification_model/
