@@ -28,22 +28,34 @@ val AppBackground = Color(220, 224, 228)
 val DrawerBackground = Color(210, 214, 218)
 val TextDark = Color(30, 30, 30)
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity() {           // main start
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             MyApplicationTheme {
 
-                var showMainScreen by remember { mutableStateOf(false) }
+                var screen by remember { mutableStateOf("WELCOME") }
 
-                if (showMainScreen) {
-                    DrawerApp(
-                        onLogout = { showMainScreen = false }
+                when (screen) {
+                    "WELCOME" -> WelcomeScreen(
+                        onLoginClick = { screen = "LOGIN" },
+                        onRegisterClick = { screen = "REGISTER" },
+                        onSkipClick = { screen = "MAIN" }
                     )
-                } else {
-                    LoginScreen(
-                        onContinue = { showMainScreen = true }
+
+                    "LOGIN" -> LoginFormScreen(
+                        onBack = { screen = "WELCOME" },
+                        onSuccess = { screen = "MAIN" }
+                    )
+
+                    "REGISTER" -> RegisterScreen(
+                        onBack = { screen = "WELCOME" },
+                        onSuccess = { screen = "MAIN" }
+                    )
+
+                    "MAIN" -> DrawerApp(
+                        onLogout = { screen = "WELCOME" }
                     )
                 }
             }
@@ -51,9 +63,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DrawerApp(onLogout: () -> Unit) {
+fun DrawerApp(onLogout: () -> Unit) {                             // menu this the menu it is menu
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     var currentScreen by remember { mutableStateOf("Home") }
@@ -75,13 +88,14 @@ fun DrawerApp(onLogout: () -> Unit) {
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.profilepicture),
+                        painter = painterResource(id = R.drawable.profilepicture), // this changes depending on users pfp??????????
                         contentDescription = "Profile Picture",
                         modifier = Modifier.size(120.dp)
                     )
                 }
 
                 Spacer(Modifier.height(24.dp))
+
                 Text(
                     text = "Menu",
                     style = MaterialTheme.typography.headlineSmall,
@@ -108,6 +122,9 @@ fun DrawerApp(onLogout: () -> Unit) {
                     currentScreen = "Settings"
                     scope.launch { drawerState.close() }
                 }
+
+                Spacer(Modifier.height(345.dp))
+
                 DrawerItem("Log Out") {
                     onLogout()
                     scope.launch { drawerState.close() }
@@ -154,7 +171,7 @@ fun DrawerApp(onLogout: () -> Unit) {
 }
 
 @Composable
-fun DrawerItem(label: String, onClick: () -> Unit) {
+fun DrawerItem(label: String, onClick: () -> Unit) { // what each item in drawer looks like
     Text(
         text = label,
         style = MaterialTheme.typography.bodyLarge,

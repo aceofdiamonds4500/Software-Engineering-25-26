@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun TranscribeScreen() {
 
-    // dropdown options
+    // dropdown options add more if needed
     val specialties = listOf(
         "Allergy / Immunology",
         "Bariatrics",
@@ -152,6 +152,7 @@ fun TranscribeScreen() {
                     description = ""
                     keywords = ""
                     selectedSpecialty = ""
+                    outputText = ""
                 },
                 modifier = Modifier.weight(1f)
             ) {
@@ -159,7 +160,7 @@ fun TranscribeScreen() {
             }
 
             Button(
-                onClick = { /* calculate info later */ }, // THIS TO SEND TO MODEL REOKMROE
+                onClick = { /* calculate info later */ }, // THIS TO SEND TO MODEL ill so this later
                 modifier = Modifier.weight(1f)
             ) {
                 Text("Calculate Info")

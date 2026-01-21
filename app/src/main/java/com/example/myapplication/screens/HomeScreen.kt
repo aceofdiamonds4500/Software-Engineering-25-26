@@ -16,7 +16,9 @@ fun HomeScreen() {
             .fillMaxSize()
             .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
-        Text(
+        Text(  /* instead of home page make it a dashboard show users last transcription?
+                  show user's stats like current number of transcriptions stores to that account
+                  etc...*/
             text = "Transcriptive is an AI-powered medical transcription assistant " +
                     "that helps reduce errors and improve data accuracy. " +
                     "It takes patient notes, detects diagnoses, medications, and " +
