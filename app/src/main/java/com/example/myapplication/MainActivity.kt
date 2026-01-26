@@ -1,4 +1,5 @@
 package com.example.myapplication
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.screens.AccountSettingsScreen
 import com.example.myapplication.screens.HistoryScreen
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import kotlinx.coroutines.launch
@@ -35,8 +37,9 @@ class MainActivity : ComponentActivity() {           // main start
         setContent {
             MyApplicationTheme {
 
+                // Main "auth flow" navigation
                 var screen by remember { mutableStateOf("WELCOME") }
-
+// this for beginning welcome screen to transition to main page....
                 when (screen) {
                     "WELCOME" -> WelcomeScreen(
                         onLoginClick = { screen = "LOGIN" },
@@ -54,6 +57,7 @@ class MainActivity : ComponentActivity() {           // main start
                         onSuccess = { screen = "MAIN" }
                     )
 
+                    // After login/register/skip, everything is handled inside DrawerApp
                     "MAIN" -> DrawerApp(
                         onLogout = { screen = "WELCOME" }
                     )
@@ -63,12 +67,13 @@ class MainActivity : ComponentActivity() {           // main start
     }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DrawerApp(onLogout: () -> Unit) {                             // menu this the menu it is menu
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+
+    // Drawer navigation state (includes AccountSettings now)
     var currentScreen by remember { mutableStateOf("Home") }
 
     ModalNavigationDrawer(
@@ -163,7 +168,44 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
                     "Home" -> HomeScreen()
                     "Transcribe" -> TranscribeScreen()
                     "History" -> HistoryScreen()
-                    "Settings" -> SettingsScreen()
+
+                    "Settings" -> SettingsScreen(
+                        onAccountSettingsClick = { currentScreen = "AccountSettings" }
+                    )
+
+                    "AccountSettings" -> AccountSettingsScreen(
+                        onBack = { currentScreen = "Settings" },
+                        onProfileInformationClick = { currentScreen = "ProfileInformationScreen"},
+                        onSecurityClick = { currentScreen = "Security" },
+                        onPrivacyDataClick = { currentScreen = "PrivacyData" },
+                        onTranscriptionPreferencesClick = { currentScreen = "TranscriptionPreferences" },
+                        onBillingSubscriptionClick = { currentScreen = "BillingSubscription" },
+                        onSupportLegalClick = { currentScreen = "SupportLegal" }
+                    )
+
+                    "ProfileInformationScreen" -> ProfileInformationScreen(
+                        onBack = { currentScreen = "AccountSettings"}
+                    )
+
+                    "Security" -> SecurityScreen(
+                        onBack = { currentScreen = "AccountSettings" }
+                    )
+
+                    "PrivacyData" -> PrivacyDataScreen(
+                        onBack = { currentScreen = "AccountSettings" }
+                    )
+
+                    "TranscriptionPreferences" -> TranscriptionPreferencesScreen(
+                        onBack = { currentScreen = "AccountSettings" }
+                    )
+                    "BillingSubscription" -> BillingSubscriptionScreen(
+                        onBack = { currentScreen = "AccountSettings" }
+                    )
+
+                    "SupportLegal" -> SupportLegalScreen(
+                        onBack = { currentScreen = "AccountSettings" }
+                    )
+
                 }
             }
         }

@@ -24,16 +24,20 @@ import com.example.myapplication.ui.theme.MyApplicationTheme
 import kotlinx.coroutines.launch
 
 @Composable
-fun RegisterScreen(
+fun TranscriptionPreferencesScreen(
     onBack: () -> Unit,
-    onSuccess: () -> Unit
 ) {
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("Register Screen")
-            Spacer(Modifier.height(16.dp))
-            Button(onClick = onSuccess) { Text("Create Account") }
-            TextButton(onClick = onBack) { Text("Back") }
+    Column (modifier = Modifier
+        .fillMaxSize()
+        .padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)) {
+
+
+        Button(
+            onClick = onBack,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Back")
         }
     }
 }
