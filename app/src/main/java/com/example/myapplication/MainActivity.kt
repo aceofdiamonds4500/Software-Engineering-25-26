@@ -180,6 +180,7 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
                         onPrivacyDataClick = { currentScreen = "PrivacyData" },
                         onTranscriptionPreferencesClick = { currentScreen = "TranscriptionPreferences" },
                         onBillingSubscriptionClick = { currentScreen = "BillingSubscription" },
+                        onPaymentsClick = { currentScreen = "Payments" }, 
                         onSupportLegalClick = { currentScreen = "SupportLegal" }
                     )
 
@@ -199,6 +200,10 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
                         onBack = { currentScreen = "AccountSettings" }
                     )
                     "BillingSubscription" -> BillingSubscriptionScreen(
+                        onBack = { currentScreen = "AccountSettings" }
+                    )
+
+                    "Payments" -> PaymentsScreen(
                         onBack = { currentScreen = "AccountSettings" }
                     )
 

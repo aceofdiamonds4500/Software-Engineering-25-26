@@ -24,6 +24,7 @@ fun AccountSettingsScreen(
     onPrivacyDataClick: () -> Unit,
     onTranscriptionPreferencesClick: () -> Unit,
     onBillingSubscriptionClick: () -> Unit,
+    onPaymentsClick: () -> Unit,
     onSupportLegalClick: () -> Unit
 )
 {
@@ -65,6 +66,13 @@ fun AccountSettingsScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Billing / Subscription") // different subscriptions like free, basic, pro
+        }
+
+        Button(
+            onClick =  onPaymentsClick,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Payment Methods") // payment methods
         }
 
         Button(

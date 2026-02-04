@@ -64,12 +64,11 @@ fun TranscribeScreen() {
     var outputText by remember { mutableStateOf("Test to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\n") }
     val outputScrollState = rememberScrollState()
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
+    Column(modifier = Modifier
+            .fillMaxWidth()
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
 
         ExposedDropdownMenuBox(
@@ -104,7 +103,7 @@ fun TranscribeScreen() {
                 }
             }
         }
-        Spacer(Modifier.height(12.dp))
+
         TextField(
             value = sampleName,
             onValueChange = { sampleName = it },
@@ -112,7 +111,6 @@ fun TranscribeScreen() {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(Modifier.height(12.dp))
 
         TextField(
             value = transcription,
@@ -121,7 +119,6 @@ fun TranscribeScreen() {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(Modifier.height(12.dp))
 
         TextField(
             value = description,
@@ -130,7 +127,6 @@ fun TranscribeScreen() {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(Modifier.height(12.dp))
 
         TextField(
             value = keywords,
@@ -139,7 +135,7 @@ fun TranscribeScreen() {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(Modifier.height(24.dp))
+        Spacer(Modifier.height(16.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),

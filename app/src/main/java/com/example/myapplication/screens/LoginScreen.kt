@@ -19,18 +19,67 @@ import androidx.compose.ui.Modifier
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import kotlinx.coroutines.launch
 
 @Composable
-fun LoginFormScreen(onBack: () -> Unit, onSuccess: () -> Unit) {
+fun LoginFormScreen(
+    onBack: () -> Unit,
+    onSuccess: () -> Unit
+) {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("Login Form Screen")
-            Spacer(Modifier.height(16.dp))
-            Button(onClick = onSuccess) { Text("Login") }
-            TextButton(onClick = onBack) { Text("Back") }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ){
+
+            var username by remember { mutableStateOf("") }
+            var password by remember { mutableStateOf("") }
+
+            TextField(
+                value = username,
+                onValueChange = { username = it },
+                label = { Text("Username") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            TextField(
+                value = password,
+                onValueChange = { password = it },
+                label = { Text("Password") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Button(
+                onClick = onSuccess,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Login")
+            }
+
+
+
+            Button(
+                onClick = onBack,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Back")
+            }
+
+            Text(
+                text = "Forgot password?",
+                modifier = Modifier
+                    .clickable { /* got to forgot password screen */ }
+                    .fillMaxWidth(),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.bodyLarge,
+                lineHeight = MaterialTheme.typography.bodyLarge.lineHeight * 1.25
+            )
         }
     }
 }

@@ -28,12 +28,70 @@ fun RegisterScreen(
     onBack: () -> Unit,
     onSuccess: () -> Unit
 ) {
+
+    var username by remember { mutableStateOf("") }
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("Register Screen")
-            Spacer(Modifier.height(16.dp))
-            Button(onClick = onSuccess) { Text("Create Account") }
-            TextButton(onClick = onBack) { Text("Back") }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ){
+
+            var email by remember { mutableStateOf("") }
+            var username by remember { mutableStateOf("") }
+            var password by remember { mutableStateOf("") }
+            var confirmPassword by remember { mutableStateOf("") }
+            var checked by remember { mutableStateOf(false) }
+
+            TextField(
+                value = email,
+                onValueChange = { email = it },
+                label = { Text("Email") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            TextField(
+                value = username,
+                onValueChange = { username = it },
+                label = { Text("Username") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            TextField(
+                value = password,
+                onValueChange = { password = it },
+                label = { Text("Password") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            TextField(
+                value = confirmPassword,
+                onValueChange = { confirmPassword = it },
+                label = { Text("Confirm Password") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Checkbox(
+                checked = checked,
+                onCheckedChange = { checked = it }
+            )
+            Text("I agree to the terms")
+
+            Button(
+                onClick = onSuccess,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Register")
+            }
+
+            Button(
+                onClick = onBack,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Back")
+            }
         }
     }
 }

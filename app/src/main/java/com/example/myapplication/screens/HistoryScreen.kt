@@ -25,6 +25,10 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun HistoryScreen() {
+
+    val outputScrollState = rememberScrollState()
+    var outputText by remember { mutableStateOf("Test to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\n") }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -32,20 +36,18 @@ fun HistoryScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
-        var outputText by remember { mutableStateOf("Test to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\n") }
-        val outputScrollState = rememberScrollState()
-
-
         TextField(
-        value = outputText,
-        onValueChange = {},
-        readOnly = true,
-        label = { Text("History") },
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(750.dp)
-            .verticalScroll(outputScrollState),
-        maxLines = Int.MAX_VALUE
-    )}
+            value = outputText,
+            onValueChange = {},
+            readOnly = true,
+            label = { Text("Result") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(600.dp)
+                .verticalScroll(outputScrollState),
+            maxLines = Int.MAX_VALUE
+        )
+
+
+    }
 }

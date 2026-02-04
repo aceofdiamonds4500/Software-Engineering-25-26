@@ -27,10 +27,28 @@ import kotlinx.coroutines.launch
 fun SecurityScreen(
     onBack: () -> Unit,
 ) {
+    var toggleBiometrics by remember { mutableStateOf(false) }
+
     Column (modifier = Modifier
         .fillMaxSize()
         .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text("Enable Biometrics")
+            Spacer(modifier = Modifier.weight(1f))
+            Switch(checked = toggleBiometrics, onCheckedChange = { toggleBiometrics = it })
+        }
+
+        Button(
+            onClick = { /* Apply settings if you want */ },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Enable 2FA") // have toggled depending on if it is enabled or not from user info
+        }
 
 
         Button(

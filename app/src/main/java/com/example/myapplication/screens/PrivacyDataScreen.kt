@@ -27,11 +27,45 @@ import kotlinx.coroutines.launch
 fun PrivacyDataScreen(
     onBack: () -> Unit,
 ) {
+    var saveTranscriptionHistory by remember { mutableStateOf(false) }
+    var includePersonalIdentifiers by remember { mutableStateOf(false) }
+
     Column (modifier = Modifier
         .fillMaxSize()
         .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
 
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text("Save Transcription History")
+            Spacer(modifier = Modifier.weight(1f))
+            Switch(checked = saveTranscriptionHistory, onCheckedChange = { saveTranscriptionHistory = it })
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text("Include Personal Identifiers")
+            Spacer(modifier = Modifier.weight(1f))
+            Switch(checked = includePersonalIdentifiers, onCheckedChange = { includePersonalIdentifiers = it })
+        }
+
+        Button(
+            onClick = { /* Apply settings if you want */ },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Download Transcriptions") // download transcriptions to phone files?
+        }
+
+        Button(
+            onClick = { /* Apply settings if you want */ },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Apply Settings")
+        }
 
         Button(
             onClick = onBack,
