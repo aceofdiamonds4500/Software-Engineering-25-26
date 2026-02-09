@@ -14,12 +14,44 @@ Modern, encoder-agnostic text classification for medical transcriptions using Hu
 
 ## Project Structure
 
-- `config/`: Training and inference configuration.
-- `data/`: Reading, preprocessing, tokenization, and labeling.
-- `models/`: Classifiers and utilities for saving/loading.
-- `training/`: Training loop.
-- `inference.py`: Loads a trained checkpoint and makes predictions.
-- `diagnose.py`: Optional helpers/debugging.
+```
+.
+├── backend/                          # Backend services and AI
+│   ├── ai/                          # AI/ML components
+│   │   ├── data/                    # Data loading and preprocessing
+│   │   │   ├── data_loader.py
+│   │   │   ├── file_reader.py
+│   │   │   ├── preprocessing.py
+│   │   │   └── __init__.py
+│   │   ├── models/                  # Model definitions
+│   │   │   ├── medical_bert.py
+│   │   │   ├── model_utils.py
+│   │   │   └── __init__.py
+│   │   ├── training/                # Training logic
+│   │   │   ├── train.py
+│   │   │   ├── trainer.py
+│   │   │   └── __init__.py
+│   │   ├── inference/               # Inference and predictions
+│   │   │   ├── inference.py
+│   │   │   └── __init__.py
+│   │   └── __init__.py
+│   ├── database/                    # Database operations
+│   │   ├── 
+│   │   └── __init__.py
+│   ├── server.py                    # Backend inference server
+│   └── __init__.py
+├── config/                          # Configuration
+│   ├── config.py
+│   └── __init__.py
+├── scripts/                         # Utility scripts
+│   ├── diagnose.py                 # System diagnostics
+│   └── __init__.py
+├── desktop/                         # Desktop GUI (C# WinForms)
+├── mobile/                          # Mobile app (Android)
+└── README.md, REFACTORING.md
+```
+
+**See [REFACTORING.md](REFACTORING.md) for detailed migration information.**
 
 ## Requirements
 
@@ -39,19 +71,23 @@ pip install torch transformers scikit-learn pandas numpy
 
 ## Configuration
 
-Key options in `config/config.py`.
+All configuration is centralized in `config/config.py`:
+
+```python
+from config import TrainingConfig, InferenceConfig
+```
 
 - `TrainingConfig`
-  - `MODEL_NAME`: Encoder to use (e.g., `allenai/biomed_roberta_base`).
+  - `MODEL_NAME`: Encoder to use (e.g., `bert-base-uncased`, `allenai/biomed_roberta_base`).
   - `MAX_LENGTH`: Tokenizer sequence length (e.g., 512).
   - `EPOCHS`: Training epochs.
   - `MODEL_TYPE`: `simple` or `advanced`.
-  - `NUM_LABELS`: Number of specialties (set at runtime using dataset mapping).
+  - `NUM_LABELS`: Number of specialties (40 by default).
   - `DROPOUT_RATE`, `LABEL_SMOOTHING`, and other training hyperparameters.
   - `FREEZE_LAYERS` (advanced model): Number of early encoder layers to freeze.
 
 - `InferenceConfig`
-  - `MODEL_PATH`: Directory containing a trained checkpoint (e.g., `checkpoints/best`).
+  - `MODEL_PATH`: Directory containing a trained checkpoint (e.g., `./medical_classification_model`).
   - `MAX_LENGTH`: Inference tokenization length.
 
 ## Data Pipeline
@@ -87,7 +123,26 @@ Key options in `config/config.py`.
 Run training:
 
 ```bash
-python training/train.py
+python -m backend.ai.training.train
+```
+
+Or from Python:
+
+```python
+from backend.ai.data import load_medical_data, prepare_data
+from backend.ai.training import train_epoch, validate
+from backend.ai.models import get_model
+
+# Load and prepare data
+df = load_medical_data('mtsamples.csv')
+train_loader, val_loader, tokenizer, labels = prepare_data(df)
+
+# Create model
+model = get_model('advanced', num_labels=40)
+
+# Train
+train_loss, time = train_epoch(model, train_loader, ...)
+val_acc, val_loss, _, _, _ = validate(model, val_loader, ...)
 ```
 
 During training:
@@ -120,7 +175,7 @@ Key notes for training:
 Make a single prediction:
 
 ```bash
-python inference.py
+python -m backend.ai.inference.inference
 ```
 
 How it works:
@@ -132,7 +187,7 @@ How it works:
 Usage:
 
 ```python
-from inference import load_trained_model, predict
+from backend.ai.inference import load_trained_model, predict
 from transformers import AutoTokenizer
 import torch
 
@@ -143,9 +198,33 @@ model, id_to_label = load_trained_model(model_path, device)
 tokenizer = AutoTokenizer.from_pretrained(f"{model_path}/encoder_base")
 
 text = "Patient presents with shortness of breath and wheezing."
-label, conf = predict(text, model, tokenizer, id_to_label, device)
-print(label, conf)
+label, confidence, topk = predict(text, model, tokenizer, id_to_label, device)
+print(f"Predicted: {label}")
+print(f"Confidence: {confidence:.2%}")
+print("Top-5 candidates:")
+for lbl, prob in topk:
+    print(f"  - {lbl}: {prob:.2%}")
 ```
+
+```
+
+## Diagnostics
+
+Run system diagnostics to validate the setup:
+
+```bash
+python scripts/diagnose.py
+```
+
+This script checks:
+- ✅ Data loading and preprocessing
+- ✅ Class distribution and imbalance
+- ✅ Label encoding
+- ✅ Text quality
+- ✅ Tokenization
+- ✅ Model creation
+- ✅ Forward pass
+- ✅ Class weights
 
 ## Reproducibility
 
@@ -155,11 +234,17 @@ print(label, conf)
 
 ## Troubleshooting
 
-- "Tokenizer not found": ensure `encoder_base/` exists under your checkpoint; otherwise the script falls back to `bert_base/` or a default model.
-- CUDA OOM: lower `MAX_LENGTH` or batch size; consider gradient accumulation.
-- Poor F1: try a domain-specific encoder (e.g., biomedical models), tune `gamma`, or increase `EPOCHS`.
+- **Import errors**: Ensure you're running from the project root. Check [REFACTORING.md](REFACTORING.md) for new import paths.
+- **Tokenizer not found**: Ensure `encoder_base/` exists under your checkpoint; otherwise the script falls back to `bert_base/` or a default model.
+- **CUDA OOM**: Lower `MAX_LENGTH` or batch size; consider gradient accumulation.
+- **Poor F1**: Try a domain-specific encoder (e.g., biomedical models), tune `gamma`, or increase `EPOCHS`.
+- **Module not found**: Make sure all packages in `backend/ai/*/` have `__init__.py` files.
 
 ## Notes
 
-- Current default encoder in `config/config.py` is `allenai/biomed_roberta_base`.
+- Default encoder in `config/config.py` is `bert-base-uncased`.
 - The training loop removes `token_type_ids` to support models that do not use them.
+- For detailed refactoring information, see [REFACTORING.md](REFACTORING.md).
+- Desktop GUI is in `desktop/` (C# WinForms).
+- Mobile app is in `mobile/app/` (Android/Gradle).
+- All utility scripts are in `scripts/`.
