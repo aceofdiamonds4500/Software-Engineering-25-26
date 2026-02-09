@@ -3,7 +3,6 @@
 *.user
 *.bak
 obj/
-config/
 
 # Ignore user-specific files
 .vs/
@@ -15,3 +14,4 @@ packages/
 
 #ignore model
 medical_classification_model/
+checkpoints/
