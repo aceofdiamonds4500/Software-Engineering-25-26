@@ -1,0 +1,14 @@
+{
+    "omnisharp.enableRoslynAnalyzers": true,
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.analyzeOpenDocumentsOnly": false,
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp"
+    },
+    "dotnet.defaultSolutionOrFolder": "${workspaceFolder}/desktop",
+    "dotnet.autodetect": false,
+    "C_Cpp.default.compileCommands": "${workspaceFolder}",
+    "csharp.suppressBuildAssetsNotification": true,
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
+
