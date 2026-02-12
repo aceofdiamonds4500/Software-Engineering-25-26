@@ -90,7 +90,9 @@ def main():
         dropout_rate=config.DROPOUT_RATE,
         class_weights=class_weights,
         model_name=config.MODEL_NAME,
-        freeze_layers=config.FREEZE_LAYERS
+        freeze_layers=config.FREEZE_LAYERS,
+        use_multi_pooling=config.USE_MULTI_POOLING,
+        use_attention_pooling=config.USE_ATTENTION_POOLING
     ).to(device)
 
     try:

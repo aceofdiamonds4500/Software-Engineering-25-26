@@ -6,6 +6,7 @@ import json
 import os
 import numpy as np
 import sys
+import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../../'))
 
@@ -122,6 +123,42 @@ def create_data_loaders(input_ids, attention_masks, labels, batch_size=16, train
     return train_dataloader, validation_dataloader
 
 
+def resample_minority_classes(df, target_column='specialty_id', resample_ratio=0.7):
+    """
+    Oversample minority classes to balance the dataset.
+    
+    Args:
+        df: DataFrame with data
+        target_column: Column with class labels
+        resample_ratio: Ratio to resample minority to (0.7 = resample to 70% of majority)
+    
+    Returns:
+        Resampled DataFrame
+    """
+    class_counts = df[target_column].value_counts()
+    max_count = class_counts.max()
+    target_count = int(max_count * resample_ratio)
+    
+    resampled_dfs = []
+    print("\nResampling minority classes:")
+    for class_id in class_counts.index:
+        class_df = df[df[target_column] == class_id]
+        current_count = len(class_df)
+        
+        if current_count < target_count:
+            # Oversample this class
+            resampled_class = class_df.sample(n=target_count, replace=True, random_state=42)
+            resampled_dfs.append(resampled_class)
+            print(f"  Class {class_id}: {current_count:4d} → {target_count:4d} samples")
+        else:
+            resampled_dfs.append(class_df)
+            print(f"  Class {class_id}: {current_count:4d} (no change)")
+    
+    resampled_df = pd.concat(resampled_dfs, ignore_index=True)
+    print(f"Total samples: {len(df):,} → {len(resampled_df):,}")
+    return resampled_df
+
+
 def prepare_data(df, text_column='clean_transcription', batch_size=16, max_length=512):
     """Complete data preparation pipeline."""
     print("\n" + "="*80)
@@ -130,11 +167,15 @@ def prepare_data(df, text_column='clean_transcription', batch_size=16, max_lengt
     
     label_dict = serialize_specialty(df)
     
+    # Apply resampling if configured
+    cfg = TrainingConfig()
+    if getattr(cfg, 'RESAMPLE_MINORITY', False):
+        df = resample_minority_classes(df, 'specialty_id', cfg.RESAMPLE_MINORITY_RATIO)
+    
     sentences = df[text_column].values
     labels = df.specialty_id.values
     
     print("\nLoading tokenizer...")
-    cfg = TrainingConfig()
     tokenizer = AutoTokenizer.from_pretrained(cfg.MODEL_NAME)
     input_ids, attention_masks, labels = tokenize_dataset(
         sentences, labels, tokenizer, max_length
