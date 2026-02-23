@@ -1,0 +1,13 @@
+﻿{
+  "version": "1.0",
+  "source": "FormTranscribe",
+  "timestamp": "2026-02-23T05:44:39Z",
+  "command": "CLASSIFY",
+  "fields": {
+    "Description": "a",
+    "SampleName": "a",
+    "Transcription": "a",
+    "Keywords": "a",
+    "Specialty": "Dentistry"
+  }
+}

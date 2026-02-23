@@ -1,0 +1,13 @@
+﻿{
+  "version": "1.0",
+  "source": "FormTranscribe",
+  "timestamp": "2026-02-23T05:35:50Z",
+  "command": "CLASSIFY",
+  "fields": {
+    "Description": "a",
+    "SampleName": "a",
+    "Transcription": "a",
+    "Keywords": "a",
+    "Specialty": "Dermatology"
+  }
+}

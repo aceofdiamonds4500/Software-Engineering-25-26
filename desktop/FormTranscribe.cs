@@ -43,7 +43,8 @@ namespace GUI_SoftwareEng
             {
                 _soundplayer = null;
             }
-            _connection = new Connection("127.0.0.1", 65067);
+            _connection = new Connection("192.168.1.226", 5566); // Replace with final IP address and port
+            _connection.ExchangeData("Connected");
 
             // Initialize the tooltip 
             hoverTip = new ToolTip();
@@ -87,6 +88,7 @@ namespace GUI_SoftwareEng
                     $"  \"version\": \"1.0\",\n" +
                     $"  \"source\": \"FormTranscribe\",\n" +
                     $"  \"timestamp\": \"{DateTime.UtcNow:yyyy-MM-ddTHH:mm:ssZ}\",\n" +
+                    $"  \"command\": \"CLASSIFY\",\n" +
                     "  \"fields\": {\n" +
                     $"    \"Description\": \"{EscapeJson(description)}\",\n" +
                     $"    \"SampleName\": \"{EscapeJson(sampleName)}\",\n" +

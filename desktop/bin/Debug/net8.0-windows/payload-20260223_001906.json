@@ -1,0 +1,13 @@
+﻿{
+  "version": "1.0",
+  "source": "FormTranscribe",
+  "timestamp": "2026-02-23T05:19:06Z",
+  "command": "CLASSIFY",
+  "fields": {
+    "Description": "a",
+    "SampleName": "fuck",
+    "Transcription": "na",
+    "Keywords": "a",
+    "Specialty": "Consult - History and Phy."
+  }
+}

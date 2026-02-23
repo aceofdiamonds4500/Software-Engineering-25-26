@@ -1,0 +1,13 @@
+﻿{
+  "version": "1.0",
+  "source": "FormTranscribe",
+  "timestamp": "2026-02-23T05:32:45Z",
+  "command": "CLASSIFY",
+  "fields": {
+    "Description": "ss",
+    "SampleName": "s",
+    "Transcription": "s",
+    "Keywords": "s",
+    "Specialty": "Chiropractic"
+  }
+}
