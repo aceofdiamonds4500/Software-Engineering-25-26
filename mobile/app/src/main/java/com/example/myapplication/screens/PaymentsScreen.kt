@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -46,6 +47,42 @@ import androidx.compose.ui.unit.dp
 fun PaymentsScreen(
     onBack: () -> Unit,
 ) {
+
+    val shape = RoundedCornerShape(12.dp)
+
+    // TextField colors that match your theme (works for both light + dark)
+    val tfColors = TextFieldDefaults.colors(
+        focusedContainerColor = MaterialTheme.colorScheme.surface,
+        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+        disabledContainerColor = MaterialTheme.colorScheme.surface,
+
+        focusedTextColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+        disabledTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+
+        focusedLabelColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedLabelColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+
+        cursorColor = MaterialTheme.colorScheme.primary,
+
+        // remove the harsh underline look (cleaner on dark mode)
+        focusedIndicatorColor = Color.Transparent,
+        unfocusedIndicatorColor = Color.Transparent,
+        disabledIndicatorColor = Color.Transparent
+    )
+
+    val otfColors = OutlinedTextFieldDefaults.colors(
+        focusedBorderColor = MaterialTheme.colorScheme.primary,
+        unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.45f),
+
+        focusedTextColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+
+        focusedLabelColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedLabelColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+
+        cursorColor = MaterialTheme.colorScheme.primary
+    )
 
     val SubscriptionPlans = listOf(
         "Credit Card",
@@ -105,28 +142,36 @@ fun PaymentsScreen(
             value = cardName,
             onValueChange = { cardName = it },
             label = { Text("Name On Card") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = shape,
+            colors = tfColors
         )
 
         TextField(
             value = cardNumber,
             onValueChange = { cardNumber = it },
             label = { Text("Card Number") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = shape,
+            colors = tfColors
         )
 
         TextField(
             value = expDate,
             onValueChange = { expDate = it },
             label = { Text("Expiration Date") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = shape,
+            colors = tfColors
         )
 
         TextField(
             value = cvv,
             onValueChange = { cvv = it },
             label = { Text("CVV") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = shape,
+            colors = tfColors
         )
 
         Button(
