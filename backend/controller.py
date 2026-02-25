@@ -1,6 +1,10 @@
 import socket
 import threading
 from ai.inference import load_trained_model, predict
+import sqlite3
+from sqlite import db_insert as sqinsert
+from sqlite import db_init as sqinit
+from sqlite import db_select as sqselect
 import json
 from transformers import AutoTokenizer
 
@@ -42,25 +46,87 @@ def handle_client(client, addr):
                     #Makes the model classify user input
                     case "CLASSIFY":
                         print("Classify with model")
-                        #Extract description as prompt
-                        prompt = f"{json_data['fields']['Description']}\n{json_data['fields']['Transcription']}\n{json_data['fields']['Keywords']}" 
+                        try:
+                            #Extract description as prompt
+                            prompt = f"{json_data['fields']['Description']}\n{json_data['fields']['Transcription']}\n{json_data['fields']['Keywords']}" 
 
-                        #Timestamp for identification
-                        timestamp = json_data['timestamp']
-                        autocorrect = "NOT IMPLEMENTED"
-                        keyterms = "NOT IMPLEMENTED"
+                            #Timestamp for identification
+                            timestamp = json_data['timestamp']
+                            autocorrect = "NOT IMPLEMENTED"
+                            keyterms = "NOT IMPLEMENTED"
 
-                        print(f"Received: {timestamp}") # Print the decoded data as a string
+                            print(f"Received: {timestamp}") # Print the decoded data as a string
 
-                        #predicted_label, confidence_score, topk = predict(prompt, model, default_tokenizer, id_to_label, device='cpu', max_length=512)
-                        #result = f"Predicted specialty:  {predicted_label} \n\nConfidence: {confidence_score} \n\nTop: {topk}"
+                            #predicted_label, confidence_score, topk = predict(prompt, model, default_tokenizer, id_to_label, device='cpu', max_length=512)
+                            #result = f"Predicted specialty:  {predicted_label} \n\nConfidence: {confidence_score} \n\nTop: {topk}"
 
-                        result = prompt
-                        client.sendall(result.encode("utf-8"))  # Send back model results
+                            result = prompt
+                            client.sendall(result.encode("utf-8"))  # Send back model results
+                        except:
+                            client.sendall("Error: Invalid JSON for classification".encode("utf-8"))
 
                     #Retrieves the data of the current user from the database
                     case "USERDATA":
                         print("Retrieve user data")
+
+                    #Inserts patient data of a specific case into the database
+                    #Format for 'fields' in json:
+                    #patient_data = {
+                    #'p_ssn': 24955283,
+                    #'d_id': 500,
+                    #'p_firstname': 'Brett',
+                    #'p_lastname': 'Lawrence',
+                    #'desc': 'Patient is an adolescent male...',
+                    #'med_specialty': 'Laparoscopy',
+                    #'sample_name': 'hmmmm',
+                    #'transcription': 'Patient presents with...'
+                    #}
+                    case "INSERTPATIENT":
+                        print("Inserting patient data")
+                        try:
+                            sqinsert.insMedData(json_data['fields'])
+                            client.sendall("Inserted patient into database".encode("utf-8"))
+                        except:
+                            client.sendall("Error: Invalid JSON for patient insertion".encode("utf-8"))
+
+                    #Inserts information on a new doctor into the database
+                    #Format for 'fields' in json: 
+                    #doctor_data = {
+                    #   'd_id': 502,
+                    #   'd_firstname': 'Doctor',
+                    #   'd_lastname': 'Jones'
+                    #   }
+                    case "INSERTDOCTOR":
+                        print("Inserting doctor data")
+                        try:
+                            sqinsert.insDoctor(json_data['fields'])
+                            client.sendall("Inserted doctor into database".encode("utf-8"))
+                        except:
+                            client.sendall("Error: Invalid JSON for doctor insertion".encode("utf-8"))
+
+                    case "SELECTDOCTOR":
+                        print("Selecting doctor data")
+                        try:
+                            sqselect.selectDoctor(json_data['fields']['d_id'])
+                            client.sendall("Selected doctor from database".encode("utf-8"))
+                        except:
+                            client.sendall("Error: Could not select doctor".encode("utf-8"))
+
+                    case "SELECTPATIENT":
+                        print("Selecting doctor data")
+                        try:
+                            sqselect.selectPatienr(json_data['fields']['p_ssn'])
+                            client.sendall("Selected patient from database".encode("utf-8"))
+                        except:
+                            client.sendall("Error: Could not select patient".encode("utf-8"))
+
+                    case "SELECTTRANSCRIPTION":
+                        print("Selecting transcription data")
+                        try:
+                            sqselect.getTranscription(json_data['fields']['p_ssn'])
+                            client.sendall("Selected transcription from database".encode("utf-8"))
+                        except:
+                            client.sendall("Error: Could not select transcription".encode("utf-8"))
 
                     #Disconnects the user
                     case "DISCONNECT":
@@ -82,6 +148,7 @@ def handle_client(client, addr):
     client.close()
 
 def main():
+
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(ADDR)
     server.listen()
