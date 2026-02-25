@@ -3,7 +3,7 @@ import db_init as sqinit
 import db_insert as sqinsert
 
 def main():
-    #ret = sqlite.init_db()
+    ret = sqlite.init_db()
     
     #if ret is not None:
     #    print(ret)

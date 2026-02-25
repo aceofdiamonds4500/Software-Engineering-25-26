@@ -84,7 +84,8 @@ def handle_client(client, addr):
                     case "INSERTPATIENT":
                         print("Inserting patient data")
                         try:
-                            sqinsert.insMedData(json_data['fields'])
+                            r = sqinsert.insMedData(json_data['fields'])
+                            print(r)
                             client.sendall("Inserted patient into database".encode("utf-8"))
                         except:
                             client.sendall("Error: Invalid JSON for patient insertion".encode("utf-8"))
@@ -104,6 +105,7 @@ def handle_client(client, addr):
                         except:
                             client.sendall("Error: Invalid JSON for doctor insertion".encode("utf-8"))
 
+                    #Selects a doctor using a specific doctor ID
                     case "SELECTDOCTOR":
                         print("Selecting doctor data")
                         try:
@@ -115,11 +117,12 @@ def handle_client(client, addr):
                     case "SELECTPATIENT":
                         print("Selecting doctor data")
                         try:
-                            sqselect.selectPatienr(json_data['fields']['p_ssn'])
+                            sqselect.selectPatient(json_data['fields']['p_ssn'])
                             client.sendall("Selected patient from database".encode("utf-8"))
                         except:
                             client.sendall("Error: Could not select patient".encode("utf-8"))
 
+                    #Uses an ID to retrieve a specific transcription
                     case "SELECTTRANSCRIPTION":
                         print("Selecting transcription data")
                         try:
@@ -148,7 +151,8 @@ def handle_client(client, addr):
     client.close()
 
 def main():
-
+    sqinit.initDoctors()
+    sqinit.initMedData()
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(ADDR)
     server.listen()

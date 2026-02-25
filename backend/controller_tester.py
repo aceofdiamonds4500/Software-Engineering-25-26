@@ -14,7 +14,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             data = {
                 "command": command,
                 "fields": {
-                    'p_ssn': 400321,
+                    'p_ssn': 42042067,
                     'd_id': 500,
                     'p_firstname': 'Controller',
                     'p_lastname': 'Tester',
