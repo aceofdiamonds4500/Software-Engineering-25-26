@@ -1,19 +1,20 @@
 package com.example.myapplication
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TranscribeScreen() {
 
-    // dropdown options add more if needed
     val specialties = listOf(
         "Allergy / Immunology",
         "Bariatrics",
@@ -55,16 +56,60 @@ fun TranscribeScreen() {
         "Surgery",
         "Urology"
     )
+
     var expanded by remember { mutableStateOf(false) }
     var sampleName by remember { mutableStateOf("") }
     var selectedSpecialty by remember { mutableStateOf("") }
     var transcription by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
     var keywords by remember { mutableStateOf("") }
-    var outputText by remember { mutableStateOf("Test to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\n") }
+    var outputText by remember {
+        mutableStateOf(
+            "Test to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\n" +
+                    "Test to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\n" +
+                    "Test to make sure i can scroll it\nTest to make sure i can scroll it\nTest to make sure i can scroll it\n"
+        )
+    }
     val outputScrollState = rememberScrollState()
 
-    Column(modifier = Modifier
+    val shape = RoundedCornerShape(12.dp)
+
+    // TextField colors that match your theme (works for both light + dark)
+    val tfColors = TextFieldDefaults.colors(
+        focusedContainerColor = MaterialTheme.colorScheme.surface,
+        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+        disabledContainerColor = MaterialTheme.colorScheme.surface,
+
+        focusedTextColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+        disabledTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+
+        focusedLabelColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedLabelColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+
+        cursorColor = MaterialTheme.colorScheme.primary,
+
+        // remove the harsh underline look (cleaner on dark mode)
+        focusedIndicatorColor = Color.Transparent,
+        unfocusedIndicatorColor = Color.Transparent,
+        disabledIndicatorColor = Color.Transparent
+    )
+
+    val otfColors = OutlinedTextFieldDefaults.colors(
+        focusedBorderColor = MaterialTheme.colorScheme.primary,
+        unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.45f),
+
+        focusedTextColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+
+        focusedLabelColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedLabelColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+
+        cursorColor = MaterialTheme.colorScheme.primary
+    )
+
+    Column(
+        modifier = Modifier
             .fillMaxWidth()
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -80,12 +125,12 @@ fun TranscribeScreen() {
                 onValueChange = {},
                 readOnly = true,
                 label = { Text("Pick a Specialty") },
-                trailingIcon = {
-                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
-                },
+                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                 modifier = Modifier
                     .menuAnchor()
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                shape = shape,
+                colors = otfColors
             )
 
             ExposedDropdownMenu(
@@ -108,31 +153,36 @@ fun TranscribeScreen() {
             value = sampleName,
             onValueChange = { sampleName = it },
             label = { Text("Sample Name") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = shape,
+            colors = tfColors
         )
-
 
         TextField(
             value = transcription,
             onValueChange = { transcription = it },
             label = { Text("Transcription") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = shape,
+            colors = tfColors
         )
-
 
         TextField(
             value = description,
             onValueChange = { description = it },
             label = { Text("Description") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = shape,
+            colors = tfColors
         )
-
 
         TextField(
             value = keywords,
             onValueChange = { keywords = it },
             label = { Text("Keywords") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            shape = shape,
+            colors = tfColors
         )
 
         Spacer(Modifier.height(16.dp))
@@ -151,16 +201,12 @@ fun TranscribeScreen() {
                     outputText = ""
                 },
                 modifier = Modifier.weight(1f)
-            ) {
-                Text("Clear Info")
-            }
+            ) { Text("Clear Info") }
 
             Button(
-                onClick = { /* calculate info later */ }, // THIS TO SEND TO MODEL ill so this later
+                onClick = { /* calculate info later */ },
                 modifier = Modifier.weight(1f)
-            ) {
-                Text("Calculate Info")
-            }
+            ) { Text("Calculate Info") }
         }
 
         Spacer(Modifier.height(24.dp))
@@ -174,10 +220,9 @@ fun TranscribeScreen() {
                 .fillMaxWidth()
                 .height(200.dp)
                 .verticalScroll(outputScrollState),
-            maxLines = Int.MAX_VALUE
+            maxLines = Int.MAX_VALUE,
+            shape = shape,
+            colors = tfColors
         )
-
-
-
     }
 }

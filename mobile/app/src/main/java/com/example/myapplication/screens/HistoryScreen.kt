@@ -36,17 +36,6 @@ fun HistoryScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        TextField(
-            value = outputText,
-            onValueChange = {},
-            readOnly = true,
-            label = { Text("Result") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(600.dp)
-                .verticalScroll(outputScrollState),
-            maxLines = Int.MAX_VALUE
-        )
 
 
     }

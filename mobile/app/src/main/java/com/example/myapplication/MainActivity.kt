@@ -16,7 +16,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -25,21 +24,20 @@ import com.example.myapplication.screens.HistoryScreen
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import kotlinx.coroutines.launch
 
-// colors
-val AppBackground = Color(220, 224, 228)
-val DrawerBackground = Color(210, 214, 218)
-val TextDark = Color(30, 30, 30)
-
-class MainActivity : ComponentActivity() {           // main start
+class MainActivity : ComponentActivity() { // main start
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MyApplicationTheme {
+
+            // App-wide theme toggle state (this is what makes dark mode work)
+            var isDarkMode by remember { mutableStateOf(false) }
+
+            MyApplicationTheme(darkTheme = isDarkMode) {
 
                 // Main "auth flow" navigation
                 var screen by remember { mutableStateOf("WELCOME") }
-// this for beginning welcome screen to transition to main page....
+
                 when (screen) {
                     "WELCOME" -> WelcomeScreen(
                         onLoginClick = { screen = "LOGIN" },
@@ -59,7 +57,9 @@ class MainActivity : ComponentActivity() {           // main start
 
                     // After login/register/skip, everything is handled inside DrawerApp
                     "MAIN" -> DrawerApp(
-                        onLogout = { screen = "WELCOME" }
+                        onLogout = { screen = "WELCOME" },
+                        isDarkMode = isDarkMode,
+                        onDarkModeChange = { isDarkMode = it }
                     )
                 }
             }
@@ -69,11 +69,15 @@ class MainActivity : ComponentActivity() {           // main start
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DrawerApp(onLogout: () -> Unit) {                             // menu this the menu it is menu
+fun DrawerApp(
+    onLogout: () -> Unit,
+    isDarkMode: Boolean,
+    onDarkModeChange: (Boolean) -> Unit
+) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
-    // Drawer navigation state (includes AccountSettings now)
+    // Drawer navigation state
     var currentScreen by remember { mutableStateOf("Home") }
 
     ModalNavigationDrawer(
@@ -81,7 +85,7 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
         drawerContent = {
             ModalDrawerSheet(
                 modifier = Modifier.width(260.dp),
-                drawerContainerColor = Color(210, 232, 247)
+                drawerContainerColor = MaterialTheme.colorScheme.secondary
             ) {
                 Spacer(Modifier.height(24.dp))
 
@@ -93,7 +97,7 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.profilepicture), // this changes depending on users pfp??????????
+                        painter = painterResource(id = R.drawable.profilepicture),
                         contentDescription = "Profile Picture",
                         modifier = Modifier.size(120.dp)
                     )
@@ -104,7 +108,7 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
                 Text(
                     text = "Menu",
                     style = MaterialTheme.typography.headlineSmall,
-                    color = TextDark,
+                    color = MaterialTheme.colorScheme.onBackground,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -138,21 +142,22 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
         }
     ) {
         Scaffold(
-            containerColor = AppBackground,
+            containerColor = MaterialTheme.colorScheme.background,
             topBar = {
                 TopAppBar(
-                    title = { Text("Transcriptive AI", color = TextDark) },
+                    title = { Text("Transcriptive AI") },
                     navigationIcon = {
                         IconButton(onClick = { scope.launch { drawerState.open() } }) {
                             Icon(
                                 Icons.Default.Menu,
-                                contentDescription = "Menu",
-                                tint = TextDark
+                                contentDescription = "Menu"
                             )
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color(123, 170, 224)
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                        navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                     )
                 )
             }
@@ -160,7 +165,7 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(AppBackground)
+                    .background(MaterialTheme.colorScheme.background)
                     .padding(padding)
                     .verticalScroll(rememberScrollState())
             ) {
@@ -170,22 +175,24 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
                     "History" -> HistoryScreen()
 
                     "Settings" -> SettingsScreen(
+                        isDarkMode = isDarkMode,
+                        onDarkModeChange = onDarkModeChange,
                         onAccountSettingsClick = { currentScreen = "AccountSettings" }
                     )
 
                     "AccountSettings" -> AccountSettingsScreen(
                         onBack = { currentScreen = "Settings" },
-                        onProfileInformationClick = { currentScreen = "ProfileInformationScreen"},
+                        onProfileInformationClick = { currentScreen = "ProfileInformationScreen" },
                         onSecurityClick = { currentScreen = "Security" },
                         onPrivacyDataClick = { currentScreen = "PrivacyData" },
                         onTranscriptionPreferencesClick = { currentScreen = "TranscriptionPreferences" },
                         onBillingSubscriptionClick = { currentScreen = "BillingSubscription" },
-                        onPaymentsClick = { currentScreen = "Payments" }, 
+                        onPaymentsClick = { currentScreen = "Payments" },
                         onSupportLegalClick = { currentScreen = "SupportLegal" }
                     )
 
                     "ProfileInformationScreen" -> ProfileInformationScreen(
-                        onBack = { currentScreen = "AccountSettings"}
+                        onBack = { currentScreen = "AccountSettings" }
                     )
 
                     "Security" -> SecurityScreen(
@@ -199,6 +206,7 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
                     "TranscriptionPreferences" -> TranscriptionPreferencesScreen(
                         onBack = { currentScreen = "AccountSettings" }
                     )
+
                     "BillingSubscription" -> BillingSubscriptionScreen(
                         onBack = { currentScreen = "AccountSettings" }
                     )
@@ -210,7 +218,6 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
                     "SupportLegal" -> SupportLegalScreen(
                         onBack = { currentScreen = "AccountSettings" }
                     )
-
                 }
             }
         }
@@ -218,11 +225,11 @@ fun DrawerApp(onLogout: () -> Unit) {                             // menu this t
 }
 
 @Composable
-fun DrawerItem(label: String, onClick: () -> Unit) { // what each item in drawer looks like
+fun DrawerItem(label: String, onClick: () -> Unit) {
     Text(
         text = label,
         style = MaterialTheme.typography.bodyLarge,
-        color = TextDark,
+        color = MaterialTheme.colorScheme.onBackground,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .fillMaxWidth()

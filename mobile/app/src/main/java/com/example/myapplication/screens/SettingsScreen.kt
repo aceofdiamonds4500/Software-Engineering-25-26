@@ -9,11 +9,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SettingsScreen(
+    isDarkMode: Boolean,
+    onDarkModeChange: (Boolean) -> Unit,
     onAccountSettingsClick: () -> Unit
 ) {
-    var darkMode by remember { mutableStateOf(false) }
+
+    var tempDarkMode by remember { mutableStateOf(isDarkMode) }
     var enlargeText by remember { mutableStateOf(false) }
-    var testSwitch by remember { mutableStateOf(false) }
+
+    // Reusable apply function
+    fun applySettings() {
+        onDarkModeChange(tempDarkMode)
+    }
 
     Column(
         modifier = Modifier
@@ -28,7 +35,10 @@ fun SettingsScreen(
         ) {
             Text("Dark Mode")
             Spacer(modifier = Modifier.weight(1f))
-            Switch(checked = darkMode, onCheckedChange = { darkMode = it })
+            Switch(
+                checked = tempDarkMode,
+                onCheckedChange = { tempDarkMode = it }
+            )
         }
 
         Row(
@@ -37,20 +47,14 @@ fun SettingsScreen(
         ) {
             Text("Enlarge Text")
             Spacer(modifier = Modifier.weight(1f))
-            Switch(checked = enlargeText, onCheckedChange = { enlargeText = it })
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text("Test Switch")
-            Spacer(modifier = Modifier.weight(1f))
-            Switch(checked = testSwitch, onCheckedChange = { testSwitch = it })
+            Switch(
+                checked = enlargeText,
+                onCheckedChange = { enlargeText = it }
+            )
         }
 
         Button(
-            onClick = { /* Apply settings if you want */ },
+            onClick = { applySettings() },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Apply Settings")
@@ -58,9 +62,9 @@ fun SettingsScreen(
 
         Button(
             onClick = {
-                darkMode = false
+                tempDarkMode = false
                 enlargeText = false
-                testSwitch = false
+                applySettings()
             },
             modifier = Modifier.fillMaxWidth()
         ) {
