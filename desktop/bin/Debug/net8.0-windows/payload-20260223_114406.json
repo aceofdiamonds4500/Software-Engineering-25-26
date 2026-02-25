@@ -1,0 +1,13 @@
+﻿{
+  "version": "1.0",
+  "source": "FormTranscribe",
+  "timestamp": "2026-02-23T16:44:06Z",
+  "command": "CLASSIFY",
+  "fields": {
+    "Description": "",
+    "SampleName": "",
+    "Transcription": "aaaaaaaaaaaaaaaaaaaaaaaa",
+    "Keywords": "",
+    "Specialty": ""
+  }
+}
