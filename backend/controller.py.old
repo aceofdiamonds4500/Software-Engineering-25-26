@@ -1,0 +1,167 @@
+import socket
+import threading
+from ai.inference import load_trained_model, predict
+from sqlite import db_insert as sqinsert
+from sqlite import db_init as sqinit
+from sqlite import db_select as sqselect
+import commands
+import json
+from transformers import AutoTokenizer
+
+HOST = socket.gethostbyname(socket.gethostname())
+PORT = 5566
+ADDR = (HOST, PORT)   
+
+#model, id_to_label = load_trained_model("./medical_classification_model", device = "cpu")
+
+#Default tokenizer until I can change it
+default_tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+
+#Method for handling thread for a client connection
+def handle_client(client, addr):
+    print(f"Connected by {addr}")
+    connection = True
+    #client.send(b"Connected")  # Send welcome message immediately after connection
+    while connection:
+        try:
+            data = client.recv(10000)
+            if not data:
+                break
+            #Read received json file
+            json_string = data.decode()
+            json_data = json.loads(json_string)
+            
+            print(json_string)
+            
+            #Command handling logic
+            try:
+                command = f"{json_data['command']}" 
+
+                match command:
+
+                    #Funni ping
+                    case "PING":
+                        client.sendall("PONG".encode("utf-8"))  
+
+                    #Makes the model classify user input
+                    case "CLASSIFY":
+                        print("Classify with model")
+                        try:
+                            #Extract description as prompt
+                            prompt = f"{json_data['fields']['Description']}\n{json_data['fields']['Transcription']}\n{json_data['fields']['Keywords']}" 
+
+                            #Timestamp for identification
+                            timestamp = json_data['timestamp']
+                            autocorrect = "NOT IMPLEMENTED"
+                            keyterms = "NOT IMPLEMENTED"
+
+                            print(f"Received: {timestamp}") # Print the decoded data as a string
+
+                            #predicted_label, confidence_score, topk = predict(prompt, model, default_tokenizer, id_to_label, device='cpu', max_length=512)
+                            #result = f"Predicted specialty:  {predicted_label} \n\nConfidence: {confidence_score} \n\nTop: {topk}"
+
+                            result = prompt
+                            client.sendall(result.encode("utf-8"))  # Send back model results
+                        except:
+                            client.sendall("Error: Invalid JSON for classification".encode("utf-8"))
+
+                    #Retrieves the data of the current user from the database
+                    case "USERDATA":
+                        print("Retrieve user data")
+
+                    #Inserts patient data of a specific case into the database
+                    #Format for 'fields' in json:
+                    #patient_data = {
+                    #'p_ssn': 24955283,
+                    #'d_id': 500,
+                    #'p_firstname': 'Brett',
+                    #'p_lastname': 'Lawrence',
+                    #'desc': 'Patient is an adolescent male...',
+                    #'med_specialty': 'Laparoscopy',
+                    #'sample_name': 'hmmmm',
+                    #'transcription': 'Patient presents with...'
+                    #}
+                    case "INSERTPATIENT":
+                        print("Inserting patient data")
+                        try:
+                            r = sqinsert.insMedData(json_data['fields'])
+                            print(r)
+                            client.sendall("Inserted patient into database".encode("utf-8"))
+                        except:
+                            client.sendall("Error: Invalid JSON for patient insertion".encode("utf-8"))
+
+                    #Inserts information on a new doctor into the database
+                    #Format for 'fields' in json: 
+                    #doctor_data = {
+                    #   'd_id': 502,
+                    #   'd_firstname': 'Doctor',
+                    #   'd_lastname': 'Jones'
+                    #   }
+                    case "INSERTDOCTOR":
+                        print("Inserting doctor data")
+                        try:
+                            sqinsert.insDoctor(json_data['fields'])
+                            client.sendall("Inserted doctor into database".encode("utf-8"))
+                        except:
+                            client.sendall("Error: Invalid JSON for doctor insertion".encode("utf-8"))
+
+                    #Selects a doctor using a specific doctor ID
+                    case "SELECTDOCTOR":
+                        print("Selecting doctor data")
+                        try:
+                            sqselect.selectDoctor(json_data['fields']['d_id'])
+                            client.sendall("Selected doctor from database".encode("utf-8"))
+                        except:
+                            client.sendall("Error: Could not select doctor".encode("utf-8"))
+
+                    case "SELECTPATIENT":
+                        print("Selecting doctor data")
+                        try:
+                            sqselect.selectPatient(json_data['fields']['p_ssn'])
+                            client.sendall("Selected patient from database".encode("utf-8"))
+                        except:
+                            client.sendall("Error: Could not select patient".encode("utf-8"))
+
+                    #Uses an ID to retrieve a specific transcription
+                    case "SELECTTRANSCRIPTION":
+                        print("Selecting transcription data")
+                        try:
+                            sqselect.getTranscription(json_data['fields']['p_ssn'])
+                            client.sendall("Selected transcription from database".encode("utf-8"))
+                        except:
+                            client.sendall("Error: Could not select transcription".encode("utf-8"))
+
+                    #Disconnects the user
+                    case "DISCONNECT":
+                        print("Disconnecting client")
+                        connection = False
+
+                    #Default case
+                    case _:
+                        print(f"Unknown command: {command}")
+
+            #Error handling for missing command key
+            except KeyError as e:
+                print(f"Error: {e}")
+                client.sendall("Error: No command key found".encode("utf-8"))
+        except Exception as e:
+            print(f"Exception: {e}")
+            connection = False
+            break
+    client.close()
+
+def main():
+    sqinit.initDoctors()
+    sqinit.initMedData()
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind(ADDR)
+    server.listen()
+    print(f"Listening on {ADDR[0]}:{ADDR[1]}")
+
+    while True:
+        client, addr = server.accept()
+        thread = threading.Thread(target=handle_client, args=(client, addr))
+        thread.start()
+
+if __name__ == "__main__":
+    main()
