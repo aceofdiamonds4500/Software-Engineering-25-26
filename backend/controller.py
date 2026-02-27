@@ -7,7 +7,7 @@ import json
 from transformers import AutoTokenizer
 
 HOST = socket.gethostbyname(socket.gethostname())
-PORT = 5566
+PORT = 5867
 ADDR = (HOST, PORT)   
 
 #model, id_to_label = load_trained_model("./medical_classification_model", device = "cpu")

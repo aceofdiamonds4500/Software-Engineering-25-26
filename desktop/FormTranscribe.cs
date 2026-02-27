@@ -43,7 +43,7 @@ namespace GUI_SoftwareEng
             {
                 _soundplayer = null;
             }
-            _connection = new Connection("192.168.1.226", 5566); // Replace with final IP address and port
+            _connection = new Connection("192.168.1.226", 5867); // Replace with final IP address and port
             _connection.ExchangeData("Connected");
 
             // Initialize the tooltip 

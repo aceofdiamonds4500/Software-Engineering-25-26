@@ -78,7 +78,7 @@ def handlecommand(json_data):
             case "SELECTDOCTOR":
                 print("Selecting doctor data")
                 try:
-                    sqselect.selectDoctor(json_data['fields']['d_id'])
+                    sqselect.searchDoctor(json_data['fields']['d_id'])
                     return "Selected doctor from database"
                 except:
                     return "Error: Could not select doctor"
@@ -86,7 +86,7 @@ def handlecommand(json_data):
             case "SELECTPATIENT":
                 print("Selecting doctor data")
                 try:
-                    sqselect.selectPatient(json_data['fields']['p_ssn'])
+                    sqselect.searchPatientSSN(json_data['fields']['p_ssn'])
                     return "Selected patient from database"
                 except:
                     return "Error: Could not select patient"

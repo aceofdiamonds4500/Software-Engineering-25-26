@@ -38,7 +38,7 @@ Modern, encoder-agnostic text classification for medical transcriptions using Hu
 │   ├── database/                    # Database operations
 │   │   ├── 
 │   │   └── __init__.py
-│   ├── server.py                    # Backend inference server
+│   ├── controller.py                # Backend inference server
 │   └── __init__.py
 ├── config/                          # Configuration
 │   ├── config.py

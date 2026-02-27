@@ -3,7 +3,7 @@ import json
 from time import sleep
 
 HOST = socket.gethostbyname(socket.gethostname())
-PORT = 5566
+PORT = 5867
 ADDR = (HOST, PORT)   
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect(ADDR)
