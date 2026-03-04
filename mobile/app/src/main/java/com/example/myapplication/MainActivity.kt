@@ -30,10 +30,15 @@ class MainActivity : ComponentActivity() { // main start
         enableEdgeToEdge()
         setContent {
 
-            // App-wide theme toggle state (this is what makes dark mode work)
+            // App-wide settings state
             var isDarkMode by remember { mutableStateOf(false) }
+            var isEnlargeText by remember { mutableStateOf(false) }
 
-            MyApplicationTheme(darkTheme = isDarkMode) {
+            // IMPORTANT: pass enlargeText into theme
+            MyApplicationTheme(
+                darkTheme = isDarkMode,
+                enlargeText = isEnlargeText
+            ) {
 
                 // Main "auth flow" navigation
                 var screen by remember { mutableStateOf("WELCOME") }
@@ -52,14 +57,21 @@ class MainActivity : ComponentActivity() { // main start
 
                     "REGISTER" -> RegisterScreen(
                         onBack = { screen = "WELCOME" },
-                        onSuccess = { screen = "MAIN" }
+                        onSuccess = { screen = "MAIN" },
+                        onTermsClick = { screen = "TERMS" }
+                    )
+
+                    "TERMS" -> TermsOfService(
+                        onBack = { screen = "REGISTER" }
                     )
 
                     // After login/register/skip, everything is handled inside DrawerApp
                     "MAIN" -> DrawerApp(
                         onLogout = { screen = "WELCOME" },
                         isDarkMode = isDarkMode,
-                        onDarkModeChange = { isDarkMode = it }
+                        enlargeText = isEnlargeText,
+                        onDarkModeChange = { isDarkMode = it },
+                        onEnlargeTextChange = { isEnlargeText = it }
                     )
                 }
             }
@@ -72,7 +84,9 @@ class MainActivity : ComponentActivity() { // main start
 fun DrawerApp(
     onLogout: () -> Unit,
     isDarkMode: Boolean,
-    onDarkModeChange: (Boolean) -> Unit
+    enlargeText: Boolean,
+    onDarkModeChange: (Boolean) -> Unit,
+    onEnlargeTextChange: (Boolean) -> Unit
 ) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -176,7 +190,9 @@ fun DrawerApp(
 
                     "Settings" -> SettingsScreen(
                         isDarkMode = isDarkMode,
+                        enlargeText = enlargeText,
                         onDarkModeChange = onDarkModeChange,
+                        onEnlargeTextChange = onEnlargeTextChange,
                         onAccountSettingsClick = { currentScreen = "AccountSettings" }
                     )
 

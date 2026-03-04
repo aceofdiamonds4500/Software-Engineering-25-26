@@ -10,16 +10,17 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun SettingsScreen(
     isDarkMode: Boolean,
+    enlargeText: Boolean,
     onDarkModeChange: (Boolean) -> Unit,
+    onEnlargeTextChange: (Boolean) -> Unit,
     onAccountSettingsClick: () -> Unit
 ) {
-
     var tempDarkMode by remember { mutableStateOf(isDarkMode) }
-    var enlargeText by remember { mutableStateOf(false) }
+    var tempEnlargeText by remember { mutableStateOf(enlargeText) }
 
-    // Reusable apply function
     fun applySettings() {
         onDarkModeChange(tempDarkMode)
+        onEnlargeTextChange(tempEnlargeText)
     }
 
     Column(
@@ -45,11 +46,11 @@ fun SettingsScreen(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("Enlarge Text")
+            Text("Enlarge Font Size")
             Spacer(modifier = Modifier.weight(1f))
             Switch(
-                checked = enlargeText,
-                onCheckedChange = { enlargeText = it }
+                checked = tempEnlargeText,
+                onCheckedChange = { tempEnlargeText = it }
             )
         }
 
@@ -63,7 +64,7 @@ fun SettingsScreen(
         Button(
             onClick = {
                 tempDarkMode = false
-                enlargeText = false
+                tempEnlargeText = false
                 applySettings()
             },
             modifier = Modifier.fillMaxWidth()
