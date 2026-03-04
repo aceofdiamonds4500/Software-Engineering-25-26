@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:LinuxGUI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:LinuxGUI.Views"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="LinuxGUI.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="LinuxGUI"
+        Width="800"
+        Height="450"
+        CanResize="False"
+        Background="#121212">
+    
+    <!-- This is the side menu that displays on the left of the window at all times -->
+    <!-- This was made for the DockPanel(Empty) -> Panel(Defines size of side pane) -> Rectangle(Gives the dock its color) -->
+    <!-- I used the grid so I could have a bottom oriented setting button below the StackPanel with the rest of the tabs -->
+    <DockPanel>
+        <Panel DockPanel.Dock="Left" Width="200" Margin="5,5,5,5">
+            <Rectangle Fill="#1d1d1d" RadiusX="5" RadiusY="5"/>
+            
+            <Grid RowDefinitions="Auto, *">
+                <StackPanel Grid.Row="0" Margin="10" Spacing="10">
+                    <TextBlock HorizontalAlignment="Center" Margin="10" Text="Menu" FontSize="20" Foreground="#FFFFFF"/>
+                
+                    <Button Width="125"
+                            HorizontalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            Content="Home"
+                            Background="AntiqueWhite"
+                            Foreground="Black"
+                            Command="{Binding ToHome}"
+                            />
+                    <Button Width="125"
+                            HorizontalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            Content="Transcribe"
+                            Background="AntiqueWhite"
+                            Foreground="Black"
+                            Command="{Binding ToTranscriptive}"
+                    />
+                    <Button Width="125"
+                            HorizontalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            Content="Upload"
+                            Background="AntiqueWhite"
+                            Foreground="Black"
+                            Command="{Binding ToUpload}"
+                    />
+                </StackPanel>
+                
+                <Button Grid.Row="1" Width="125"
+                        HorizontalAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Margin="0,175,0,0"
+                        Content="Settings"
+                        Background="AntiqueWhite"
+                        Foreground="Black"
+                        Command="{Binding ToSettings}"
+                />
+                
+            </Grid>
+            
+        </Panel>    
+
+        <ContentControl Content="{Binding CurrentPage}" />
+        
+    </DockPanel>
+    
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+</Window>

@@ -1,0 +1,29 @@
+<StackPanel HorizontalAlignment="Left" Margin="10,20,0,0">
+        <!-- Create the label and grab input for sample name -->
+        <TextBlock Text="Sample Name" FontSize="20" HorizontalAlignment="Left"/>
+        <TextBox Text="{Binding SampleName, Mode=TwoWay}" Watermark="Enter your name..." Width="200" HorizontalAlignment="Left"/>
+        <TextBlock Text="{Binding SampleName}" HorizontalAlignment="Left"/>
+        
+        <!-- Create and grab the type of medicine practiced -->
+        <TextBlock Text="Field of medicine" Width="120" HorizontalAlignment="Left"/>
+        <ComboBox ItemsSource="{Binding Options}" SelectedItem="{Binding MediField}" Width="200" HorizontalAlignment="Left"/>
+        <TextBlock Text="{Binding MediField}" HorizontalAlignment="Left"/>
+        
+        <!-- Create and grab the field for the transcription -->
+        <TextBlock Text="Transcription"/>
+        <TextBox Text="{Binding Transcription, Mode=TwoWay}" Watermark="Enter Transcription" Width="200" HorizontalAlignment="Left"/>
+        <TextBlock Text="{Binding Transcription}" HorizontalAlignment="Left"/>
+        
+        <!-- Create and grab the field for the description -->
+        <TextBlock Text="Description"/>
+        <TextBox Text="{Binding Description, Mode=TwoWay}" Watermark="Description..." Width="200" HorizontalAlignment="Left"/>
+        <TextBlock Text="{Binding Description}" HorizontalAlignment="Left"/>
+        
+        <!-- Create and grab the tags field -->
+        <TextBlock Text="Tags"/>
+        <TextBox Text="{Binding Tags, Mode=TwoWay}" Watermark="Tags..." Width="200" HorizontalAlignment="Left"/>
+        <TextBlock Text="{Binding Tags}" HorizontalAlignment="Left"/>
+        
+        <Button Content="Input" Command="{Binding saveField}"/>
+        
+    </StackPanel>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="App.axaml" value="LinuxGUI.csproj" />
+        <entry key="MainWindow.axaml" value="LinuxGUI.csproj" />
+        <entry key="Views/HomeView.axaml" value="LinuxGUI.csproj" />
+        <entry key="Views/MainWindow.axaml" value="LinuxGUI.csproj" />
+        <entry key="Views/SettingsView.axaml" value="LinuxGUI.csproj" />
+        <entry key="Views/TranscriptiveView.axaml" value="LinuxGUI.csproj" />
+        <entry key="Views/UploadView.axaml" value="LinuxGUI.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
