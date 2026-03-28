@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "957818358871",
+    "project_id": "transcriptive-ai",
+    "storage_bucket": "transcriptive-ai.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957818358871:android:6a0cfd9a3766488d202712",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTToSyb5nTTbN9t1LZqwe8QOgHzD1Hx4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
