@@ -1,7 +1,10 @@
 import sqlite3
+import os
+
+DB_PATH = "/app/data/database.db"
 
 def initDoctors():
-    con = sqlite3.connect("database.db")
+    con = sqlite3.connect(DB_PATH)
     cur = con.cursor()
     
     try:
@@ -19,7 +22,7 @@ def initDoctors():
         con.close()
 
 def initMedData():
-    con = sqlite3.connect("database.db")
+    con = sqlite3.connect(DB_PATH)
     cur = con.cursor()
     
     try:
