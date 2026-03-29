@@ -13,7 +13,7 @@
           "Avalonia.Diagnostics": "11.3.12",
           "Avalonia.Fonts.Inter": "11.3.12",
           "Avalonia.Themes.Fluent": "11.3.12",
-          "CommunityToolkit.Mvvm": "8.4.0",
+          "CommunityToolkit.Mvvm": "8.4.2",
           "ReactiveUI.Avalonia": "11.4.7"
         },
         "runtime": {
@@ -246,11 +246,11 @@
           }
         }
       },
-      "CommunityToolkit.Mvvm/8.4.0": {
+      "CommunityToolkit.Mvvm/8.4.2": {
         "runtime": {
           "lib/net8.0/CommunityToolkit.Mvvm.dll": {
             "assemblyVersion": "8.4.0.0",
-            "fileVersion": "8.4.0.1"
+            "fileVersion": "8.4.2.1"
           }
         }
       },
@@ -635,12 +635,12 @@
       "path": "avalonia.x11/11.3.12",
       "hashPath": "avalonia.x11.11.3.12.nupkg.sha512"
     },
-    "CommunityToolkit.Mvvm/8.4.0": {
+    "CommunityToolkit.Mvvm/8.4.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tqVU8yc/ADO9oiTRyTnwhFN68hCwvkliMierptWOudIAvWY1mWCh5VFh+guwHJmpMwfg0J0rY+yyd5Oy7ty9Uw==",
-      "path": "communitytoolkit.mvvm/8.4.0",
-      "hashPath": "communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+      "sha512": "sha512-WadCzGEc2U+3e20avRLng4qNtt4zoOGWrdUISqJWrHe3/FSnrYjuM5Sb4yQb09LhkBXrrI4Zt3dLKgRMbItsrg==",
+      "path": "communitytoolkit.mvvm/8.4.2",
+      "hashPath": "communitytoolkit.mvvm.8.4.2.nupkg.sha512"
     },
     "DynamicData/9.4.1": {
       "type": "package",

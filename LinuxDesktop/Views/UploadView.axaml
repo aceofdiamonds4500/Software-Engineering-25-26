@@ -3,10 +3,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="LinuxGUI.Views.UploadView">
+             x:Class="LinuxGUI.Views.UploadView"
+             Background="#121212">
     
     <!-- Uploads will probably be bundled with settings for the last update -->
     <!-- Just looking to get the main functions working so I can test the controller as that is being worked on -->
-    <TextBlock Text="Uploads" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <TextBlock Text="Uploads" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#ffffff"/>
     
 </UserControl>

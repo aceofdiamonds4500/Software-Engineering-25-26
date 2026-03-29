@@ -13,14 +13,14 @@ public partial class TranscriptiveViewModel : ViewModelBase
     [ObservableProperty] private string? _description;
     [ObservableProperty] private string? _tags;
     [ObservableProperty] private string? _outputTranscription;
-    
+
     public ObservableCollection<string> Options { get; } = new() { "Cardiology", "Neurology", "General Medicine" };
     
     // Here defines the actual connection to the server
-    private Connection _connection = new Connection("127.0.1.1", 5566);
+    private Connection _connection = new Connection("10.12.113.113", 5867);
 
     [RelayCommand]
-    public void Send()
+    private void Send()
     {
         
         string payload = $$"""

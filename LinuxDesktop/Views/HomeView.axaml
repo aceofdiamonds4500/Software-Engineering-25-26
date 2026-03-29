@@ -3,18 +3,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="LinuxGUI.Views.HomeView">
+             x:Class="LinuxGUI.Views.HomeView"
+             Background="#121212">
     
     <!-- Pretty simple home screen explaining the app -->
     <!--It's just text fields so nothing too complicated -->
     <!-- There's probably a \n function I could have used, but I feel the extra lines are cleaner -->
     <StackPanel Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Home" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,35"/>
-        <TextBlock Text="Welcome to Transcriptive!" FontSize="18" HorizontalAlignment="Center"/>
-        <TextBlock Text="We're an AI provider, designed to help medical personnel" FontSize="18" HorizontalAlignment="Center"/>
-        <TextBlock Text="quickly summarize patient history so that Doctors can" FontSize="18" HorizontalAlignment="Center"/>
-        <TextBlock Text="spend less time reading - and patients can spend" FontSize="18" HorizontalAlignment="Center"/>        
-        <TextBlock Text="less time worrying." FontSize="18" HorizontalAlignment="Center"/>
+        <TextBlock Text="Home" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,35" Foreground="#ffffff"/>
+        <TextBlock Text="Welcome to Transcriptive!" FontSize="18" HorizontalAlignment="Center" Foreground="#ffffff"/>
+        <TextBlock Text="We're an AI provider, designed to help medical personnel" FontSize="18" HorizontalAlignment="Center" Foreground="#ffffff"/>
+        <TextBlock Text="quickly summarize patient history so that Doctors can" FontSize="18" HorizontalAlignment="Center" Foreground="#ffffff"/>
+        <TextBlock Text="spend less time reading - and patients can spend" FontSize="18" HorizontalAlignment="Center" Foreground="#ffffff"/>        
+        <TextBlock Text="less time worrying." FontSize="18" HorizontalAlignment="Center" Foreground="#ffffff"/>
         
     </StackPanel>
     

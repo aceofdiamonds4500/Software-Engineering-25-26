@@ -3,9 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="LinuxGUI.Views.SettingsView">
+             x:Class="LinuxGUI.Views.SettingsView"
+             Background="#121212">
     
     <!-- No settings yet -->
-    <TextBlock Text="Settings" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <TextBlock Text="Settings" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#ffffff"/>
     
 </UserControl>
