@@ -1,7 +1,8 @@
 import sqlite3
 import os
 
-DB_PATH = "/app/data/database.db"
+# Change this in db_init.py
+DB_PATH = "/app/database/database.db"
 
 def initDoctors():
     con = sqlite3.connect(DB_PATH)
