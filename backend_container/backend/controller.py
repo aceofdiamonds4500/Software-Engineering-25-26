@@ -1,39 +1,42 @@
 import socket
 import threading
+import json
+import command_handler as cmd
 from ai.inference import load_trained_model, predict
 from sqlite import db_init as sqinit
-import command_handler as cmd
-import json
 from transformers import AutoTokenizer
 
 HOST = socket.gethostbyname(socket.gethostname())
 PORT = 5867
 ADDR = (HOST, PORT)   
 
+#Initialize the model, set it to use cpu, loads the labels, and creates the tokenizer
 model, id_to_label = load_trained_model("/app/backend/best", device = "cpu")
-
-#Default tokenizer until I can change it
 default_tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
 
 #Method for handling thread for a client connection
 def handle_client(client, addr):
-    print(f"Connected by {addr}")
+
+    #If this runs, we are connected to a client - Additional welcome message
     connection = True
-    #client.send(b"Connected")  # Send welcome message immediately after connection
+    print(f"Connected by {addr}")
+
+    #While connected: Wait for an input
     while connection:
         try:
             data = client.recv(10000)
             if not data:
                 break
+
             #Read received json file
             json_string = data.decode()
             json_data = json.loads(json_string)
-            
             print(json_string)
             
-            #Command handling logic
+            #Hands the recieved JSON command to the command handler
             result = cmd.handlecommand(json_data, model, id_to_label, default_tokenizer)
 
+            #Disconnect if command is DISCONNECT
             if (result == "DISCONNECT"):
                 print(f"{addr} has disconnected")
                 connection = False
@@ -46,14 +49,18 @@ def handle_client(client, addr):
             break
     client.close()
 
+#Initializes the database, then opens a network socket for connections
+#Prints out the server IP and Port(IP SHOWS CONTAINER IP, NOT HOST IP)
 def main():
     sqinit.initDoctors()
     sqinit.initMedData()
+
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(ADDR)
     server.listen()
     print(f"Listening on {ADDR[0]}:{ADDR[1]}")
 
+    #Waits for a connection and then hands the client to a thread
     while True:
         client, addr = server.accept()
         thread = threading.Thread(target=handle_client, args=(client, addr))

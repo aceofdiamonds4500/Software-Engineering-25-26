@@ -6,59 +6,68 @@ from controller import default_tokenizer
 
 def handlecommand(json_data, model, id_to_label, default_tokenizer):
     try:
-        command = f"{json_data['command']}" 
-
+        command = f"{json_data['command']}"
         match command:
 
-            #Funni ping
+            #Test case to confirm server is reachable
             case "PING":
                 return "PONG" 
 
-            #Makes the model classify user input
+            #----------------------------------------
+
+            #Classifies the data sent from the client
+            #Format should be:
+            #{
+            #   "command": "CLASSIFY",
+            #   "timestamp": "ExampleTimeStamp",
+            #   "fields": {
+            #       "Description": "Description",
+            #       "Transcription": "TranscriptionValue",
+            #       "Keywords": "KeyWords"
+            #   }
+            #}
             case "CLASSIFY":
-                print("Classify with model")
+
+                print("Attempting to classify with model...")
                 try:
-                    
+
+                    #Reads the JSON string and pulls the Description, Transcription, and KeyWords field.
+                    #Also runs the prediction for medical field, confidence, and top choices.
                     prompt = f"{json_data['fields']['Description']}\n{json_data['fields']['Transcription']}\n{json_data['fields']['Keywords']}"
-
-                    predicted_label, confidence_score, topk = predict(
-                    prompt,
-                    model,
-                    default_tokenizer,
-                    id_to_label,
-                    device='cpu',
-                    max_length=512
-                    )
-
-                    #Timestamp for identification
+                    predicted_label, confidence_score, topk = predict(prompt, model, default_tokenizer, id_to_label, device='cpu', max_length=512)
                     timestamp = json_data['timestamp']
+                    print(f"Received: {timestamp}")
+
                     autocorrect = "NOT IMPLEMENTED"
                     keyterms = "NOT IMPLEMENTED"
-
-                    print(f"Received: {timestamp}") # Print the decoded data as a string
-
-                    #predicted_label, confidence_score, topk = predict(prompt, model, default_tokenizer, id_to_label, device='cpu', max_length=512)
-                    #result = f"Predicted specialty:  {predicted_label} \n\nConfidence: {confidence_score} \n\nTop: {topk}"
 
                     return f"specialty: {predicted_label} | Confidence: {confidence_score:.2f}"
                 except:
                     return "Error: Invalid JSON for classification"
 
+            #-------------------------------------------------------------------
+
             #Retrieves the data of the current user from the database
             case "USERDATA":
                 print("Retrieve user data")
 
-            #Inserts patient data of a specific case into the database
-            #Format for 'fields' in json:
-            #patient_data = {
-            #'p_ssn': 24955283,
-            #'d_id': 500,
-            #'p_firstname': 'Brett',
-            #'p_lastname': 'Lawrence',
-            #'desc': 'Patient is an adolescent male...',
-            #'med_specialty': 'Laparoscopy',
-            #'sample_name': 'hmmmm',
-            #'transcription': 'Patient presents with...'
+            #-------------------------------------------------------------------
+
+            #Inserts patient data from a specific case into the database
+            #Format should be:
+            #{
+            #   "command": "INSERTPATIENT",
+            #   "timestamp": "ExampleTimeStamp",
+            #   "fields": {
+            #       "p_ssn": SSN(Number),
+            #       "d_id": Doctor ID(Number),
+            #       "p_firstname": "Patient first name",
+            #       "p_lastname": "Patient last name",
+            #       "desc": "Brief description of patient",
+            #       "med_specialty": "Field of medicine",
+            #       "sample_name": "SampleName",
+            #       "transcription": "Description of patient issues"
+            #   }
             #}
             case "INSERTPATIENT":
                 print("Inserting patient data")
@@ -69,13 +78,19 @@ def handlecommand(json_data, model, id_to_label, default_tokenizer):
                 except:
                     return "Error: Invalid JSON for patient insertion"
 
+            #-------------------------------------------------------------------
+
             #Inserts information on a new doctor into the database
-            #Format for 'fields' in json: 
-            #doctor_data = {
-            #   'd_id': 502,
-            #   'd_firstname': 'Doctor',
-            #   'd_lastname': 'Jones'
+            #Format should be:
+            #{
+            #   "command": "INSERTDOCTOR",
+            #   "timestamp": "ExampleTimeStamp",
+            #   "fields": {
+            #       "d_id": Doctor ID(Number),
+            #       "d_firstname": "Doctor first name",
+            #       "d_lastname": "Doctor last name",
             #   }
+            #}
             case "INSERTDOCTOR":
                 print("Inserting doctor data")
                 try:
@@ -84,7 +99,9 @@ def handlecommand(json_data, model, id_to_label, default_tokenizer):
                 except:
                     return "Error: Invalid JSON for doctor insertion"
 
-            #Selects a doctor using a specific doctor ID
+            #-------------------------------------------------------------------
+
+            #Selects a doctor using the primary key: d_id
             case "SELECTDOCTOR":
                 print("Selecting doctor data")
                 try:
@@ -93,6 +110,9 @@ def handlecommand(json_data, model, id_to_label, default_tokenizer):
                 except:
                     return "Error: Could not select doctor"
 
+            #-------------------------------------------------------------------
+
+            #Selects a patient using the primary key: p_ssn
             case "SELECTPATIENT":
                 print("Selecting doctor data")
                 try:
@@ -100,6 +120,8 @@ def handlecommand(json_data, model, id_to_label, default_tokenizer):
                     return "Selected patient from database"
                 except:
                     return "Error: Could not select patient"
+
+            #-------------------------------------------------------------------
 
             #Uses an ID to retrieve a specific transcription
             case "SELECTTRANSCRIPTION":
@@ -110,16 +132,25 @@ def handlecommand(json_data, model, id_to_label, default_tokenizer):
                 except:
                     return "Error: Could not select transcription"
 
+            #-------------------------------------------------------------------
+
+            #???
             case "DATALENGTH":
                 return "new data is"
 
-            #Returns a string to disconnect the user
+            #-------------------------------------------------------------------
+
+            #Returns a string during disconnect
             case "DISCONNECT":
                 return "DISCONNECT"
+
+            #-------------------------------------------------------------------
 
             #Default case
             case _:
                 return f"Unknown command: {command}"
+
+            #-------------------------------------------------------------------
 
     #Error handling for missing command key
     except KeyError as e:
