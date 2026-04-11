@@ -1,6 +1,6 @@
-namespace LinuxGUI.ViewModels;
+namespace TranscriptiveLinux.ViewModels;
 
-public class HomeViewModel : ViewModelBase
+public partial class HomeViewModel : ViewModelBase
 {
-    // Something
+    
 }

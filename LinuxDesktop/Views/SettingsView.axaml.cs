@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace LinuxGUI.Views;
+namespace TranscriptiveLinux.Views;
 
 public partial class SettingsView : UserControl
 {

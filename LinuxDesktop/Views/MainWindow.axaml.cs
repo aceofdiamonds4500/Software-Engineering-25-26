@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace LinuxGUI.Views;
+namespace TranscriptiveLinux.Views;
 
 public partial class MainWindow : Window
 {

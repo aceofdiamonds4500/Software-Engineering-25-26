@@ -2,9 +2,9 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using LinuxGUI.ViewModels;
+using TranscriptiveLinux.ViewModels;
 
-namespace LinuxGUI;
+namespace TranscriptiveLinux;
 
 /// <summary>
 /// Given a view model, returns the corresponding view if possible.

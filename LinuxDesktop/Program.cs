@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace LinuxGUI;
+namespace TranscriptiveLinux;
 
 sealed class Program
 {

@@ -6,18 +6,19 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v10.0": {
-      "LinuxGUI/1.0.0": {
+      "TranscriptiveLinux/1.0.0": {
         "dependencies": {
           "Avalonia": "11.3.12",
           "Avalonia.Desktop": "11.3.12",
           "Avalonia.Diagnostics": "11.3.12",
           "Avalonia.Fonts.Inter": "11.3.12",
+          "Avalonia.Svg.Skia": "11.3.0",
           "Avalonia.Themes.Fluent": "11.3.12",
-          "CommunityToolkit.Mvvm": "8.4.2",
-          "ReactiveUI.Avalonia": "11.4.7"
+          "CommunityToolkit.Mvvm": "8.2.1",
+          "SkiaSharp.NativeAssets.Linux": "3.116.1"
         },
         "runtime": {
-          "LinuxGUI.dll": {}
+          "TranscriptiveLinux.dll": {}
         }
       },
       "Avalonia/11.3.12": {
@@ -185,13 +186,27 @@
           "Avalonia": "11.3.12",
           "HarfBuzzSharp": "8.3.1.1",
           "HarfBuzzSharp.NativeAssets.Linux": "8.3.1.1",
-          "SkiaSharp": "2.88.9",
-          "SkiaSharp.NativeAssets.Linux": "2.88.9"
+          "SkiaSharp": "3.116.1",
+          "SkiaSharp.NativeAssets.Linux": "3.116.1"
         },
         "runtime": {
           "lib/net8.0/Avalonia.Skia.dll": {
             "assemblyVersion": "11.3.12.0",
             "fileVersion": "11.3.12.0"
+          }
+        }
+      },
+      "Avalonia.Svg.Skia/11.3.0": {
+        "dependencies": {
+          "Avalonia": "11.3.12",
+          "Avalonia.Skia": "11.3.12",
+          "SkiaSharp": "3.116.1",
+          "Svg.Skia": "3.0.2"
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Svg.Skia.dll": {
+            "assemblyVersion": "11.3.0.0",
+            "fileVersion": "11.3.0.0"
           }
         }
       },
@@ -246,22 +261,19 @@
           }
         }
       },
-      "CommunityToolkit.Mvvm/8.4.2": {
+      "CommunityToolkit.Mvvm/8.2.1": {
         "runtime": {
-          "lib/net8.0/CommunityToolkit.Mvvm.dll": {
-            "assemblyVersion": "8.4.0.0",
-            "fileVersion": "8.4.2.1"
+          "lib/net6.0/CommunityToolkit.Mvvm.dll": {
+            "assemblyVersion": "8.2.0.0",
+            "fileVersion": "8.2.1.1"
           }
         }
       },
-      "DynamicData/9.4.1": {
-        "dependencies": {
-          "System.Reactive": "6.1.0"
-        },
+      "ExCSS/4.3.0": {
         "runtime": {
-          "lib/net9.0/DynamicData.dll": {
-            "assemblyVersion": "9.4.0.0",
-            "fileVersion": "9.4.1.30094"
+          "lib/net8.0/ExCSS.dll": {
+            "assemblyVersion": "4.3.0.0",
+            "fileVersion": "4.3.0.0"
           }
         }
       },
@@ -372,50 +384,46 @@
           }
         }
       },
-      "ReactiveUI/23.1.8": {
-        "dependencies": {
-          "DynamicData": "9.4.1",
-          "Splat": "19.3.1",
-          "System.Reactive": "6.1.0"
-        },
+      "ShimSkiaSharp/3.0.2": {
         "runtime": {
-          "lib/net10.0/ReactiveUI.dll": {
-            "assemblyVersion": "23.1.0.0",
-            "fileVersion": "23.1.8.25042"
+          "lib/net8.0/ShimSkiaSharp.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
           }
         }
       },
-      "ReactiveUI.Avalonia/11.4.7": {
+      "SkiaSharp/3.116.1": {
         "dependencies": {
-          "Avalonia": "11.3.12",
-          "ReactiveUI": "23.1.8",
-          "Splat": "19.3.1"
+          "SkiaSharp.NativeAssets.Win32": "3.116.1",
+          "SkiaSharp.NativeAssets.macOS": "3.116.1"
         },
         "runtime": {
-          "lib/net10.0/ReactiveUI.Avalonia.dll": {
-            "assemblyVersion": "11.4.0.0",
-            "fileVersion": "11.4.7.21635"
+          "lib/net8.0/SkiaSharp.dll": {
+            "assemblyVersion": "3.116.0.0",
+            "fileVersion": "3.116.1.0"
           }
         }
       },
-      "SkiaSharp/2.88.9": {
+      "SkiaSharp.HarfBuzz/3.116.1": {
         "dependencies": {
-          "SkiaSharp.NativeAssets.Win32": "2.88.9",
-          "SkiaSharp.NativeAssets.macOS": "2.88.9"
+          "HarfBuzzSharp": "8.3.1.1",
+          "SkiaSharp": "3.116.1"
         },
         "runtime": {
-          "lib/net6.0/SkiaSharp.dll": {
-            "assemblyVersion": "2.88.0.0",
-            "fileVersion": "2.88.9.0"
+          "lib/net8.0/SkiaSharp.HarfBuzz.dll": {
+            "assemblyVersion": "3.116.0.0",
+            "fileVersion": "3.116.1.0"
           }
         }
       },
-      "SkiaSharp.NativeAssets.Linux/2.88.9": {
-        "dependencies": {
-          "SkiaSharp": "2.88.9"
-        },
+      "SkiaSharp.NativeAssets.Linux/3.116.1": {
         "runtimeTargets": {
           "runtimes/linux-arm/native/libSkiaSharp.so": {
+            "rid": "linux-arm",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-arm/native/libSkiaSharp.so.116.0.0": {
             "rid": "linux-arm",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
@@ -425,7 +433,17 @@
             "assetType": "native",
             "fileVersion": "0.0.0.0"
           },
+          "runtimes/linux-arm64/native/libSkiaSharp.so.116.0.0": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
           "runtimes/linux-musl-x64/native/libSkiaSharp.so": {
+            "rid": "linux-musl-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-musl-x64/native/libSkiaSharp.so.116.0.0": {
             "rid": "linux-musl-x64",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
@@ -434,10 +452,15 @@
             "rid": "linux-x64",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libSkiaSharp.so.116.0.0": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
-      "SkiaSharp.NativeAssets.macOS/2.88.9": {
+      "SkiaSharp.NativeAssets.macOS/3.116.1": {
         "runtimeTargets": {
           "runtimes/osx/native/libSkiaSharp.dylib": {
             "rid": "osx",
@@ -446,7 +469,7 @@
           }
         }
       },
-      "SkiaSharp.NativeAssets.Win32/2.88.9": {
+      "SkiaSharp.NativeAssets.Win32/3.116.1": {
         "runtimeTargets": {
           "runtimes/win-arm64/native/libSkiaSharp.dll": {
             "rid": "win-arm64",
@@ -465,59 +488,40 @@
           }
         }
       },
-      "Splat/19.3.1": {
+      "Svg.Custom/3.0.2": {
         "dependencies": {
-          "Splat.Builder": "19.3.1",
-          "Splat.Logging": "19.3.1",
-          "System.Reactive": "6.1.0"
+          "ExCSS": "4.3.0"
         },
         "runtime": {
-          "lib/net10.0/Splat.dll": {
-            "assemblyVersion": "19.3.0.0",
-            "fileVersion": "19.3.1.31687"
+          "lib/net8.0/Svg.Custom.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
           }
         }
       },
-      "Splat.Builder/19.3.1": {
+      "Svg.Model/3.0.2": {
         "dependencies": {
-          "Splat.Core": "19.3.1",
-          "System.Reactive": "6.1.0"
+          "ShimSkiaSharp": "3.0.2",
+          "Svg.Custom": "3.0.2"
         },
         "runtime": {
-          "lib/net10.0/Splat.Builder.dll": {
-            "assemblyVersion": "19.3.0.0",
-            "fileVersion": "19.3.1.31687"
+          "lib/net8.0/Svg.Model.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
           }
         }
       },
-      "Splat.Core/19.3.1": {
+      "Svg.Skia/3.0.2": {
         "dependencies": {
-          "System.Reactive": "6.1.0"
+          "SkiaSharp": "3.116.1",
+          "SkiaSharp.HarfBuzz": "3.116.1",
+          "Svg.Custom": "3.0.2",
+          "Svg.Model": "3.0.2"
         },
         "runtime": {
-          "lib/net10.0/Splat.Core.dll": {
-            "assemblyVersion": "19.3.0.0",
-            "fileVersion": "19.3.1.31687"
-          }
-        }
-      },
-      "Splat.Logging/19.3.1": {
-        "dependencies": {
-          "Splat.Core": "19.3.1",
-          "System.Reactive": "6.1.0"
-        },
-        "runtime": {
-          "lib/net10.0/Splat.Logging.dll": {
-            "assemblyVersion": "19.3.0.0",
-            "fileVersion": "19.3.1.31687"
-          }
-        }
-      },
-      "System.Reactive/6.1.0": {
-        "runtime": {
-          "lib/net6.0/System.Reactive.dll": {
-            "assemblyVersion": "6.1.0.0",
-            "fileVersion": "6.1.0.62682"
+          "lib/net8.0/Svg.Skia.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.2.0"
           }
         }
       },
@@ -532,7 +536,7 @@
     }
   },
   "libraries": {
-    "LinuxGUI/1.0.0": {
+    "TranscriptiveLinux/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -607,6 +611,13 @@
       "path": "avalonia.skia/11.3.12",
       "hashPath": "avalonia.skia.11.3.12.nupkg.sha512"
     },
+    "Avalonia.Svg.Skia/11.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ksf4MXhI6u3OwcBcd2qw35OQTmkVmd1RVBSn41xAjmfsVEA5/EkQh5OF8qjasgIkvSgf2r+Rc/tpOmfVEagbhw==",
+      "path": "avalonia.svg.skia/11.3.0",
+      "hashPath": "avalonia.svg.skia.11.3.0.nupkg.sha512"
+    },
     "Avalonia.Themes.Fluent/11.3.12": {
       "type": "package",
       "serviceable": true,
@@ -635,19 +646,19 @@
       "path": "avalonia.x11/11.3.12",
       "hashPath": "avalonia.x11.11.3.12.nupkg.sha512"
     },
-    "CommunityToolkit.Mvvm/8.4.2": {
+    "CommunityToolkit.Mvvm/8.2.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WadCzGEc2U+3e20avRLng4qNtt4zoOGWrdUISqJWrHe3/FSnrYjuM5Sb4yQb09LhkBXrrI4Zt3dLKgRMbItsrg==",
-      "path": "communitytoolkit.mvvm/8.4.2",
-      "hashPath": "communitytoolkit.mvvm.8.4.2.nupkg.sha512"
+      "sha512": "sha512-I24ofWVEdplxYjUez9/bljv/qb8r8Ccj6cvYXHexNBegLaD3iDy3QrzAAOYVMmfGWIXxlU1ZtECQNfU07+6hXQ==",
+      "path": "communitytoolkit.mvvm/8.2.1",
+      "hashPath": "communitytoolkit.mvvm.8.2.1.nupkg.sha512"
     },
-    "DynamicData/9.4.1": {
+    "ExCSS/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-+SoDTbuzY9j0K+sZfRbbVpGjjylkVMhUQnw6qiPhxzYLBJlwxFpmunXSaNBtTxwC2C9d/XIp0kO7VhMAVuUt7w==",
-      "path": "dynamicdata/9.4.1",
-      "hashPath": "dynamicdata.9.4.1.nupkg.sha512"
+      "sha512": "sha512-LyVZ925Cl6Z4TJrbogt3+DkvanYWZcJs0tzKg8lWHAY9PgniVMluNy+l5vXDMmvt5gBgekULasEnUqVAavPuZw==",
+      "path": "excss/4.3.0",
+      "hashPath": "excss.4.3.0.nupkg.sha512"
     },
     "HarfBuzzSharp/8.3.1.1": {
       "type": "package",
@@ -684,82 +695,68 @@
       "path": "microcom.runtime/0.11.0",
       "hashPath": "microcom.runtime.0.11.0.nupkg.sha512"
     },
-    "ReactiveUI/23.1.8": {
+    "ShimSkiaSharp/3.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Z8vtRa76RJ4efznElUzoOCYmguuKEndsV4VdPPVyobsYDLdVsoJV/njpCW4OXVnB+Mw/xTTrP6+gxYPU+TF8zw==",
-      "path": "reactiveui/23.1.8",
-      "hashPath": "reactiveui.23.1.8.nupkg.sha512"
+      "sha512": "sha512-VRLaZRQ7llIgQXf6H6Bjpt47RG/9UQvWZdJz97ReFlb4PHwjoId6HkoO84ETyqS/8J2GNT2fDnzmdVBMr5YXOg==",
+      "path": "shimskiasharp/3.0.2",
+      "hashPath": "shimskiasharp.3.0.2.nupkg.sha512"
     },
-    "ReactiveUI.Avalonia/11.4.7": {
+    "SkiaSharp/3.116.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-w52wkTqsrFZuKqy5+WkiInMq0T3I2cKk5ivrR25UZuoJTHzihpdxd9uq2VAR+g6bHwst2b2IbSDo9wKol/S2MQ==",
-      "path": "reactiveui.avalonia/11.4.7",
-      "hashPath": "reactiveui.avalonia.11.4.7.nupkg.sha512"
+      "sha512": "sha512-DNDwbRjP+aMo27dV2h/uHCVTcWubWWxHnPLiePNyl24f4Pv43mQ8AQQeseOrKR+J3AOCEs6t0sUjo0aa3j3RWQ==",
+      "path": "skiasharp/3.116.1",
+      "hashPath": "skiasharp.3.116.1.nupkg.sha512"
     },
-    "SkiaSharp/2.88.9": {
+    "SkiaSharp.HarfBuzz/3.116.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3MD5VHjXXieSHCleRLuaTXmL2pD0mB7CcOB1x2kA1I4bhptf4e3R27iM93264ZYuAq6mkUyX5XbcxnZvMJYc1Q==",
-      "path": "skiasharp/2.88.9",
-      "hashPath": "skiasharp.2.88.9.nupkg.sha512"
+      "sha512": "sha512-ibDG1+quN86vBd9ztjDAC9wnvS1nRZ6ydTUOSod4NsRHWdLLGzWYn1IOF4Cg9iJh5cQHdpzhUZBQE0JMKznrow==",
+      "path": "skiasharp.harfbuzz/3.116.1",
+      "hashPath": "skiasharp.harfbuzz.3.116.1.nupkg.sha512"
     },
-    "SkiaSharp.NativeAssets.Linux/2.88.9": {
+    "SkiaSharp.NativeAssets.Linux/3.116.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cWSaJKVPWAaT/WIn9c8T5uT/l4ETwHxNJTkEOtNKjphNo8AW6TF9O32aRkxqw3l8GUdUo66Bu7EiqtFh/XG0Zg==",
-      "path": "skiasharp.nativeassets.linux/2.88.9",
-      "hashPath": "skiasharp.nativeassets.linux.2.88.9.nupkg.sha512"
+      "sha512": "sha512-f4OSsrMwe+Ei9KpNc3EMUiMcZkQSYepHCaDuvMyLBaHVQd+9Ywq/rlbmapqztsU6k2iPEVLD8ZuBJm9RDJsAow==",
+      "path": "skiasharp.nativeassets.linux/3.116.1",
+      "hashPath": "skiasharp.nativeassets.linux.3.116.1.nupkg.sha512"
     },
-    "SkiaSharp.NativeAssets.macOS/2.88.9": {
+    "SkiaSharp.NativeAssets.macOS/3.116.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Nv5spmKc4505Ep7oUoJ5vp3KweFpeNqxpyGDWyeEPTX2uR6S6syXIm3gj75dM0YJz7NPvcix48mR5laqs8dPuA==",
-      "path": "skiasharp.nativeassets.macos/2.88.9",
-      "hashPath": "skiasharp.nativeassets.macos.2.88.9.nupkg.sha512"
+      "sha512": "sha512-3KPvpKysDmEMt0NnAZPX5U6KFk0LmG/72/IjAIJemIksIZ0Tjs9pGpr3L+zboVCv1MLVoJLKl3nJDXUG6Jda6A==",
+      "path": "skiasharp.nativeassets.macos/3.116.1",
+      "hashPath": "skiasharp.nativeassets.macos.3.116.1.nupkg.sha512"
     },
-    "SkiaSharp.NativeAssets.Win32/2.88.9": {
+    "SkiaSharp.NativeAssets.Win32/3.116.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-wb2kYgU7iy84nQLYZwMeJXixvK++GoIuECjU4ECaUKNuflyRlJKyiRhN1MAHswvlvzuvkrjRWlK0Za6+kYQK7w==",
-      "path": "skiasharp.nativeassets.win32/2.88.9",
-      "hashPath": "skiasharp.nativeassets.win32.2.88.9.nupkg.sha512"
+      "sha512": "sha512-dRQ75MCI8oz6zAs2Y1w6pq6ARs4MhdNG+gf3doOxOxdnueDXffQLGQIxON54GDoxc0WjKOoHMKBR4DhaduwwQw==",
+      "path": "skiasharp.nativeassets.win32/3.116.1",
+      "hashPath": "skiasharp.nativeassets.win32.3.116.1.nupkg.sha512"
     },
-    "Splat/19.3.1": {
+    "Svg.Custom/3.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-at6uM1+KfkjyjfYRIiiUjTBUTEwxBysoLOE4zuxGCy6kqNAG9mpSGliTkZtsPe8WqJuU6+Jup7oOoNdjz5R8FQ==",
-      "path": "splat/19.3.1",
-      "hashPath": "splat.19.3.1.nupkg.sha512"
+      "sha512": "sha512-I5QtMsOPdZpR2YsKc3WcLsW2S1YptyGr0MqyXTD4gotZIQtGinY8ZICMrNRTtJBRWeVn352Xdf7lYUtQQABodg==",
+      "path": "svg.custom/3.0.2",
+      "hashPath": "svg.custom.3.0.2.nupkg.sha512"
     },
-    "Splat.Builder/19.3.1": {
+    "Svg.Model/3.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-FR9ISOBiEV/wXTq0oU+VrGZmsWVEE/yWkI79oeXF7luvr9P6GKRzZD+acjl+5T8oAJdXPWnBhFTJ/XDpAEW35Q==",
-      "path": "splat.builder/19.3.1",
-      "hashPath": "splat.builder.19.3.1.nupkg.sha512"
+      "sha512": "sha512-a/EfBT3WGPgEnKybHl2B6pqKkxL64I25k+ozY+zF7YvQp/0v0vqR/KVGacpcv8hFGMINXIGDccxR8boqXJj5Zw==",
+      "path": "svg.model/3.0.2",
+      "hashPath": "svg.model.3.0.2.nupkg.sha512"
     },
-    "Splat.Core/19.3.1": {
+    "Svg.Skia/3.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MrRbpO/wdWtAfH5c2Nys8Bm7EQ5yi+IAJD3AJsCUMyaRssImIhqmbC7QwfXRnpC2EXOdGENRi0NCTf6y5ODWxQ==",
-      "path": "splat.core/19.3.1",
-      "hashPath": "splat.core.19.3.1.nupkg.sha512"
-    },
-    "Splat.Logging/19.3.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-u4MCO7dFKCX9+dnxNhbAWB9GmtY70fvVGexqr3YoesevExijpYoMiPpsCSYk36bJyKpq9XVgyJBxdg4ChrPS3A==",
-      "path": "splat.logging/19.3.1",
-      "hashPath": "splat.logging.19.3.1.nupkg.sha512"
-    },
-    "System.Reactive/6.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-M5cCC1ZMkZr9jbSQGTHnVkb5TDN67qWCV7AP8TAHdGkvDlu0puT5NzemESNn9+HkYIDpWpocP68/i+/ame2/2w==",
-      "path": "system.reactive/6.1.0",
-      "hashPath": "system.reactive.6.1.0.nupkg.sha512"
+      "sha512": "sha512-6Bmo5q3sg5OvQ1QPuRT9+I3/2SI76qFbptmYqdC2G/cnhUP7Wucg9s6RtcC9nGTNsEyZ+GK7cz0zPw0HepB6UA==",
+      "path": "svg.skia/3.0.2",
+      "hashPath": "svg.skia.3.0.2.nupkg.sha512"
     },
     "Tmds.DBus.Protocol/0.21.2": {
       "type": "package",

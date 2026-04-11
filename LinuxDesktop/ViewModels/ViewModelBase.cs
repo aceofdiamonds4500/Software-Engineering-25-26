@@ -1,8 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace LinuxGUI.ViewModels;
+namespace TranscriptiveLinux.ViewModels;
 
 public abstract class ViewModelBase : ObservableObject
 {
-    // New Logic
 }

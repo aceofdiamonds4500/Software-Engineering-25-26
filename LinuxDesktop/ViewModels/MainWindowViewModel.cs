@@ -1,40 +1,39 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-namespace LinuxGUI.ViewModels;
+namespace TranscriptiveLinux.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    
+    private readonly HomeViewModel _homeView = new();
+    private readonly SettingsViewModel _settingsView = new();
+    private readonly TranscribeViewModel _transcribeView = new();
+    
     [ObservableProperty]
-    private ViewModelBase _currentPage;
-
-    // On app start, the GUI will instantly load the main window, which will in turn load the Home view tab
+    private ViewModelBase _currentView;
+    
     public MainWindowViewModel()
     {
-        _currentPage = new HomeViewModel();
+        _currentView = _homeView;
     }
-    
-    // These commands just create a new view whenever their button is pressed and the method is called.
-    // Technically if garbage collection breaks then this will leak memory like hell, but that's a later problem.
 
     [RelayCommand]
-    public void ToHome()
+    public void OpenHomeView()
     {
-        CurrentPage = new HomeViewModel();
+        CurrentView = _homeView;
     }
+    
     [RelayCommand]
-    public void ToTranscriptive()
+    public void OpenSettingsView()
     {
-        CurrentPage = new TranscriptiveViewModel();
+        CurrentView = _settingsView;
     }
+
     [RelayCommand]
-    public void ToUpload()
+    public void OpenTranscribeView()
     {
-        CurrentPage = new UploadViewModel();
+        CurrentView = _transcribeView;
     }
-    [RelayCommand]
-    public void ToSettings()
-    {
-        CurrentPage = new SettingsViewModel();
-    }
+    
 }

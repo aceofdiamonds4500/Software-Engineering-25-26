@@ -1,6 +1,9 @@
-namespace LinuxGUI.ViewModels;
+using CommunityToolkit.Mvvm.ComponentModel;
 
-public class SettingsViewModel : ViewModelBase
+namespace TranscriptiveLinux.ViewModels;
+
+public partial class SettingsViewModel : ViewModelBase
 {
-    // New Logic
+    [ObservableProperty]
+    private string? _settingsNote; // This survives even if the window is closed
 }

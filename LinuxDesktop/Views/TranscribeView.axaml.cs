@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace TranscriptiveLinux.Views;
 
-public partial class HomeView : UserControl
+public partial class TranscribeView : UserControl
 {
-    public HomeView()
+    public TranscribeView()
     {
         InitializeComponent();
     }
