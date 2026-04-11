@@ -10,7 +10,7 @@ HOST = socket.gethostbyname(socket.gethostname())
 PORT = 5867
 ADDR = (HOST, PORT)   
 
-model, id_to_label = load_trained_model("/app/backend/medical_classification_model", device = "cpu")
+model, id_to_label = load_trained_model("/app/backend/best", device = "cpu")
 
 #Default tokenizer until I can change it
 default_tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
