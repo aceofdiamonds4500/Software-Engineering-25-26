@@ -10,7 +10,7 @@ HOST = socket.gethostbyname(socket.gethostname())
 PORT = 5867
 ADDR = (HOST, PORT)   
 
-#model, id_to_label = load_trained_model("./medical_classification_model", device = "cpu")
+model, id_to_label = load_trained_model("/app/backend/medical_classification_model", device = "cpu")
 
 #Default tokenizer until I can change it
 default_tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
@@ -32,7 +32,8 @@ def handle_client(client, addr):
             print(json_string)
             
             #Command handling logic
-            result = cmd.handlecommand(json_data)
+            result = cmd.handlecommand(json_data, model, id_to_label, default_tokenizer)
+
             if (result == "DISCONNECT"):
                 print(f"{addr} has disconnected")
                 connection = False

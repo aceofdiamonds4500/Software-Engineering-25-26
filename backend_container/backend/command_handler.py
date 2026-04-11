@@ -1,8 +1,10 @@
 import sqlite
 from sqlite import db_insert as sqinsert
 from sqlite import db_select as sqselect
+from ai.inference import predict
+from controller import default_tokenizer
 
-def handlecommand(json_data):
+def handlecommand(json_data, model, id_to_label, default_tokenizer):
     try:
         command = f"{json_data['command']}" 
 
@@ -16,8 +18,17 @@ def handlecommand(json_data):
             case "CLASSIFY":
                 print("Classify with model")
                 try:
-                    #Extract description as prompt
-                    prompt = f"{json_data['fields']['Description']}\n{json_data['fields']['Transcription']}\n{json_data['fields']['Keywords']}" 
+                    
+                    prompt = f"{json_data['fields']['Description']}\n{json_data['fields']['Transcription']}\n{json_data['fields']['Keywords']}"
+
+                    predicted_label, confidence_score, topk = predict(
+                    prompt,
+                    model,
+                    default_tokenizer,
+                    id_to_label,
+                    device='cpu',
+                    max_length=512
+                    )
 
                     #Timestamp for identification
                     timestamp = json_data['timestamp']
@@ -29,8 +40,7 @@ def handlecommand(json_data):
                     #predicted_label, confidence_score, topk = predict(prompt, model, default_tokenizer, id_to_label, device='cpu', max_length=512)
                     #result = f"Predicted specialty:  {predicted_label} \n\nConfidence: {confidence_score} \n\nTop: {topk}"
 
-                    result = prompt
-                    return result  # Send back model results
+                    return f"specialty: {predicted_label} | Confidence: {confidence_score:.2f}"
                 except:
                     return "Error: Invalid JSON for classification"
 
