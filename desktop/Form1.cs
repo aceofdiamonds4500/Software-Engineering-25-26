@@ -195,7 +195,7 @@ namespace GUI_SoftwareEng
 
         // ===== loads all pages =====
         private void ShowHomePage()
-        {
+        {            
             if (mainPage == null || mainPage.IsDisposed)
             {
                 mainPage = new FormMain();

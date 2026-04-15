@@ -25,19 +25,18 @@ import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import kotlinx.coroutines.launch
 import com.google.firebase.auth.FirebaseAuth
+import android.util.Log
 
 @Composable
-fun LoginFormScreen(
+fun ForgotPasswordScreen(
     onBack: () -> Unit,
     onSuccess: () -> Unit,
-    onForgotClick: () -> Unit
 ) {
 
     var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
-
+    var isSuccess by remember { mutableStateOf(false) }
 
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
@@ -46,9 +45,7 @@ fun LoginFormScreen(
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(16.dp)
-        ){
-
-
+        ) {
 
             TextField(
                 value = email,
@@ -57,33 +54,25 @@ fun LoginFormScreen(
                 modifier = Modifier.fillMaxWidth()
             )
 
-            TextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Password") },
-                visualTransformation = PasswordVisualTransformation(), // hides password
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            // login button
+            // password reset button
             Button(
                 onClick = {
                     isLoading = true
                     val auth = FirebaseAuth.getInstance()
-                    auth.signInWithEmailAndPassword(email, password) // logs in user w/ firebase
-                        .addOnSuccessListener {
-                            isLoading = false
-                            onSuccess()
-                        }
-                        .addOnFailureListener { e ->
-                            isLoading = false
-                            errorMessage = e.message ?: "Login failed"
-                        }
-                },
+                    auth.sendPasswordResetEmail(email)
+                          .addOnSuccessListener {
+                              isLoading = false
+                              isSuccess = true
+                          }
+                          .addOnFailureListener { e ->
+                              isLoading = false
+                              errorMessage = e.message ?: "Password reset failed"
+                          }
+                          },
                 modifier = Modifier.fillMaxWidth(),
                 enabled = !isLoading
             ) {
-                Text(if (isLoading) "Logging in..." else "Login")
+                Text(if (isLoading) "Resetting Password..." else "Rest Password")
             }
 
             // back button
@@ -94,20 +83,13 @@ fun LoginFormScreen(
                 Text("Back")
             }
 
-            // forgot password text button
-            Text(
-                text = "Forgot password?",
-                modifier = Modifier
-                    .clickable { onForgotClick() }
-                    .fillMaxWidth(),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyLarge,
-                lineHeight = MaterialTheme.typography.bodyLarge.lineHeight * 1.25
-            )
-
-
+            // error / success message
+            if (isSuccess)
+            {
+                Text(text = "Password reset email sent", color = Color.Green)
+            }
             if (errorMessage.isNotEmpty()) {
-                Text(text = errorMessage, color = MaterialTheme.colorScheme.error)
+                Text(text = errorMessage, color = Color.Red)
             }
         }
     }

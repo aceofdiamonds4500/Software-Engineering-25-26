@@ -44,6 +44,13 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("androidx.compose.material:material-icons-extended")
+    implementation("com.google.firebase:firebase-storage")
+    implementation("com.google.code.gson:gson:2.10.1")
+    val ktor_version = "2.3.7"
+    implementation("io.ktor:ktor-network:$ktor_version")
+    implementation("io.ktor:ktor-network-tls:$ktor_version")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

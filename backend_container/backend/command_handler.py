@@ -156,3 +156,4 @@ def handlecommand(json_data, model, id_to_label, default_tokenizer):
     except KeyError as e:
         print(f"Error: {e}")
         return "Error: No command key found"
+        

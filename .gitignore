@@ -15,3 +15,4 @@ packages/
 #ignore model
 medical_classification_model/
 checkpoints/
+/backend_container/backend/best

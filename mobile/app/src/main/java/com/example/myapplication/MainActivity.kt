@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -16,31 +17,31 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.screens.AccountSettingsScreen
 import com.example.myapplication.screens.HistoryScreen
 import com.example.myapplication.ui.theme.MyApplicationTheme
+import coil.compose.AsyncImage
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
-
-class MainActivity : ComponentActivity() { // main start
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
 
-            // App-wide settings state
             var isDarkMode by remember { mutableStateOf(false) }
             var isEnlargeText by remember { mutableStateOf(false) }
 
-            // IMPORTANT: pass enlargeText into theme
             MyApplicationTheme(
                 darkTheme = isDarkMode,
                 enlargeText = isEnlargeText
             ) {
-
-                // Main "auth flow" navigation
                 var screen by remember { mutableStateOf("WELCOME") }
 
                 when (screen) {
@@ -49,23 +50,23 @@ class MainActivity : ComponentActivity() { // main start
                         onRegisterClick = { screen = "REGISTER" },
                         onSkipClick = { screen = "MAIN" }
                     )
-
                     "LOGIN" -> LoginFormScreen(
                         onBack = { screen = "WELCOME" },
-                        onSuccess = { screen = "MAIN" }
+                        onSuccess = { screen = "MAIN" },
+                        onForgotClick = { screen = "FORGOT"}
                     )
-
+                    "FORGOT" -> ForgotPasswordScreen(
+                        onBack = { screen = "LOGIN" },
+                        onSuccess = { screen = "LOGIN" }
+                    )
                     "REGISTER" -> RegisterScreen(
                         onBack = { screen = "WELCOME" },
                         onSuccess = { screen = "MAIN" },
                         onTermsClick = { screen = "TERMS" }
                     )
-
                     "TERMS" -> TermsOfService(
                         onBack = { screen = "REGISTER" }
                     )
-
-                    // After login/register/skip, everything is handled inside DrawerApp
                     "MAIN" -> DrawerApp(
                         onLogout = { screen = "WELCOME" },
                         isDarkMode = isDarkMode,
@@ -91,42 +92,81 @@ fun DrawerApp(
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
-    // Drawer navigation state
     var currentScreen by remember { mutableStateOf("Home") }
+    var profilePicUrl by remember { mutableStateOf<String?>(null) }
+    var userName by remember { mutableStateOf("") }
+    var adminStatus by remember { mutableStateOf("") }
+
+    LaunchedEffect(Unit) {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        if (uid != null) {
+            FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(uid)
+                .get()
+                .addOnSuccessListener { doc ->
+                    profilePicUrl = doc.getString("profilePicUrl")
+                    userName = doc.getString("FirstnameLastname") ?: ""
+                    adminStatus = doc.getLong("admin")?.toString() ?: ""
+                }
+        }
+    }
 
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
             ModalDrawerSheet(
-                modifier = Modifier.width(260.dp),
-                drawerContainerColor = MaterialTheme.colorScheme.secondary
+                modifier = Modifier.width(280.dp),
+                drawerContainerColor = MaterialTheme.colorScheme.surface
             ) {
-                Spacer(Modifier.height(24.dp))
-
-                // profile image
+                // Header
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 16.dp, bottom = 12.dp),
+                        .background(MaterialTheme.colorScheme.primary)
+                        .padding(vertical = 24.dp, horizontal = 16.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.profilepicture),
-                        contentDescription = "Profile Picture",
-                        modifier = Modifier.size(120.dp)
-                    )
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        // Same pfp logic as ProfileInformationScreen
+                        if (profilePicUrl != null) {
+                            AsyncImage(
+                                model = profilePicUrl,
+                                contentDescription = "Profile Picture",
+                                modifier = Modifier
+                                    .size(90.dp)
+                                    .clip(CircleShape),
+                                contentScale = ContentScale.Crop
+                            )
+                        } else {
+                            Image(
+                                painter = painterResource(id = R.drawable.profilepicture),
+                                contentDescription = "Profile Picture",
+                                modifier = Modifier
+                                    .size(90.dp)
+                                    .clip(CircleShape),
+                                contentScale = ContentScale.Crop
+                            )
+                        }
+                        Text(
+                            text = "Welcome back, $userName",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 }
 
-                Spacer(Modifier.height(24.dp))
+                Spacer(Modifier.height(12.dp))
 
                 Text(
-                    text = "Menu",
-                    style = MaterialTheme.typography.headlineSmall,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
+                    text = "MENU",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                 )
 
                 DrawerItem("Home") {
@@ -145,12 +185,30 @@ fun DrawerApp(
                     currentScreen = "Settings"
                     scope.launch { drawerState.close() }
                 }
+                if (adminStatus == "1"){
+                    DrawerItem("Admin Panel") {
+                        currentScreen = "Admin Panel"
+                        scope.launch { drawerState.close() }
+                    }
+                }
 
-                Spacer(Modifier.height(345.dp))
+                Spacer(Modifier.weight(1f))
 
-                DrawerItem("Log Out") {
-                    onLogout()
-                    scope.launch { drawerState.close() }
+                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
+                Button(
+                    onClick = {
+                        onLogout()
+                        scope.launch { drawerState.close() }
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.error
+                    )
+                ) {
+                    Text("Log Out", color = MaterialTheme.colorScheme.onError)
                 }
             }
         }
@@ -162,10 +220,7 @@ fun DrawerApp(
                     title = { Text("Transcriptive AI") },
                     navigationIcon = {
                         IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                            Icon(
-                                Icons.Default.Menu,
-                                contentDescription = "Menu"
-                            )
+                            Icon(Icons.Default.Menu, contentDescription = "Menu")
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
@@ -181,13 +236,11 @@ fun DrawerApp(
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background)
                     .padding(padding)
-                    .verticalScroll(rememberScrollState())
             ) {
                 when (currentScreen) {
                     "Home" -> HomeScreen()
                     "Transcribe" -> TranscribeScreen()
                     "History" -> HistoryScreen()
-
                     "Settings" -> SettingsScreen(
                         isDarkMode = isDarkMode,
                         enlargeText = enlargeText,
@@ -195,7 +248,6 @@ fun DrawerApp(
                         onEnlargeTextChange = onEnlargeTextChange,
                         onAccountSettingsClick = { currentScreen = "AccountSettings" }
                     )
-
                     "AccountSettings" -> AccountSettingsScreen(
                         onBack = { currentScreen = "Settings" },
                         onProfileInformationClick = { currentScreen = "ProfileInformationScreen" },
@@ -206,50 +258,38 @@ fun DrawerApp(
                         onPaymentsClick = { currentScreen = "Payments" },
                         onSupportLegalClick = { currentScreen = "SupportLegal" }
                     )
-
                     "ProfileInformationScreen" -> ProfileInformationScreen(
-                        onBack = { currentScreen = "AccountSettings" }
+                        onBack = { currentScreen = "AccountSettings" },
+                        onNameChange = { userName = it },
+                        onPicChange = { profilePicUrl = it }
                     )
-
-                    "Security" -> SecurityScreen(
-                        onBack = { currentScreen = "AccountSettings" }
-                    )
-
-                    "PrivacyData" -> PrivacyDataScreen(
-                        onBack = { currentScreen = "AccountSettings" }
-                    )
-
-                    "TranscriptionPreferences" -> TranscriptionPreferencesScreen(
-                        onBack = { currentScreen = "AccountSettings" }
-                    )
-
-                    "BillingSubscription" -> BillingSubscriptionScreen(
-                        onBack = { currentScreen = "AccountSettings" }
-                    )
-
-                    "Payments" -> PaymentsScreen(
-                        onBack = { currentScreen = "AccountSettings" }
-                    )
-
-                    "SupportLegal" -> SupportLegalScreen(
-                        onBack = { currentScreen = "AccountSettings" }
-                    )
+                    "Security" -> SecurityScreen(onBack = { currentScreen = "AccountSettings" })
+                    "PrivacyData" -> PrivacyDataScreen(onBack = { currentScreen = "AccountSettings" })
+                    "TranscriptionPreferences" -> TranscriptionPreferencesScreen(onBack = { currentScreen = "AccountSettings" })
+                    "BillingSubscription" -> BillingSubscriptionScreen(onBack = { currentScreen = "AccountSettings" })
+                    "Payments" -> PaymentsScreen(onBack = { currentScreen = "AccountSettings" })
+                    "SupportLegal" -> SupportLegalScreen(onBack = { currentScreen = "AccountSettings" })
                 }
             }
         }
     }
 }
 
+// each drawer item properties
 @Composable
 fun DrawerItem(label: String, onClick: () -> Unit) {
-    Text(
-        text = label,
-        style = MaterialTheme.typography.bodyLarge,
-        color = MaterialTheme.colorScheme.onBackground,
-        textAlign = TextAlign.Center,
+    TextButton(
+        onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
-            .padding(vertical = 12.dp)
-    )
+            .padding(horizontal = 8.dp)
+    ) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Start
+        )
+    }
 }
