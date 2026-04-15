@@ -15,6 +15,7 @@ namespace GUI_SoftwareEng
         private const int HTCAPTION = 0x2;
 
         // ===== Page instances =====
+        private FormLogin? formLogin;
         private Form1? form1;
         private FormTranscribe? transcribePage;
         private FormDownloadUpload? downloaduploadPage;
@@ -196,6 +197,10 @@ namespace GUI_SoftwareEng
         // ===== loads all pages =====
         private void ShowHomePage()
         {
+            if (formLogin == null || formLogin.IsDisposed)
+            {
+                formLogin = new FormLogin();
+            }
             if (mainPage == null || mainPage.IsDisposed)
             {
                 mainPage = new FormMain();
@@ -216,7 +221,7 @@ namespace GUI_SoftwareEng
             {
                 settingsPage = new FormSettings(this);
             }
-            ShowPage(mainPage);
+            ShowPage(formLogin);
         }
 
         private void label1_Click(object? sender, EventArgs e)
