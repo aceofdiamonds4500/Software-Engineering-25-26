@@ -106,7 +106,7 @@ namespace GUI_SoftwareEng
                 File.WriteAllText(filePath, json, Encoding.UTF8);
 
                 //MessageBox.Show($"JSON exported successfully:\n{filePath}",
-                    //"Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //"Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 OutputTranscription = _connection.ExchangeData(json);
             }
             catch (Exception ex)
@@ -283,6 +283,11 @@ namespace GUI_SoftwareEng
             richTextBox4.Text = "";
             richTextBox5.Text = "";
             comboBox1.SelectedIndex = -1;
+        }
+
+        private void FormTranscribe_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
