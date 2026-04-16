@@ -17,7 +17,7 @@ public partial class TranscriptiveViewModel : ViewModelBase
     public ObservableCollection<string> Options { get; } = new() { "Cardiology", "Neurology", "General Medicine" };
     
     // Here defines the actual connection to the server
-    private Connection _connection = new Connection("10.12.113.113", 5867);
+    private Connection _connection = new Connection("localhost", 5867);
 
     [RelayCommand]
     private void Send()

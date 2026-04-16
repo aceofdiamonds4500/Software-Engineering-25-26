@@ -1,7 +1,15 @@
 import socket
 import threading
 from ai.inference import load_trained_model, predict
-from sqlite import db_init as sqinit
+
+#import MySQL necessities
+#from sqlite import db_init as sqinit
+from mysql_connect import db_startup
+import mysql.connector
+from mysql.connector import errorcode
+import os
+from dotenv import load_dotenv
+
 import command_handler as cmd
 import json
 from transformers import AutoTokenizer
@@ -46,17 +54,23 @@ def handle_client(client, addr):
     client.close()
 
 def main():
-    sqinit.initDoctors()
-    sqinit.initMedData()
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(ADDR)
-    server.listen()
-    print(f"Listening on {ADDR[0]}:{ADDR[1]}")
+    #sqinit.initDoctors() unneeded now
+    #sqinit.initMedData()
+    rc = db_startup.test_connection()
 
-    while True:
-        client, addr = server.accept()
-        thread = threading.Thread(target=handle_client, args=(client, addr))
-        thread.start()
+    if rc != 0:
+        print("Must have a connection to the database to initialize server. Exiting (return code 1)")
+        return 1
+    else:
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server.bind(ADDR)
+        server.listen()
+        print(f"Listening on {ADDR[0]}:{ADDR[1]}")
+
+        while True:
+            client, addr = server.accept()
+            thread = threading.Thread(target=handle_client, args=(client, addr))
+            thread.start()
 
 if __name__ == "__main__":
     main()

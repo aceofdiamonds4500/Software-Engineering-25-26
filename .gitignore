@@ -15,3 +15,6 @@ packages/
 #ignore model
 medical_classification_model/
 checkpoints/
+
+#ignore .env
+**/.env
