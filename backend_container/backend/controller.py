@@ -3,8 +3,11 @@ import threading
 import json
 import command_handler as cmd
 from ai.inference import load_trained_model, predict
-from sqlite import db_init as sqinit
+from mysql_connect import db_startup
+import mysql.connector
+from mysql.connector import errorcode
 from transformers import AutoTokenizer
+from dotenv import load_dotenv
 
 HOST = socket.gethostbyname(socket.gethostname())
 PORT = 5867
@@ -52,13 +55,19 @@ def handle_client(client, addr):
 #Initializes the database, then opens a network socket for connections
 #Prints out the server IP and Port(IP SHOWS CONTAINER IP, NOT HOST IP)
 def main():
-    sqinit.initDoctors()
-    sqinit.initMedData()
+    #sqinit.initDoctors()
+    #sqinit.initMedData()
 
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(ADDR)
-    server.listen()
-    print(f"Listening on {ADDR[0]}:{ADDR[1]}")
+    rc = db_startup.test_connection()
+
+    if rc != 0:
+        print("Must have a connection to the database to initialize server. Exiting (return code 1)")
+        return 1
+    else:
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server.bind(ADDR)
+        server.listen()
+        print(f"Listening on {ADDR[0]}:{ADDR[1]}")
 
     #Waits for a connection and then hands the client to a thread
     while True:

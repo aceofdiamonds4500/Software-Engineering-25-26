@@ -1,6 +1,5 @@
-import sqlite
-from sqlite import db_insert as sqinsert
-from sqlite import db_select as sqselect
+from mysql_connect import db_insert as sqinsert
+from mysql_connect import db_select as sqselect
 from ai.inference import predict
 from controller import default_tokenizer
 
