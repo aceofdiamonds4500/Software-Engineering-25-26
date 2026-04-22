@@ -73,22 +73,6 @@ fun ProfileInformationScreen(
 
     val shape = RoundedCornerShape(12.dp)
 
-    // theme stuff copied and pasted
-    val tfColors = TextFieldDefaults.colors(
-        focusedContainerColor = MaterialTheme.colorScheme.surface,
-        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-        disabledContainerColor = MaterialTheme.colorScheme.surface,
-        focusedTextColor = MaterialTheme.colorScheme.onSurface,
-        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
-        disabledTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
-        focusedLabelColor = MaterialTheme.colorScheme.onSurface,
-        unfocusedLabelColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-        cursorColor = MaterialTheme.colorScheme.primary,
-        focusedIndicatorColor = Color.Transparent,
-        unfocusedIndicatorColor = Color.Transparent,
-        disabledIndicatorColor = Color.Transparent
-    )
-
     fun saveChanges() {
         if (uid == null) return
 
@@ -236,7 +220,6 @@ fun ProfileInformationScreen(
             label = { Text("First Name") },
             modifier = Modifier.fillMaxWidth(),
             shape = shape,
-            colors = tfColors,
             singleLine = true
         )
 
@@ -250,7 +233,6 @@ fun ProfileInformationScreen(
             label = { Text("Last Name") },
             modifier = Modifier.fillMaxWidth(),
             shape = shape,
-            colors = tfColors,
             singleLine = true
         )
 
@@ -272,7 +254,6 @@ fun ProfileInformationScreen(
             label = { Text("Current Password") },
             modifier = Modifier.fillMaxWidth(),
             shape = shape,
-            colors = tfColors,
             singleLine = true,
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
@@ -288,7 +269,6 @@ fun ProfileInformationScreen(
             label = { Text("New Password") },
             modifier = Modifier.fillMaxWidth(),
             shape = shape,
-            colors = tfColors,
             singleLine = true,
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
@@ -304,7 +284,6 @@ fun ProfileInformationScreen(
             label = { Text("Confirm New Password") },
             modifier = Modifier.fillMaxWidth(),
             shape = shape,
-            colors = tfColors,
             singleLine = true,
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)

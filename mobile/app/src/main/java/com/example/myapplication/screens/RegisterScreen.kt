@@ -20,20 +20,23 @@ import androidx.compose.foundation.layout.width
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import android.net.Uri
+import androidx.compose.runtime.setValue
 import coil.compose.AsyncImage
 import androidx.compose.ui.layout.ContentScale
 
 @Composable
 fun RegisterScreen(
     onBack: () -> Unit,
-    onSuccess: () -> Unit,
-    onTermsClick: () -> Unit
+    onTermsClick: () -> Unit,
+    enableBiometrics: Boolean
 ) {
     // State should live OUTSIDE the Column body
     var email by remember { mutableStateOf("") }
     var firstNamelastName by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
+    var enableBiometrics by remember { mutableStateOf(enableBiometrics) }
+    var biometricsVar by remember { mutableStateOf("") }
     var checked by remember { mutableStateOf(false) }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
@@ -84,6 +87,21 @@ fun RegisterScreen(
                 visualTransformation = PasswordVisualTransformation(),
                 modifier = Modifier.fillMaxWidth()
             )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text("Enable Biometrics")
+                Spacer(modifier = Modifier.weight(1f))
+                Switch(
+                    checked = enableBiometrics,
+                    onCheckedChange = { enableBiometrics = it }
+                )
+            }
+            if (enableBiometrics == true) {
+                biometricsVar = 1.toString()
+            } else {biometricsVar = 0.toString()}
 
             Button(
                 onClick = { launcher.launch("image/*") },
@@ -145,7 +163,10 @@ fun RegisterScreen(
                             val userDoc = hashMapOf(
                                 "FirstnameLastname" to firstNamelastName,
                                 "email" to email,
-                                "admin" to 0
+                                "admin" to 0,
+                                "biometrics" to biometricsVar,
+                                "darkmode" to "0",
+                                "enlargeText" to "0"
                             )
                             db.collection("users").document(uid).set(userDoc)
                                 .addOnSuccessListener {
@@ -168,7 +189,7 @@ fun RegisterScreen(
                                             }
                                     } else {
                                         isLoading = false
-                                        //onSuccess()
+                                        //onSuccess() peni
                                         successMessage = "Account created!"
                                     }
                                 }

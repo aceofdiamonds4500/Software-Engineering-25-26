@@ -1,8 +1,14 @@
 package com.example.myapplication
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import android.content.Intent
+import android.provider.Settings
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.*
+import androidx.biometric.BiometricPrompt
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -20,11 +26,18 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import kotlinx.coroutines.launch
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import androidx.activity.compose.LocalActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 
 @Composable
 fun LoginFormScreen(
@@ -38,6 +51,58 @@ fun LoginFormScreen(
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
 
+    val activity = LocalActivity.current as FragmentActivity
+    val auth = FirebaseAuth.getInstance()
+    val db = FirebaseFirestore.getInstance()
+
+    val enrollLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult()
+    ) { }
+
+    fun launchBiometrics(onApproved:() -> Unit, onDenied: () -> Unit) {
+        val biometricManager = BiometricManager.from(activity)
+
+        when (biometricManager.canAuthenticate(BIOMETRIC_STRONG)) {
+            BiometricManager.BIOMETRIC_SUCCESS -> {
+                val executor = ContextCompat.getMainExecutor(activity)
+                val prompt = BiometricPrompt(activity, executor,
+                    object : BiometricPrompt.AuthenticationCallback() {
+                        override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                            onApproved()
+                        }
+                        override fun onAuthenticationFailed() {
+                            // Bad attempt, prompt stays open
+                        }
+                        override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                            onDenied()
+                            errorMessage = "Biometric error: $errString"
+                        }
+                    })
+
+                val promptInfo = BiometricPrompt.PromptInfo.Builder()
+                    .setTitle("Biometric login for my app")
+                    .setSubtitle("Log in using your biometric credential")
+                    .setNegativeButtonText("Cancel")
+                    .setAllowedAuthenticators(BIOMETRIC_STRONG)
+                    .build()
+
+                prompt.authenticate(promptInfo)
+            }
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+                val enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
+                    putExtra(Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED, BIOMETRIC_STRONG)
+                }
+                enrollLauncher.launch(enrollIntent)
+                onDenied()
+            }
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE,
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
+                // No biometric hardware, skip straight through
+                onApproved()
+            }
+            else -> onApproved()
+        }
+    }
 
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
@@ -69,11 +134,28 @@ fun LoginFormScreen(
             Button(
                 onClick = {
                     isLoading = true
-                    val auth = FirebaseAuth.getInstance()
                     auth.signInWithEmailAndPassword(email, password) // logs in user w/ firebase
                         .addOnSuccessListener {
-                            isLoading = false
-                            onSuccess()
+                            val uid = auth.currentUser?.uid ?: return@addOnSuccessListener
+
+                            db.collection("users").document(uid).get()
+                                .addOnSuccessListener { doc ->
+                                    isLoading = false
+                                    val biometricsEnabled = doc.getString("biometrics") == "1"
+
+                                    if (biometricsEnabled) {
+                                        launchBiometrics(onSuccess, onDenied = {
+                                            auth.signOut()
+                                            errorMessage = "Biometric login failed"
+                                        })
+                                    } else {
+                                        onSuccess()
+                                    }
+                                }
+                                .addOnFailureListener { e ->
+                                    isLoading = false
+                                    errorMessage = e.message ?: "Failed to load user data"
+                                }
                         }
                         .addOnFailureListener { e ->
                             isLoading = false

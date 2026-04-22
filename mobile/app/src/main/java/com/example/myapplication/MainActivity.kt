@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import androidx.fragment.app.FragmentActivity
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -29,7 +30,7 @@ import coil.compose.AsyncImage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
-class MainActivity : ComponentActivity() {
+class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -61,8 +62,8 @@ class MainActivity : ComponentActivity() {
                     )
                     "REGISTER" -> RegisterScreen(
                         onBack = { screen = "WELCOME" },
-                        onSuccess = { screen = "MAIN" },
-                        onTermsClick = { screen = "TERMS" }
+                        onTermsClick = { screen = "TERMS" },
+                        enableBiometrics = false
                     )
                     "TERMS" -> TermsOfService(
                         onBack = { screen = "REGISTER" }
@@ -108,6 +109,8 @@ fun DrawerApp(
                     profilePicUrl = doc.getString("profilePicUrl")
                     userName = doc.getString("FirstnameLastname") ?: ""
                     adminStatus = doc.getLong("admin")?.toString() ?: ""
+                    onDarkModeChange(doc.getString("darkmode") == "1")
+                    onEnlargeTextChange(doc.getString("enlargeText") == "1")
                 }
         }
     }

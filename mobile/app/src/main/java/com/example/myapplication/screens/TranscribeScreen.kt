@@ -109,31 +109,6 @@ fun TranscribeScreen() {
     val scope = rememberCoroutineScope()
     val shape = RoundedCornerShape(12.dp)
 
-    // theme stuff
-    val tfColors = TextFieldDefaults.colors(
-        focusedContainerColor = MaterialTheme.colorScheme.surface,
-        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-        disabledContainerColor = MaterialTheme.colorScheme.surface,
-        focusedTextColor = MaterialTheme.colorScheme.onSurface,
-        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
-        disabledTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
-        focusedLabelColor = MaterialTheme.colorScheme.onSurface,
-        unfocusedLabelColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-        cursorColor = MaterialTheme.colorScheme.primary,
-        focusedIndicatorColor = Color.Transparent,
-        unfocusedIndicatorColor = Color.Transparent,
-        disabledIndicatorColor = Color.Transparent
-    )
-    val otfColors = OutlinedTextFieldDefaults.colors(
-        focusedBorderColor = MaterialTheme.colorScheme.primary,
-        unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.45f),
-        focusedTextColor = MaterialTheme.colorScheme.onSurface,
-        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
-        focusedLabelColor = MaterialTheme.colorScheme.onSurface,
-        unfocusedLabelColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-        cursorColor = MaterialTheme.colorScheme.primary
-    )
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -155,8 +130,7 @@ fun TranscribeScreen() {
                 modifier = Modifier
                     .menuAnchor()
                     .fillMaxWidth(),
-                shape = shape,
-                colors = otfColors
+                shape = shape
             )
             ExposedDropdownMenu(
                 expanded = expanded,
@@ -179,32 +153,28 @@ fun TranscribeScreen() {
             onValueChange = { sampleName = it },
             label = { Text("Sample Name") },
             modifier = Modifier.fillMaxWidth(),
-            shape = shape,
-            colors = tfColors
+            shape = shape
         )
         TextField(
             value = transcription,
             onValueChange = { transcription = it },
             label = { Text("Transcription") },
             modifier = Modifier.fillMaxWidth(),
-            shape = shape,
-            colors = tfColors
+            shape = shape
         )
         TextField(
             value = description,
             onValueChange = { description = it },
             label = { Text("Description") },
             modifier = Modifier.fillMaxWidth(),
-            shape = shape,
-            colors = tfColors
+            shape = shape
         )
         TextField(
             value = keywords,
             onValueChange = { keywords = it },
             label = { Text("Keywords") },
             modifier = Modifier.fillMaxWidth(),
-            shape = shape,
-            colors = tfColors
+            shape = shape
         )
 
         Spacer(Modifier.height(16.dp))
@@ -347,7 +317,7 @@ fun TranscribeScreen() {
             Text(
                 text = saveMessage,
                 color = if (saveMessage.startsWith("Saved"))
-                    MaterialTheme.colorScheme.primary
+                    Color.Green
                 else
                     MaterialTheme.colorScheme.error
             )
@@ -365,8 +335,7 @@ fun TranscribeScreen() {
                 .height(200.dp)
                 .verticalScroll(outputScrollState),
             maxLines = Int.MAX_VALUE,
-            shape = shape,
-            colors = tfColors
+            shape = shape
         )
     }
 }
