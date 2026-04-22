@@ -16,6 +16,7 @@ namespace GUI_SoftwareEng
 
         // ===== Page instances =====
         private FormLogin? loginPage;
+        private FormRegister? registerPage;
         private Form1? form1;
         private FormTranscribe? transcribePage;
         private FormDownloadUpload? downloaduploadPage;
@@ -35,6 +36,8 @@ namespace GUI_SoftwareEng
         public Form1()
         {
             InitializeComponent();
+
+            sidebar.Visible = false; // start with sidebar hidden
 
             // Window chrome & dragging
             FormBorderStyle = FormBorderStyle.None;
@@ -199,12 +202,12 @@ namespace GUI_SoftwareEng
         {            
             if (loginPage == null || loginPage.IsDisposed)
             {
-                loginPage = new FormLogin();
+                loginPage = new FormLogin(this);
             }
-            if (mainPage == null || mainPage.IsDisposed)
+            /*if (registerPage == null || registerPage.IsDisposed)
             {
-                mainPage = new FormMain();
-            }
+                registerPage = new FormRegister(this);
+            }*/
             if (transcribePage == null || transcribePage.IsDisposed)
             {
                 transcribePage = new FormTranscribe();
@@ -222,6 +225,22 @@ namespace GUI_SoftwareEng
                 settingsPage = new FormSettings(this);
             }
             ShowPage(loginPage);
+        }
+        // Called by login page when login is successful, shows main page
+        public void LoginSuccessful()
+        {
+            if (mainPage == null || mainPage.IsDisposed)
+            { 
+                mainPage = new FormMain();
+                ShowPage(mainPage);
+                sidebar.Visible = true; // show sidebar after login
+            }
+        }
+        public void ShowRegisterPage()
+        {
+            if (registerPage == null || registerPage.IsDisposed)
+                registerPage = new FormRegister(this);
+            ShowPage(registerPage);
         }
 
         private void label1_Click(object? sender, EventArgs e)
