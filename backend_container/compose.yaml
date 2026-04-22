@@ -11,11 +11,28 @@ services:
   server:
     build:
       context: .
+    env_file:
+      - .env
     ports:
       - 5867:5867
     volumes:
       - ./data:/app/data
+  db:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: db
+      MYSQL_USER: controller-user
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d:Z
 
+
+volumes:
+    mysql_data:
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
 # start the database before your application. The `db-data` volume persists the
@@ -48,3 +65,4 @@ services:
 # secrets:
 #   db-password:
 #     file: db/password.txt
+
