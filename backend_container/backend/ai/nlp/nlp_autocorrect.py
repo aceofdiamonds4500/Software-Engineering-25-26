@@ -60,6 +60,9 @@ def load_model():
         )
     return _fill_mask
 
+
+# Function to suggest correction. Parameters are 'text' to be predicted and 'mtsamples.csv'. Use this method :) 
+# Later implement to read from database
 def suggest_corrections(text, vocab):
     fill_mask = load_model()
 
