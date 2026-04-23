@@ -12,23 +12,39 @@ namespace GUI_SoftwareEng
 {
     public partial class FormLogin : Form
     {
-        public FormLogin()
+        private Form1 parentForm;
+        public FormLogin(Form1 parent)
         {
             InitializeComponent();
+            parentForm = parent;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String Email = EmailTex.Text;
-            String Password = PasswordTex.Text;
-            if (Email == "admin" && Password == "admin")
+            string email = EmailTex.Text;
+            string password = PasswordTex.Text;
+
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Login successful!");
+                MessageBox.Show("Please enter email and password.");
+                return;
+            }
+
+            if (email == "admin" && password == "admin")
+            {
+                //MessageBox.Show("Login successful!");
+                parentForm.LoginSuccessful();
             }
             else
             {
-                MessageBox.Show("Login failed!");
+                MessageBox.Show("Invalid email or password.");
+                return;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            parentForm.ShowRegisterPage();
         }
     }
 }
