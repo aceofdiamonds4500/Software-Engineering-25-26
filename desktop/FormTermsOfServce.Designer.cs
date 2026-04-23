@@ -28,7 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(322, 124);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 0;
+            label1.Text = "label1";
             // 
             // FormTermsOfServce
             // 
@@ -36,11 +46,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 224, 228);
             ClientSize = new Size(700, 338);
+            Controls.Add(label1);
             Name = "FormTermsOfServce";
             Text = "FormTermsOfServce";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
     }
 }
