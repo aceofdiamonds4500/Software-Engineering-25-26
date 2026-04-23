@@ -36,6 +36,7 @@
             label3 = new Label();
             label4 = new Label();
             button2 = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -114,12 +115,27 @@
             button2.Text = "Register";
             button2.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            button1.AutoSize = true;
+            button1.BackColor = Color.Transparent;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.DodgerBlue;
+            button1.Location = new Point(226, 229);
+            button1.Name = "button1";
+            button1.Size = new Size(128, 28);
+            button1.TabIndex = 9;
+            button1.Text = "Terms of Service";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // FormRegister
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 224, 228);
             ClientSize = new Size(700, 338);
+            Controls.Add(button1);
             Controls.Add(button2);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -143,5 +159,6 @@
         private Label label3;
         private Label label4;
         private Button button2;
+        private Button button1;
     }
 }
