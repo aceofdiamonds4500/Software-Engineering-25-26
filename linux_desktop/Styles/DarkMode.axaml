@@ -1,0 +1,72 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Add Styles Here -->
+    <Styles.Resources>
+        <SolidColorBrush x:Key="Background">#121117</SolidColorBrush>
+        <LinearGradientBrush x:Key="Gradient" StartPoint="0%,0%" EndPoint="100%,100%">
+            <GradientStop Offset="0" Color="#24212D"/>
+            <GradientStop Offset="1" Color="#1A1822"/>
+        </LinearGradientBrush>
+        
+        <SolidColorBrush x:Key="LabelText">#ffffff</SolidColorBrush>
+
+        <SolidColorBrush x:Key="ButtonPrimary">#94A3B8</SolidColorBrush>
+        <SolidColorBrush x:Key="ButtonHover">#CBD5E1</SolidColorBrush>
+        <SolidColorBrush x:Key="ButtonPressed">#64748B</SolidColorBrush>
+        <SolidColorBrush x:Key="ButtonText">#0F172A</SolidColorBrush>
+    </Styles.Resources>
+    
+    <Style Selector="Label">
+        <Setter Property="Foreground" Value="{DynamicResource LabelText}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource InterFont}"/>
+    </Style>
+    
+    <Style Selector="Rectangle">
+        <Setter Property="Fill" Value="{DynamicResource LabelText}"/>
+    </Style>
+    
+    <Style Selector="Button">
+        <Setter Property="Background" Value="{DynamicResource ButtonPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ButtonText}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="14"/>
+
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonHover}"/>
+        </Style>
+
+        <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonPressed}"/>
+            <Setter Property="RenderTransform" Value="scale(0.95 )"/>
+        </Style>
+    </Style>
+    
+    <Style Selector="TextBox">
+        <Setter Property="Background" Value="{DynamicResource ButtonPrimary}"/>
+        <Setter Property="BorderBrush" Value="#000000"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        
+        <Style Selector="^:pointerover /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource ButtonPressed}"/>
+            <Setter Property="BorderBrush" Value="#000000"/>
+        </Style>
+        
+        <Style Selector="^:focus /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource ButtonPressed}"/>
+            <Setter Property="BorderBrush" Value="#0078D4"/>
+        </Style>
+    </Style>
+    
+    <Style Selector="ComboBox">
+        <Setter Property="Background" Value="{DynamicResource ButtonPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ButtonText}"/>
+        <Setter Property="CornerRadius" Value="0"/>
+    </Style>
+    
+</Styles>

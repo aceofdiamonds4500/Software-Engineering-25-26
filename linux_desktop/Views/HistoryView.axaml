@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:linux_desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="linux_desktop.Views.HistoryView"
+             x:DataType="vm:HistoryViewModel">
+    
+    <!--This Is A Placeholder Until I Get More Styling Done-->
+    <StackPanel Background="{DynamicResource Gradient}" Margin="5,5,5,5">
+        
+        <!--Header-->
+        <Label HorizontalContentAlignment="Center" FontSize="24" FontWeight="Bold" Content="HISTORY" />
+        <Rectangle Fill="{DynamicResource LabelText}" Width="570" Height="2"/>
+        
+        <!--Displays A Formatted List Of All Previous Transcriptions During This Session-->
+        <ListBox Height="400" Background="{DynamicResource Gradient}" Margin="5,5,5,5" ItemsSource="{Binding TranscriptionHistory}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="{DynamicResource ButtonBackgroundPressed}" Margin="2" Padding="5" BorderThickness="1" CornerRadius="4">
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+    </StackPanel>
+    
+</UserControl>
