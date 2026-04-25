@@ -1,7 +1,6 @@
 from mysql_connect import db_insert as sqinsert
 from mysql_connect import db_select as sqselect
 from ai.inference import predict
-from controller import default_tokenizer
 
 def handlecommand(json_data, model, id_to_label, default_tokenizer):
     try:
