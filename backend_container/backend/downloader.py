@@ -11,7 +11,7 @@ def download_model():
     target_dir = script_dir
     final_path = target_dir / "best"
 
-    if os.path.exists("/app/backend/best"):
+    if os.path.exists(final_path):
         print(f"Folder already exists at {final_path}")
         return
 
