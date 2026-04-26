@@ -52,10 +52,19 @@
                 
                 <Rectangle Fill="{DynamicResource LabelText}" Width="2" Height="385" VerticalAlignment="Top"/>
                 
-                <!--Displays The Prediction From The Server-->
                 <StackPanel Background="{DynamicResource Background}" Width="285" Margin="5,0,0,0">
-                    <Label Margin="10,0,0,0" Content="Results"/>
-                    <TextBox Width="265" Height="355" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding OutputTranscription}"/>
+                    
+                    <!--First Name-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="First Name"/>
+                    <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding FirstName}"/>
+                    
+                    <!--Last Name-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Last Name"/>
+                    <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding LastName}"/>
+                    
+                    <!--Displays The Prediction From The Server-->
+                    <Label Margin="10,0,0,0" FontWeight="Bold" Content="Results"/>
+                    <TextBox Width="265" Height="245" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding OutputTranscription}"/>
                 </StackPanel>
                 
             </StackPanel>

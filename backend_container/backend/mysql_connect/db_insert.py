@@ -13,8 +13,8 @@ def insMedData(med_data):
 
         query = '''
             INSERT INTO med_data
-            (PATIENT_SSN, DOCTOR_ID,P_FIRSTNAME,P_LASTNAME,`DESC`,MED_SPECIALTY,SAMPLE_NAME,TRANSCRIPTION)
-            VALUES (%(p_ssn)s,%(d_id)s,%(p_firstname)s,%(p_lastname)s,%(desc)s,%(med_specialty)s,%(sample_name)s,%(transcription)s)
+            (P_FIRSTNAME,P_LASTNAME,`DESC`,MED_SPECIALTY,SAMPLE_NAME,TRANSCRIPTION)
+            VALUES (%(p_firstname)s,%(p_lastname)s,%(desc)s,%(med_specialty)s,%(sample_name)s,%(transcription)s)
         '''
 
         cursor.execute(query, med_data)
