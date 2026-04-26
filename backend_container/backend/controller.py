@@ -13,6 +13,10 @@ from dotenv import load_dotenv
 #Mutes that warning about needing a token everytime the AI starts
 logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
 
+# Initialize the model, set it to use cpu, loads the labels, and creates the tokenizer
+model, id_to_label = load_trained_model("/app/backend/best", device="cpu")
+default_tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+
 HOST = socket.gethostbyname(socket.gethostname())
 PORT = 5867
 ADDR = (HOST, PORT)
@@ -57,10 +61,6 @@ def handle_client(client, addr):
 def main():
 
     rc = db_startup.test_connection()
-
-    # Initialize the model, set it to use cpu, loads the labels, and creates the tokenizer
-    model, id_to_label = load_trained_model("/app/backend/best", device="cpu")
-    default_tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
 
     if rc != 0:
         print("Must have a connection to the database to initialize server. Exiting (return code 1)")
