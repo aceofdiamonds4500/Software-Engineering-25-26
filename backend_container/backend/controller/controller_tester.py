@@ -21,7 +21,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 'desc': 'Patient is a program that likes going to the doctor 10 times in a row',
                 'med_specialty': 'Laparoscopy',
                 'sample_name': 'yo mama',
-                'transcription': 'Patient presents with severe symptoms of doin ur mom'
+                'transcription': 'Patient presents with severe symptoms of goig to the hospital'
                 }
             }
         json_data = json.dumps(data)

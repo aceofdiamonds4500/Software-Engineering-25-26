@@ -71,3 +71,37 @@ def insDoctor(doctor_data):
     finally:
         cursor.close()
         cnx.close()
+
+def insTrainingData(training_data):
+    dbpass = os.getenv("MYSQL_PASSWORD")
+    try:
+        cnx = mysql.connector.connect(user='controller-user', password=dbpass,
+                                      host='db',
+                                      database='db')
+        cursor = cnx.cursor()
+
+        query = '''
+            INSERT INTO training_data
+            (DESCRIPTION, MEDICAL_SPECIALTY, SAMPLE_NAME, TRANSCRIPTION, KEYWORDS, CONFIDENCE)
+            VALUES (%(t_description)s,%(t_medicalspecialty)s,%(t_samplename)s,%(t_transcription)s,%(t_keywords)s,%(t_confidence)s)
+        '''
+
+        cursor.execute(query, training_data)
+        cnx.commit()
+
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+            return 1
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+            return 1
+        elif err.errno == errorcode.ER_BAD_HOST_ERROR:
+            print("Failed to connect - host not reachable.")
+            return 1
+        else:
+            print(err)
+            return 1
+    finally:
+        cursor.close()
+        cnx.close()

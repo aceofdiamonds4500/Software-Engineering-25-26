@@ -16,7 +16,7 @@ def searchDoctor(doctor_id):
             WHERE DOCTOR_ID = %s
         ''', (doctor_id,))
 
-        row = cur.fetchone()
+        row = cursor.fetchone()
         return row
 
     except mysql.connector.Error as err:
