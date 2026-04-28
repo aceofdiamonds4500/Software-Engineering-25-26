@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:linux_desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="linux_desktop.Views.RegisterView"
+             x:DataType="vm:RegisterViewModel">
+    
+    <!--Simple Register Elements Stacked On Top Of Each Other-->
+    <StackPanel Background="{DynamicResource Gradient}" Width="250" Height="425" HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,15,0,0" FontSize="24" FontWeight="Bold" Content="Account Registration"/>
+        
+        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="16" FontWeight="Bold" Content="Email"/>
+        <TextBox Width="230" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="0,0,0,0" Text="{Binding Email}"/>
+        
+        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="16" FontWeight="Bold" Content="Password"/>
+        <TextBox Width="230" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="0,0,0,0" Text="{Binding Password}"/>
+        
+        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="16" FontWeight="Bold" Content="Confirm Password"/>
+        <TextBox Width="230" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="0,0,0,0" Text="{Binding PasswordConfirm}"/>
+        
+        <Button Width="175" Height="35" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,37,0,5" CornerRadius="0" Command="{Binding RegisterAsync}">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Label Foreground="{DynamicResource ButtonText}" Height="30" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,0,0" FontFamily="{DynamicResource PhosphorFill}" FontWeight="Bold" Content="REGISTER"/>
+            </StackPanel>
+        </Button>
+        
+        <Button Width="175" Height="25" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,10,0,5" CornerRadius="0" Command="{Binding Login}">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Label Foreground="{DynamicResource ButtonText}" Height="30" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,0,0" FontFamily="{DynamicResource PhosphorFill}" FontWeight="Bold" Content="CANCEL"/>
+            </StackPanel>
+        </Button>
+        
+    </StackPanel>
+    
+</UserControl>

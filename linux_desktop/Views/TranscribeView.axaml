@@ -54,11 +54,11 @@
                 
                 <StackPanel Background="{DynamicResource Background}" Width="285" Margin="5,0,0,0">
                     
-                    <!--First Name-->
+                    <!--Sample Name EX: Sample_1-->
                     <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="First Name"/>
                     <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding FirstName}"/>
                     
-                    <!--Last Name-->
+                    <!--Displays The Prediction From The Server-->
                     <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Last Name"/>
                     <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding LastName}"/>
                     

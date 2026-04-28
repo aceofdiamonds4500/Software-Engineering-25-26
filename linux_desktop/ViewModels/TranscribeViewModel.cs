@@ -25,8 +25,7 @@ public partial class TranscribeViewModel : ViewModelBase, IRecipient<UploadMessa
     //Additional Command To Send To Server
     private readonly Connection _connection = new Connection("127.0.0.1", 5867);
     
-    //Confirms That ALL Fields Are Used
-    private bool IsAnyFieldEmpty()
+    public bool IsAnyFieldEmpty()
     {
         var fieldsDatabase = new[] {SampleName, FieldMedicine, TranscriptionValue, DescriptionValue, KeyWords, FirstName, LastName};
         return fieldsDatabase.Any(string.IsNullOrWhiteSpace);
@@ -54,7 +53,6 @@ public partial class TranscribeViewModel : ViewModelBase, IRecipient<UploadMessa
         OutputTranscription = _connection.ExchangeData(payload);
         WeakReferenceMessenger.Default.Send(new TranscriptionMessage(TranscriptionValue + "\n" + OutputTranscription));
 
-        //If ALL Fields Are Filled, We Assume This Is A Completed Data Set To Be Added To The Database For Training
         if (IsAnyFieldEmpty() == false)
         {
             payload = $$"""

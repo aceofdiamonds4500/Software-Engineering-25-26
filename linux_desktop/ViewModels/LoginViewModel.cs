@@ -58,4 +58,11 @@ public partial class LoginViewModel : ViewModelBase
             Message = "A connection error occurred.";
         }
     }
+
+    [RelayCommand]
+    public void Register()
+    {
+        WeakReferenceMessenger.Default.Send(new RegisterGoTo());
+    }
+    
 }
