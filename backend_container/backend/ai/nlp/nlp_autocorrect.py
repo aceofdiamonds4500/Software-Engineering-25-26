@@ -109,9 +109,9 @@ def suggest_corrections(text, vocab):
 if __name__ == "__main__":
 
     base_dir = Path(__file__).resolve()
-
+  
     try:
-        csv_path = find_project_file(base_dir, "mtsamples.csv")
+        csv_path = find_project_file(base_dir, 'training_data/mtsamples.csv')
     except FileNotFoundError:
         csv_path = Path.cwd() / "mtsamples.csv"
 
