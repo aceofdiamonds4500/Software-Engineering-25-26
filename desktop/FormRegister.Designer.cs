@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            lable1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            emailTex = new TextBox();
+            passwordTex = new TextBox();
+            confirmPasswordTex = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            button2 = new Button();
-            button1 = new Button();
+            ButTermsOfServic = new Button();
+            Register2 = new Button();
+            butBackToLogin = new Button();
             SuspendLayout();
             // 
-            // label1
+            // lable1
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(220, 224, 228);
-            label1.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(253, 135);
-            label1.Name = "label1";
-            label1.Size = new Size(49, 18);
-            label1.TabIndex = 1;
-            label1.Text = "Email:";
+            lable1.AutoSize = true;
+            lable1.BackColor = Color.FromArgb(220, 224, 228);
+            lable1.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lable1.Location = new Point(253, 135);
+            lable1.Name = "lable1";
+            lable1.Size = new Size(49, 18);
+            lable1.TabIndex = 1;
+            lable1.Text = "Email:";
             // 
             // label2
             // 
@@ -60,28 +61,30 @@
             label2.TabIndex = 2;
             label2.Text = "Password:";
             // 
-            // textBox1
+            // emailTex
             // 
-            textBox1.Location = new Point(308, 130);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(149, 23);
-            textBox1.TabIndex = 3;
+            emailTex.Location = new Point(308, 130);
+            emailTex.Name = "emailTex";
+            emailTex.Size = new Size(149, 23);
+            emailTex.TabIndex = 3;
             // 
-            // textBox2
+            // passwordTex
             // 
-            textBox2.Location = new Point(308, 157);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(149, 23);
-            textBox2.TabIndex = 4;
-            textBox2.UseSystemPasswordChar = true;
+            passwordTex.Location = new Point(308, 157);
+            passwordTex.Name = "passwordTex";
+            passwordTex.PasswordChar = '*';
+            passwordTex.Size = new Size(149, 23);
+            passwordTex.TabIndex = 4;
+            passwordTex.UseSystemPasswordChar = true;
             // 
-            // textBox3
+            // confirmPasswordTex
             // 
-            textBox3.Location = new Point(308, 186);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(149, 23);
-            textBox3.TabIndex = 5;
-            textBox3.UseSystemPasswordChar = true;
+            confirmPasswordTex.Location = new Point(308, 186);
+            confirmPasswordTex.Name = "confirmPasswordTex";
+            confirmPasswordTex.PasswordChar = '*';
+            confirmPasswordTex.Size = new Size(149, 23);
+            confirmPasswordTex.TabIndex = 5;
+            confirmPasswordTex.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -104,30 +107,44 @@
             label4.Text = "Welcome to Transcriptive AI";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // ButTermsOfServic
             // 
-            button2.BackColor = Color.FromArgb(192, 192, 255);
-            button2.Font = new Font("Microsoft Sans Serif", 12F);
-            button2.Location = new Point(373, 225);
-            button2.Name = "button2";
-            button2.Size = new Size(84, 34);
-            button2.TabIndex = 8;
-            button2.Text = "Register";
-            button2.UseVisualStyleBackColor = false;
+            ButTermsOfServic.AutoSize = true;
+            ButTermsOfServic.BackColor = Color.Transparent;
+            ButTermsOfServic.FlatAppearance.BorderSize = 0;
+            ButTermsOfServic.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
+            ButTermsOfServic.ForeColor = Color.DodgerBlue;
+            ButTermsOfServic.Location = new Point(463, 182);
+            ButTermsOfServic.Name = "ButTermsOfServic";
+            ButTermsOfServic.Size = new Size(128, 28);
+            ButTermsOfServic.TabIndex = 9;
+            ButTermsOfServic.Text = "Terms of Service";
+            ButTermsOfServic.UseVisualStyleBackColor = false;
+            ButTermsOfServic.Click += ButTermsOfService;
             // 
-            // button1
+            // Register2
             // 
-            button1.AutoSize = true;
-            button1.BackColor = Color.Transparent;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.DodgerBlue;
-            button1.Location = new Point(226, 229);
-            button1.Name = "button1";
-            button1.Size = new Size(128, 28);
-            button1.TabIndex = 9;
-            button1.Text = "Terms of Service";
-            button1.UseVisualStyleBackColor = false;
+            Register2.BackColor = Color.FromArgb(192, 192, 255);
+            Register2.Font = new Font("Microsoft Sans Serif", 12F);
+            Register2.Location = new Point(373, 225);
+            Register2.Name = "Register2";
+            Register2.Size = new Size(84, 34);
+            Register2.TabIndex = 10;
+            Register2.Text = "Register";
+            Register2.UseVisualStyleBackColor = false;
+            Register2.Click += Register2_Click;
+            // 
+            // butBackToLogin
+            // 
+            butBackToLogin.BackColor = Color.FromArgb(192, 192, 255);
+            butBackToLogin.Font = new Font("Microsoft Sans Serif", 12F);
+            butBackToLogin.Location = new Point(226, 225);
+            butBackToLogin.Name = "butBackToLogin";
+            butBackToLogin.Size = new Size(123, 34);
+            butBackToLogin.TabIndex = 11;
+            butBackToLogin.Text = "Back to Login";
+            butBackToLogin.UseVisualStyleBackColor = false;
+            butBackToLogin.Click += butBackToLogin_Click;
             // 
             // FormRegister
             // 
@@ -135,30 +152,33 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 224, 228);
             ClientSize = new Size(700, 338);
-            Controls.Add(button1);
-            Controls.Add(button2);
+            Controls.Add(butBackToLogin);
+            Controls.Add(Register2);
+            Controls.Add(ButTermsOfServic);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(confirmPasswordTex);
+            Controls.Add(passwordTex);
+            Controls.Add(emailTex);
             Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lable1);
             Name = "FormRegister";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormRegister";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label label1;
+        private Label lable1;
         private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox emailTex;
+        private TextBox passwordTex;
+        private TextBox confirmPasswordTex;
         private Label label3;
         private Label label4;
-        private Button button2;
-        private Button button1;
+        private Button ButTermsOfServic;
+        private Button Register2;
+        private Button butBackToLogin;
     }
 }

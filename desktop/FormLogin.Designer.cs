@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            PasswordTex = new TextBox();
-            EmailTex = new TextBox();
+            passwordTex = new TextBox();
+            emailTex = new TextBox();
             label1 = new Label();
             label2 = new Label();
             button2 = new Button();
@@ -48,20 +48,21 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
-            // PasswordTex
+            // passwordTex
             // 
-            PasswordTex.Location = new Point(321, 157);
-            PasswordTex.Name = "PasswordTex";
-            PasswordTex.Size = new Size(149, 23);
-            PasswordTex.TabIndex = 1;
-            PasswordTex.UseSystemPasswordChar = true;
+            passwordTex.Location = new Point(321, 157);
+            passwordTex.Name = "passwordTex";
+            passwordTex.PasswordChar = '*';
+            passwordTex.Size = new Size(149, 23);
+            passwordTex.TabIndex = 1;
+            passwordTex.UseSystemPasswordChar = true;
             // 
-            // EmailTex
+            // emailTex
             // 
-            EmailTex.Location = new Point(321, 96);
-            EmailTex.Name = "EmailTex";
-            EmailTex.Size = new Size(149, 23);
-            EmailTex.TabIndex = 2;
+            emailTex.Location = new Point(321, 96);
+            emailTex.Name = "emailTex";
+            emailTex.Size = new Size(149, 23);
+            emailTex.TabIndex = 2;
             // 
             // label1
             // 
@@ -104,10 +105,11 @@
             Controls.Add(button2);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(EmailTex);
-            Controls.Add(PasswordTex);
+            Controls.Add(emailTex);
+            Controls.Add(passwordTex);
             Controls.Add(button1);
             Name = "FormLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -115,8 +117,8 @@
         #endregion
 
         private Button button1;
-        private TextBox PasswordTex;
-        private TextBox EmailTex;
+        private TextBox passwordTex;
+        private TextBox emailTex;
         private Label label1;
         private Label label2;
         private Button button2;

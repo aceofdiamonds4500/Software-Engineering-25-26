@@ -16,6 +16,7 @@ namespace GUI_SoftwareEng
 
         // ===== Page instances =====
         private FormLogin? loginPage;
+        private FormRegister? registerPage;
         private Form1? form1;
         private FormTranscribe? transcribePage;
         private FormDownloadUpload? downloaduploadPage;
@@ -35,6 +36,8 @@ namespace GUI_SoftwareEng
         public Form1()
         {
             InitializeComponent();
+
+            sidebar.Visible = false; // start with sidebar hidden
 
             // Window chrome & dragging
             FormBorderStyle = FormBorderStyle.None;
@@ -199,7 +202,7 @@ namespace GUI_SoftwareEng
         {            
             if (loginPage == null || loginPage.IsDisposed)
             {
-                loginPage = new FormLogin();
+                loginPage = new FormLogin(this);
             }
             if (mainPage == null || mainPage.IsDisposed)
             {
@@ -220,6 +223,34 @@ namespace GUI_SoftwareEng
             if (settingsPage == null || settingsPage.IsDisposed)
             {
                 settingsPage = new FormSettings(this);
+            }
+            ShowPage(loginPage);
+        }
+
+        public void LoginSuccessful()
+        {
+            sidebar.Visible = true;
+            if(loginPage  == null || loginPage.IsDisposed)
+            {
+                loginPage = new FormLogin(this);
+            }
+            ShowPage(mainPage);
+        }
+
+        public void ShowRegisterPage()
+        {
+            if (registerPage == null || registerPage.IsDisposed)
+            {
+                registerPage = new FormRegister(this);
+            }
+            ShowPage(registerPage);
+        }
+
+        public void ShowLoginPage()
+        {
+            if (loginPage == null || loginPage.IsDisposed)
+            {
+                loginPage = new FormLogin(this);
             }
             ShowPage(loginPage);
         }

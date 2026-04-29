@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,24 +22,28 @@ namespace GUI_SoftwareEng
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string email = EmailTex.Text;
-            string password = PasswordTex.Text;
+            string email = emailTex.Text.Trim();
+            string password = passwordTex.Text;
 
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
-            {
-                MessageBox.Show("Please enter email and password.");
-                return;
-            }
+            var db = FirestoreHelper.Database;
+            DocumentReference docRef = db.Collection("UserData").Document(email);
+            Users data = docRef.GetSnapshotAsync().Result.ConvertTo<Users>();
 
-            if (email == "admin" && password == "admin")
+            if (data != null)
             {
-                //MessageBox.Show("Login successful!");
-                parentForm.LoginSuccessful();
+                if (password == Security.Decrypt( data.Password ))
+                {
+                    //MessageBox.Show("Login successful!");
+                    parentForm.LoginSuccessful();
+                } 
+                else
+                {
+                    MessageBox.Show("Login Faild!");
+                }
             }
             else
             {
-                MessageBox.Show("Invalid email or password.");
-                return;
+                MessageBox.Show("Login Faild!");
             }
         }
 
