@@ -9,6 +9,9 @@ from mysql_connect import db_startup
 from mysql.connector import errorcode
 from transformers import AutoTokenizer
 from dotenv import load_dotenv
+from datetime import date
+import time
+import calendar
 
 #Mutes that warning about needing a token everytime the AI starts
 logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
@@ -56,6 +59,24 @@ def handle_client(client, addr):
             break
     client.close()
 
+def train_loop():
+    while True:
+        today = date.today()
+        last_day = calendar.monthrange(today.year, today.month)[1]
+        end_of_month = date(today.year, today.month, last_day)
+
+        sleep_time = (end_of_month - today).days * 86400
+        print(f"Training will begin in {sleep_time} seconds ({(end_of_month - today).days} days)")
+        time.sleep(sleep_time)
+        print("Beginning training...")
+        
+        train_command = """
+            "command": "TRAINMODEL"
+        """
+
+        cmd.handlecommand(train_command, model, id_to_label, default_tokenizer)
+   
+
 #Initializes the database, then opens a network socket for connections
 #Prints out the server IP and Port(IP SHOWS CONTAINER IP, NOT HOST IP)
 def main():
@@ -70,7 +91,8 @@ def main():
         server.bind(ADDR)
         server.listen()
         print(f"Listening on {ADDR[0]}:{ADDR[1]}")
-
+        train_thread = threading.Thread(target=train_loop)
+        train_thread.start()
     #Waits for a connection and then hands the client to a thread
     while True:
         client, addr = server.accept()
