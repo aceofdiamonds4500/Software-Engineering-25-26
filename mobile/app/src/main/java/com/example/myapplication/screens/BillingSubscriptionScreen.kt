@@ -42,9 +42,8 @@ fun BillingSubscriptionScreen(
 
     var expanded by remember { mutableStateOf(false) }
     var expanded2 by remember { mutableStateOf(false) }
-    var selectedSubscriptionPlan by remember {  mutableStateOf(SubscriptionPlans[0]) }
-    var selectedBillingCycle by remember {  mutableStateOf(BillingCycle[0]) }
-
+    var selectedSubscriptionPlan by remember { mutableStateOf(SubscriptionPlans[0]) }
+    var selectedBillingCycle by remember { mutableStateOf(BillingCycle[0]) }
 
     Column(
         modifier = Modifier

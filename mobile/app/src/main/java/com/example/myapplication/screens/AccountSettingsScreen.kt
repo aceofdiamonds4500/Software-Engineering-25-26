@@ -1,18 +1,13 @@
 package com.example.myapplication.screens
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
@@ -22,7 +17,7 @@ fun AccountSettingsScreen(
     onProfileInformationClick: () -> Unit,
     onSecurityClick: () -> Unit,
     onPrivacyDataClick: () -> Unit,
-    onTranscriptionPreferencesClick: () -> Unit,
+    onGruopSettingsClick: () -> Unit,
     onBillingSubscriptionClick: () -> Unit,
     onPaymentsClick: () -> Unit,
     onSupportLegalClick: () -> Unit
@@ -55,10 +50,10 @@ fun AccountSettingsScreen(
         }
 
         Button(
-            onClick = onTranscriptionPreferencesClick,
+            onClick = onGruopSettingsClick,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Transcription Preferences") // shows how info would output, autosave switch on/off,
+            Text("Group Settings") // group settings, group name, group description, group members, group settings, etc...
         }
 
         Button(
@@ -82,16 +77,11 @@ fun AccountSettingsScreen(
             Text("Support & Legal") // get access to support, terms of service, privacy policy, report bugs, app version etc.....
         }
 
-
         Button(
             onClick = onBack,
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Back")
         }
-
     }
-
-
-
 }

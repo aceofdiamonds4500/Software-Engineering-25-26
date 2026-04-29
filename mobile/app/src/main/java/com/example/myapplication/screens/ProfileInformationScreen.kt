@@ -105,7 +105,7 @@ fun ProfileInformationScreen(
                 // upload pfp if one is selected
                 var finalPicUrl = profilePicUrl
                 if (selectedImageUri != null) {
-                    val ref = storage.reference.child("profilePictures/$uid.jpg")
+                    val ref = storage.reference.child("profile_pictures/$uid/$uid")
                     ref.putFile(selectedImageUri!!).await()
                     finalPicUrl = ref.downloadUrl.await().toString()
                 }

@@ -21,9 +21,9 @@ fun WelcomeScreen(
             painter = painterResource(id = R.drawable.logo),
             contentDescription = "Logo",
             modifier = Modifier
-                .size(200.dp)
+                .size(360.dp)
                 .align(Alignment.TopCenter)
-                .offset(y = 160.dp)
+                .offset(y = 40.dp)
         )
 
         Column(

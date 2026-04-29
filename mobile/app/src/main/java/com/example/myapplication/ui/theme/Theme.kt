@@ -10,49 +10,57 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
-// Your CURRENT light theme look (so it stays the same)
-private val LightBg = Color(220, 224, 228)          // AppBackground
-private val LightDrawer = Color(210, 232, 247)      // Drawer sheet
-private val LightTopBar = Color(123, 170, 224)      // TopAppBar
-private val LightText = Color(30, 30, 30)
+// Logo-matched palette
+private val Teal       = Color(0xFF4DB899)
+private val TealDark   = Color(0xFF3A9E82)
+private val TealLight  = Color(0xFF7DD4B8)
+private val Charcoal   = Color(0xFF1E1E1E)
+private val Surface    = Color(0xFF2A2A2A)
+private val SurfaceVar = Color(0xFF333333)
+private val OnDark     = Color(0xFFF0F0F0)
+private val OnTeal     = Color(0xFF0F0F0F)
 
-// Your DARK MODE palette
-private val DarkNavy = Color(0xFF1B3C53)
-private val DarkNavy2 = Color(0xFF234C6A)
-private val DarkBlueGray = Color(0xFF456882)
-private val WarmBeige = Color(0xFFD2C1B6)
+// Light theme: teal accents on light background
+private val LightBg    = Color(0xFFF2F5F4)
+private val LightSurf  = Color(0xFFFFFFFF)
+private val LightText  = Color(0xFF1A1A1A)
 
 private val LightColorScheme = lightColorScheme(
-    primary = LightTopBar,
-    onPrimary = LightText,
-
-    background = LightBg,
-    onBackground = LightText,
-
-    surface = Color.White,
-    onSurface = LightText,
-
-    secondary = LightDrawer,
-    onSecondary = LightText
+    primary            = Teal,
+    onPrimary          = OnTeal,
+    primaryContainer   = TealLight,
+    onPrimaryContainer = OnTeal,
+    background         = LightBg,
+    onBackground       = LightText,
+    surface            = LightSurf,
+    onSurface          = LightText,
+    surfaceVariant     = Color(0xFFE0EFEA),
+    onSurfaceVariant   = LightText,
+    secondary          = TealDark,
+    onSecondary        = OnDark,
+    error              = Color(0xFFB00020),
+    onError            = Color.White
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = DarkNavy2,
-    onPrimary = WarmBeige,
-
-    background = DarkNavy,
-    onBackground = WarmBeige,
-
-    surface = DarkBlueGray,
-    onSurface = WarmBeige,
-
-    secondary = DarkNavy2,
-    onSecondary = WarmBeige
+    primary            = Teal,
+    onPrimary          = OnTeal,
+    primaryContainer   = TealDark,
+    onPrimaryContainer = OnDark,
+    background         = Charcoal,
+    onBackground       = OnDark,
+    surface            = Surface,
+    onSurface          = OnDark,
+    surfaceVariant     = SurfaceVar,
+    onSurfaceVariant   = OnDark,
+    secondary          = TealDark,
+    onSecondary        = OnDark,
+    error              = Color(0xFFCF6679),
+    onError            = Color.Black
 )
 
 private fun bump(style: TextStyle, deltaSp: Float): TextStyle {
     val size: TextUnit = style.fontSize
-    // Some styles can be Unspecified; only bump real sizes.
     return if (size == TextUnit.Unspecified) style else style.copy(fontSize = (size.value + deltaSp).sp)
 }
 
@@ -60,38 +68,31 @@ private fun bump(style: TextStyle, deltaSp: Float): TextStyle {
 fun MyApplicationTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     enlargeText: Boolean = false,
-    dynamicColor: Boolean = false, // keep false so your palette isn't overridden
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
-
     val base = Typography
     val scaled = if (enlargeText) {
         val delta = 4f
         base.copy(
-            displayLarge = bump(base.displayLarge, delta),
+            displayLarge  = bump(base.displayLarge, delta),
             displayMedium = bump(base.displayMedium, delta),
-            displaySmall = bump(base.displaySmall, delta),
-
-            headlineLarge = bump(base.headlineLarge, delta),
+            displaySmall  = bump(base.displaySmall, delta),
+            headlineLarge  = bump(base.headlineLarge, delta),
             headlineMedium = bump(base.headlineMedium, delta),
-            headlineSmall = bump(base.headlineSmall, delta),
-
-            titleLarge = bump(base.titleLarge, delta),
+            headlineSmall  = bump(base.headlineSmall, delta),
+            titleLarge  = bump(base.titleLarge, delta),
             titleMedium = bump(base.titleMedium, delta),
-            titleSmall = bump(base.titleSmall, delta),
-
-            bodyLarge = bump(base.bodyLarge, delta),
-            bodyMedium = bump(base.bodyMedium, delta),
-            bodySmall = bump(base.bodySmall, delta),
-
-            labelLarge = bump(base.labelLarge, delta),
+            titleSmall  = bump(base.titleSmall, delta),
+            bodyLarge   = bump(base.bodyLarge, delta),
+            bodyMedium  = bump(base.bodyMedium, delta),
+            bodySmall   = bump(base.bodySmall, delta),
+            labelLarge  = bump(base.labelLarge, delta),
             labelMedium = bump(base.labelMedium, delta),
-            labelSmall = bump(base.labelSmall, delta),
+            labelSmall  = bump(base.labelSmall, delta),
         )
-    } else {
-        base
-    }
+    } else base
 
     MaterialTheme(
         colorScheme = colorScheme,

@@ -2,16 +2,12 @@ package com.example.myapplication
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
@@ -27,9 +23,11 @@ import com.example.myapplication.screens.AccountSettingsScreen
 import com.example.myapplication.screens.HistoryScreen
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import coil.compose.AsyncImage
+import com.example.myapplication.screens.AdminScreen
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
+
 class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,13 +55,26 @@ class MainActivity : FragmentActivity() {
                         onForgotClick = { screen = "FORGOT"}
                     )
                     "FORGOT" -> ForgotPasswordScreen(
-                        onBack = { screen = "LOGIN" },
-                        onSuccess = { screen = "LOGIN" }
+                        onBack = { screen = "LOGIN" }
                     )
                     "REGISTER" -> RegisterScreen(
                         onBack = { screen = "WELCOME" },
                         onTermsClick = { screen = "TERMS" },
+                        onRegisterClick = { screen = "CREATEJOINGROUP"},
                         enableBiometrics = false
+                    )
+                    "CREATEJOINGROUP" -> CreateJoinGroupScreen(
+                        onCreateClick = { screen = "CREATE"},
+                        onJoinClick = { screen = "JOIN"},
+                        onSkipClick = { screen = "MAIN" }
+                    )
+                    "CREATE" -> CreateGroupScreen(
+                        onBack = { screen = "CREATEJOINGROUP" },
+                        onSuccess = { screen = "MAIN" },
+                    )
+                    "JOIN" -> JoinGroupScreen(
+                        onBack = { screen = "CREATEJOINGROUP" },
+                        onSuccess = { screen = "MAIN" }
                     )
                     "TERMS" -> TermsOfService(
                         onBack = { screen = "REGISTER" }
@@ -244,6 +255,7 @@ fun DrawerApp(
                     "Home" -> HomeScreen()
                     "Transcribe" -> TranscribeScreen()
                     "History" -> HistoryScreen()
+                    "Admin Panel" -> AdminScreen()
                     "Settings" -> SettingsScreen(
                         isDarkMode = isDarkMode,
                         enlargeText = enlargeText,
@@ -256,7 +268,7 @@ fun DrawerApp(
                         onProfileInformationClick = { currentScreen = "ProfileInformationScreen" },
                         onSecurityClick = { currentScreen = "Security" },
                         onPrivacyDataClick = { currentScreen = "PrivacyData" },
-                        onTranscriptionPreferencesClick = { currentScreen = "TranscriptionPreferences" },
+                        onGruopSettingsClick = { currentScreen = "GroupSettings" },
                         onBillingSubscriptionClick = { currentScreen = "BillingSubscription" },
                         onPaymentsClick = { currentScreen = "Payments" },
                         onSupportLegalClick = { currentScreen = "SupportLegal" }
@@ -268,7 +280,8 @@ fun DrawerApp(
                     )
                     "Security" -> SecurityScreen(onBack = { currentScreen = "AccountSettings" })
                     "PrivacyData" -> PrivacyDataScreen(onBack = { currentScreen = "AccountSettings" })
-                    "TranscriptionPreferences" -> TranscriptionPreferencesScreen(onBack = { currentScreen = "AccountSettings" })
+                    "GroupSettings" -> GroupSettingsScreen(onBack = { currentScreen = "AccountSettings" },
+                        onLeaveGroup = { currentScreen = "AccountSettings" })
                     "BillingSubscription" -> BillingSubscriptionScreen(onBack = { currentScreen = "AccountSettings" })
                     "Payments" -> PaymentsScreen(onBack = { currentScreen = "AccountSettings" })
                     "SupportLegal" -> SupportLegalScreen(onBack = { currentScreen = "AccountSettings" })

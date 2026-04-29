@@ -16,3 +16,4 @@ packages/
 medical_classification_model/
 checkpoints/
 /backend_container/backend/best
+/mobile/.gradle/buildOutputCleanup

@@ -20,14 +20,17 @@ import androidx.compose.foundation.layout.width
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import android.net.Uri
+import androidx.activity.compose.LocalActivity
 import androidx.compose.runtime.setValue
 import coil.compose.AsyncImage
 import androidx.compose.ui.layout.ContentScale
+import androidx.fragment.app.FragmentActivity
 
 @Composable
 fun RegisterScreen(
     onBack: () -> Unit,
     onTermsClick: () -> Unit,
+    onRegisterClick: () -> Unit,
     enableBiometrics: Boolean
 ) {
     // State should live OUTSIDE the Column body
@@ -42,6 +45,10 @@ fun RegisterScreen(
     var errorMessage by remember { mutableStateOf("") }
     var successMessage by remember { mutableStateOf("") }
     val imageUri = remember { mutableStateOf<Uri?>(null) }
+
+    val activity = LocalActivity.current as FragmentActivity
+    val auth = FirebaseAuth.getInstance()
+    val db = FirebaseFirestore.getInstance()
 
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
@@ -166,7 +173,10 @@ fun RegisterScreen(
                                 "admin" to 0,
                                 "biometrics" to biometricsVar,
                                 "darkmode" to "0",
-                                "enlargeText" to "0"
+                                "enlargeText" to "0",
+                                "groupID" to "",
+                                "organizationName" to "",
+
                             )
                             db.collection("users").document(uid).set(userDoc)
                                 .addOnSuccessListener {
@@ -189,7 +199,8 @@ fun RegisterScreen(
                                             }
                                     } else {
                                         isLoading = false
-                                        //onSuccess() peni
+                                        //onSuccess() INSTEAD GO TO SUBSCRIPTION OR MAYBE JOIN ORGANIZAITON
+                                        onRegisterClick()
                                         successMessage = "Account created!"
                                     }
                                 }
