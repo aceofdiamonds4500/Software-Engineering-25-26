@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="linux_desktop.App"
              xmlns:local="using:linux_desktop"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Dark">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
@@ -11,7 +11,8 @@
   
     <Application.Styles>
         <FluentTheme />
-        <StyleInclude Source="avares://linux_desktop/Styles/DarkMode.axaml" />
+        <!--StyleInclude Source="avares://linux_desktop/Styles/LightMode.axaml"/-->
+        <StyleInclude Source="avares://linux_desktop/Styles/DarkMode.axaml"/>
     </Application.Styles>
              
     <Application.Resources>

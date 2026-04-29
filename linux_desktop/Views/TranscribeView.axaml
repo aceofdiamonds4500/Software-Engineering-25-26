@@ -11,30 +11,22 @@
     <!-- Just a bit of code cleanup -->
     <StackPanel>
         
-        <StackPanel Background="{DynamicResource Background}" Width="590" Height="440" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0">
+        <StackPanel Background="{DynamicResource Gradient}" Width="590" Height="440" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0">
             
             <!--Header-->
             <Label HorizontalContentAlignment="Center" FontSize="24" FontWeight="Bold" Content="TRANSCRIBE" />
             <Rectangle Fill="{DynamicResource LabelText}" Width="570" Height="2"/>
             
             <StackPanel Height="390" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0" Orientation="Horizontal">
-                <StackPanel Background="{DynamicResource Background}" Width="285" Margin="0,0,5,0">
-            
-                    <!--Sample Name EX: Sample_1-->
-                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Sample Name"/>
-                    <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding SampleName}"/>
-                    
-                    <!--Field Of Medicine: Not Implemented On Server Side-->
-                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Field of Medicine"/>
-                    <ComboBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" ItemsSource="{Binding MedicalField}" SelectedItem="{Binding FieldMedicine}"/>
+                <StackPanel Width="285" Margin="0,0,5,0">
                     
                     <!--Description EX: Patient is a 25 year old caucasian adult male-->
                     <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Description"/>
-                    <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding DescriptionValue}"/>
+                    <TextBox Width="260" Height="115" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding DescriptionValue}" TextWrapping="Wrap"/>
                     
                     <!--Transcription EX: Patient presents with an occasional heart murmur and reports mild chest pains-->
                     <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Transcription"/>
-                    <TextBox Width="260" Height="80" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding TranscriptionValue}"/>
+                    <TextBox Width="260" Height="110" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding TranscriptionValue}" TextWrapping="Wrap"/>
                     
                     <!--KeyWords EX: Heart, Chest-->
                     <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Key Words"/>
@@ -52,19 +44,27 @@
                 
                 <Rectangle Fill="{DynamicResource LabelText}" Width="2" Height="385" VerticalAlignment="Top"/>
                 
-                <StackPanel Background="{DynamicResource Background}" Width="285" Margin="5,0,0,0">
+                <StackPanel Width="285" Margin="5,0,0,0">
                     
                     <!--Sample Name EX: Sample_1-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Sample Name"/>
+                    <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding SampleName}"/>
+                    
+                    <!--Patient First Name: John-->
                     <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="First Name"/>
                     <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding FirstName}"/>
                     
-                    <!--Displays The Prediction From The Server-->
+                    <!--Patient Last Name: Doe-->
                     <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Last Name"/>
                     <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding LastName}"/>
                     
+                    <!--Field Of Medicine: Not Implemented On Server Side-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Field of Medicine"/>
+                    <ComboBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" ItemsSource="{Binding MedicalField}" SelectedItem="{Binding FieldMedicine}"/>
+                    
                     <!--Displays The Prediction From The Server-->
                     <Label Margin="10,0,0,0" FontWeight="Bold" Content="Results"/>
-                    <TextBox Width="265" Height="245" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding OutputTranscription}"/>
+                    <TextBox Width="265" Height="105" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding OutputTranscription}"/>
                 </StackPanel>
                 
             </StackPanel>

@@ -18,8 +18,48 @@ public partial class TranscribeViewModel : ViewModelBase, IRecipient<UploadMessa
     [ObservableProperty] private string? _firstName;
     [ObservableProperty] private string? _lastName;
     [ObservableProperty] private string? _outputTranscription;
+    public float ConfPlaceholder = 0;
     
-    public ObservableCollection<string>? MedicalField { get; } = new() { "Bariatrics", "Cardiology", "Dentistry","General Medicine", "Immunology", "Neurology", "Urology" };
+    public ObservableCollection<string>? MedicalField { get; } = new() { " Allergy / Immunology",
+        " Bariatrics",
+        " Cardiovascular / Pulmonary",
+        " Neurology",
+        " Dentistry",
+        " Urology",
+        " General Medicine",
+        " Surgery",
+        " Speech - Language",
+        " SOAP / Chart / Progress Notes",
+        " Sleep Medicine",
+        " Rheumatology",
+        " Radiology",
+        " Psychiatry / Psychology",
+        " Podiatry",
+        " Physical Medicine - Rehab",
+        " Pediatrics - Neonatal",
+        " Pain Management",
+        " Orthopedic",
+        " Ophthalmology",
+        " Office Notes",
+        " Obstetrics / Gynecology",
+        " Neurosurgery",
+        " Nephrology",
+        " Letters",
+        " Lab Medicine - Pathology",
+        " IME-QME-Work Comp etc.",
+        " Hospice - Palliative Care",
+        " Hematology - Oncology",
+        " Gastroenterology",
+        " ENT - Otolaryngology",
+        " Endocrinology",
+        " Emergency Room Reports",
+        " Discharge Summary",
+        " Diets and Nutritions",
+        " Dermatology",
+        " Cosmetic / Plastic Surgery",
+        " Consult - History and Phy.",
+        " Chiropractic",
+        " Autopsy" };
     
     //Connection To Server -- Needs Manual IP And Port Assignment -- Permanent Port Has Been Set To 5867
     //Additional Command To Send To Server
@@ -42,9 +82,12 @@ public partial class TranscribeViewModel : ViewModelBase, IRecipient<UploadMessa
                                "fields": {
                                    "Description": "{{DescriptionValue}}",
                                    "Transcription": "{{TranscriptionValue}}",
+                                   "MedicalSpecialty": "{{FieldMedicine}}",
+                                   "SampleName": "{{SampleName}}",
                                    "Keywords": "{{KeyWords}}",
                                    "p_firstname": "{{FirstName}}",
-                                   "p_lastname": "{{LastName}}"
+                                   "p_lastname": "{{LastName}}",
+                                   "confidence": "0"
                                }
                            }
                            """;

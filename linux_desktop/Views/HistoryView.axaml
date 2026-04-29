@@ -15,11 +15,11 @@
         <Rectangle Fill="{DynamicResource LabelText}" Width="570" Height="2"/>
         
         <!--Displays A Formatted List Of All Previous Transcriptions During This Session-->
-        <ListBox Height="400" Background="{DynamicResource Gradient}" Margin="5,5,5,5" ItemsSource="{Binding TranscriptionHistory}">
+        <ListBox Height="394" Background="{DynamicResource Gradient}" Margin="5,5,5,5" ItemsSource="{Binding TranscriptionHistory}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="{DynamicResource ButtonBackgroundPressed}" Margin="2" Padding="5" BorderThickness="1" CornerRadius="4">
-                        <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                    <Border BorderBrush="{DynamicResource LabelText}" Margin="2" Padding="5" BorderThickness="1" CornerRadius="4">
+                        <TextBlock Foreground="{DynamicResource LabelText}" Text="{Binding}" TextWrapping="Wrap"/>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
