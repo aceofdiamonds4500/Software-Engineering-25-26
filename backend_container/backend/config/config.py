@@ -5,7 +5,7 @@ class TrainingConfig:
     """Training configuration parameters."""
     
     # Data paths
-    DATA_PATH = 'backend/ai/training/train.csv'
+    DATA_PATH = 'db/exports/train.csv'
     
     # Model configuration
     MODEL_NAME = 'bert-base-uncased'
