@@ -13,6 +13,9 @@ obj/
 # Ignore packages
 packages/
 
+# Desktop
+desktop/bin/
+
 #ignore model
 medical_classification_model/
 checkpoints/
