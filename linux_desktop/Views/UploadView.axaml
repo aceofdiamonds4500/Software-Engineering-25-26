@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:linux_desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="linux_desktop.Views.UploadView"
+             x:DataType="vm:UploadViewModel">
+    
+    <!--Temporary Layout For Upload While I Test A Sample CSV-->
+    <StackPanel Background="{DynamicResource Gradient}" Margin="5,5,5,5">
+        
+        <!--Header-->
+        <Label Foreground="{DynamicResource LabelText}" HorizontalContentAlignment="Center" FontSize="24" FontWeight="Bold" Content="Upload"/>
+        <Rectangle Fill="{DynamicResource LabelText}" Width="570" Height="2"/>
+        
+        <!--Warning For The In-Dev Version Of The Project-->
+        <Label Foreground="{DynamicResource LabelText}" HorizontalContentAlignment="Center" Margin="0,75,0,0" FontSize="15" FontWeight="Bold" Content="This is the upload page, where you can upload a CSV."/>
+        <Label Foreground="{DynamicResource LabelText}" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Content="Currently the CSV needs to be placed in the root directory of the UI."/>
+        <Label Foreground="{DynamicResource LabelText}" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Content="In order to read the CSV, the CSV must be named sample.csv"/>
+        <Label Foreground="{DynamicResource LabelText}" HorizontalContentAlignment="Center" FontSize="15" FontWeight="Bold" Content="If multiple patients are listed in the CSV, only the first patient will be uploaded."/>
+        
+        <!--Button To Upload The CSV-->
+        <Button Width="175" Height="35" CornerRadius="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" Margin="0,25,0,0" Command="{Binding Upload}" CommandParameter="sample.csv">
+            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0">
+                <Label Foreground="{DynamicResource ButtonText}" Height="30" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{DynamicResource PhosphorFill}" Content="&#xe4be;"/>
+                <Label Foreground="{DynamicResource ButtonText}" Height="30" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{DynamicResource InterFont}" FontSize="14" Content="UPLOAD"/>
+            </StackPanel>
+        </Button>
+    
+    </StackPanel>
+        
+</UserControl>

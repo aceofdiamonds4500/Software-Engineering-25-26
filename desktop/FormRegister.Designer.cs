@@ -28,133 +28,157 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegister));
             lable1 = new Label();
-            lable2 = new Label();
-            EmailRTex = new TextBox();
-            PassRTex = new TextBox();
-            button1 = new Button();
+            label2 = new Label();
+            emailTex = new TextBox();
+            passwordTex = new TextBox();
+            confirmPasswordTex = new TextBox();
             label3 = new Label();
-            lable3 = new Label();
-            CPassRTex = new TextBox();
-            label1 = new Label();
+            label4 = new Label();
+            ButTermsOfServic = new Button();
+            Register2 = new Button();
+            butBackToLogin = new Button();
             SuspendLayout();
             // 
             // lable1
             // 
             lable1.AutoSize = true;
-            lable1.Font = new Font("Microsoft Sans Serif", 11.25F);
-            lable1.Location = new Point(138, 119);
+            lable1.BackColor = Color.FromArgb(220, 224, 228);
+            lable1.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lable1.Location = new Point(253, 135);
             lable1.Name = "lable1";
             lable1.Size = new Size(49, 18);
-            lable1.TabIndex = 0;
+            lable1.TabIndex = 1;
             lable1.Text = "Email:";
             // 
-            // lable2
+            // label2
             // 
-            lable2.AutoSize = true;
-            lable2.Font = new Font("Microsoft Sans Serif", 11.25F);
-            lable2.Location = new Point(108, 158);
-            lable2.Name = "lable2";
-            lable2.Size = new Size(79, 18);
-            lable2.TabIndex = 1;
-            lable2.Text = "Password:";
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 11.25F);
+            label2.Location = new Point(226, 162);
+            label2.Name = "label2";
+            label2.Size = new Size(79, 18);
+            label2.TabIndex = 2;
+            label2.Text = "Password:";
             // 
-            // EmailRTex
+            // emailTex
             // 
-            EmailRTex.Location = new Point(193, 119);
-            EmailRTex.Name = "EmailRTex";
-            EmailRTex.Size = new Size(140, 23);
-            EmailRTex.TabIndex = 2;
+            emailTex.Location = new Point(308, 130);
+            emailTex.Name = "emailTex";
+            emailTex.Size = new Size(149, 23);
+            emailTex.TabIndex = 3;
             // 
-            // PassRTex
+            // passwordTex
             // 
-            PassRTex.Location = new Point(193, 158);
-            PassRTex.Name = "PassRTex";
-            PassRTex.Size = new Size(140, 23);
-            PassRTex.TabIndex = 3;
-            PassRTex.UseSystemPasswordChar = true;
+            passwordTex.Location = new Point(308, 157);
+            passwordTex.Name = "passwordTex";
+            passwordTex.PasswordChar = '*';
+            passwordTex.Size = new Size(149, 23);
+            passwordTex.TabIndex = 4;
+            passwordTex.UseSystemPasswordChar = true;
             // 
-            // button1
+            // confirmPasswordTex
             // 
-            button1.AutoSize = true;
-            button1.BackColor = Color.LightBlue;
-            button1.Font = new Font("Microsoft Sans Serif", 12F);
-            button1.Location = new Point(254, 235);
-            button1.Name = "button1";
-            button1.Size = new Size(79, 30);
-            button1.TabIndex = 4;
-            button1.Text = "Register";
-            button1.UseVisualStyleBackColor = false;
+            confirmPasswordTex.Location = new Point(308, 186);
+            confirmPasswordTex.Name = "confirmPasswordTex";
+            confirmPasswordTex.PasswordChar = '*';
+            confirmPasswordTex.Size = new Size(149, 23);
+            confirmPasswordTex.TabIndex = 5;
+            confirmPasswordTex.UseSystemPasswordChar = true;
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label3.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(12, 26);
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 11.25F);
+            label3.Location = new Point(166, 191);
             label3.Name = "label3";
-            label3.Size = new Size(676, 52);
-            label3.TabIndex = 5;
-            label3.Text = "Welcome to Transcriptive AI";
-            label3.TextAlign = ContentAlignment.MiddleCenter;
+            label3.Size = new Size(136, 18);
+            label3.TabIndex = 6;
+            label3.Text = "Confirm Password:";
             // 
-            // lable3
+            // label4
             // 
-            lable3.AutoSize = true;
-            lable3.Font = new Font("Microsoft Sans Serif", 11.25F);
-            lable3.Location = new Point(51, 195);
-            lable3.Name = "lable3";
-            lable3.Size = new Size(136, 18);
-            lable3.TabIndex = 8;
-            lable3.Text = "Confirm Password:";
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label4.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(12, 53);
+            label4.Name = "label4";
+            label4.Size = new Size(676, 57);
+            label4.TabIndex = 7;
+            label4.Text = "Welcome to Transcriptive AI";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // CPassRTex
+            // ButTermsOfServic
             // 
-            CPassRTex.Location = new Point(193, 195);
-            CPassRTex.Name = "CPassRTex";
-            CPassRTex.Size = new Size(140, 23);
-            CPassRTex.TabIndex = 9;
-            CPassRTex.UseSystemPasswordChar = true;
+            ButTermsOfServic.AutoSize = true;
+            ButTermsOfServic.BackColor = Color.Transparent;
+            ButTermsOfServic.FlatAppearance.BorderSize = 0;
+            ButTermsOfServic.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
+            ButTermsOfServic.ForeColor = Color.DodgerBlue;
+            ButTermsOfServic.Location = new Point(463, 182);
+            ButTermsOfServic.Name = "ButTermsOfServic";
+            ButTermsOfServic.Size = new Size(128, 28);
+            ButTermsOfServic.TabIndex = 9;
+            ButTermsOfServic.Text = "Terms of Service";
+            ButTermsOfServic.UseVisualStyleBackColor = false;
+            ButTermsOfServic.Click += ButTermsOfService;
             // 
-            // label1
+            // Register2
             // 
-            label1.Location = new Point(350, 90);
-            label1.Name = "label1";
-            label1.Size = new Size(324, 256);
-            label1.TabIndex = 10;
-            label1.Text = resources.GetString("label1.Text");
+            Register2.BackColor = Color.FromArgb(192, 192, 255);
+            Register2.Font = new Font("Microsoft Sans Serif", 12F);
+            Register2.Location = new Point(373, 225);
+            Register2.Name = "Register2";
+            Register2.Size = new Size(84, 34);
+            Register2.TabIndex = 10;
+            Register2.Text = "Register";
+            Register2.UseVisualStyleBackColor = false;
+            Register2.Click += Register2_Click;
+            // 
+            // butBackToLogin
+            // 
+            butBackToLogin.BackColor = Color.FromArgb(192, 192, 255);
+            butBackToLogin.Font = new Font("Microsoft Sans Serif", 12F);
+            butBackToLogin.Location = new Point(226, 225);
+            butBackToLogin.Name = "butBackToLogin";
+            butBackToLogin.Size = new Size(123, 34);
+            butBackToLogin.TabIndex = 11;
+            butBackToLogin.Text = "Back to Login";
+            butBackToLogin.UseVisualStyleBackColor = false;
+            butBackToLogin.Click += butBackToLogin_Click;
             // 
             // FormRegister
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 224, 228);
-            ClientSize = new Size(700, 355);
-            Controls.Add(label1);
-            Controls.Add(CPassRTex);
-            Controls.Add(lable3);
+            ClientSize = new Size(700, 338);
+            Controls.Add(butBackToLogin);
+            Controls.Add(Register2);
+            Controls.Add(ButTermsOfServic);
+            Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(button1);
-            Controls.Add(PassRTex);
-            Controls.Add(EmailRTex);
-            Controls.Add(lable2);
+            Controls.Add(confirmPasswordTex);
+            Controls.Add(passwordTex);
+            Controls.Add(emailTex);
+            Controls.Add(label2);
             Controls.Add(lable1);
             Name = "FormRegister";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormRegister";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
         private Label lable1;
-        private Label lable2;
-        private TextBox EmailRTex;
-        private TextBox PassRTex;
-        private Button button1;
+        private Label label2;
+        private TextBox emailTex;
+        private TextBox passwordTex;
+        private TextBox confirmPasswordTex;
         private Label label3;
-        private Label lable3;
-        private TextBox CPassRTex;
-        private Label label1;
+        private Label label4;
+        private Button ButTermsOfServic;
+        private Button Register2;
+        private Button butBackToLogin;
     }
 }

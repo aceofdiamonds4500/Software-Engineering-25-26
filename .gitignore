@@ -8,6 +8,7 @@ obj/
 .vs/
 *.suo
 *.user
+.env
 
 # Ignore packages
 packages/

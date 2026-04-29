@@ -243,6 +243,34 @@ namespace GUI_SoftwareEng
             ShowPage(registerPage);
         }
 
+        public void LoginSuccessful()
+        {
+            sidebar.Visible = true;
+            if(loginPage  == null || loginPage.IsDisposed)
+            {
+                loginPage = new FormLogin(this);
+            }
+            ShowPage(mainPage);
+        }
+
+        public void ShowRegisterPage()
+        {
+            if (registerPage == null || registerPage.IsDisposed)
+            {
+                registerPage = new FormRegister(this);
+            }
+            ShowPage(registerPage);
+        }
+
+        public void ShowLoginPage()
+        {
+            if (loginPage == null || loginPage.IsDisposed)
+            {
+                loginPage = new FormLogin(this);
+            }
+            ShowPage(loginPage);
+        }
+
         private void label1_Click(object? sender, EventArgs e)
         {
             try { _soundplayer?.Play(); } catch { }

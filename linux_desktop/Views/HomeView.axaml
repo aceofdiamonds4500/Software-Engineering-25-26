@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="linux_desktop.Views.HomeView">
+    
+    <!--Home Feels Overly Simple-->
+    <StackPanel Background="{DynamicResource Gradient}" Width="590" Height="440" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0">
+        
+        <!--Header-->
+        <Label Foreground="{DynamicResource LabelText}" HorizontalContentAlignment="Center" FontSize="24" FontWeight="Bold" Content="HOME"/>
+        <Rectangle Fill="{DynamicResource LabelText}" Width="570" Height="2"/>
+            
+        <!--The Main Description of Transcriptive-->
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,0,0" FontSize="15" Content="Welcome to transcriptive!"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Content="We are a medical AI service targeted towards hospital and clinic staff."/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Content="The objective of this app is to help medical staff classify patient conditions"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Content="into a given medical specialty. Thanks to this, patients would receive faster care"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Content="and can rest assured that staff will be able to determine the cause of their visit"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Content="quickly and effectively."/>
+            
+        <!--Tag Line-->
+        <Label HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,140,0,0" FontSize="30" FontWeight="Bold" Content="Transcriptive: Medicine Made Smarter"/>
+            
+    </StackPanel>
+    
+</UserControl>

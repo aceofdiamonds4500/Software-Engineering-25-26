@@ -1,0 +1,74 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:linux_desktop.ViewModels"
+             x:Class="linux_desktop.Views.TranscribeView"
+             x:DataType="vm:TranscribeViewModel">
+    
+    <!-- I've started to format all elements as Dimensions -> Alignment -> Margins -> Object Properties -->
+    <!-- Just a bit of code cleanup -->
+    <StackPanel>
+        
+        <StackPanel Background="{DynamicResource Gradient}" Width="590" Height="440" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0">
+            
+            <!--Header-->
+            <Label HorizontalContentAlignment="Center" FontSize="24" FontWeight="Bold" Content="TRANSCRIBE" />
+            <Rectangle Fill="{DynamicResource LabelText}" Width="570" Height="2"/>
+            
+            <StackPanel Height="390" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0" Orientation="Horizontal">
+                <StackPanel Width="285" Margin="0,0,5,0">
+                    
+                    <!--Description EX: Patient is a 25 year old caucasian adult male-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Description"/>
+                    <TextBox Width="260" Height="115" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding DescriptionValue}" TextWrapping="Wrap"/>
+                    
+                    <!--Transcription EX: Patient presents with an occasional heart murmur and reports mild chest pains-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Transcription"/>
+                    <TextBox Width="260" Height="110" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding TranscriptionValue}" TextWrapping="Wrap"/>
+                    
+                    <!--KeyWords EX: Heart, Chest-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Key Words"/>
+                    <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding KeyWords}"/>
+                    
+                    <!--Submits Fields To Server-->
+                    <Button Width="175" Height="35" CornerRadius="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" Margin="0,10,0,0" Command="{Binding Send}">
+                        <StackPanel Width="160" Height="30" Orientation="Horizontal" Margin="0,0,0,0">
+                            <Label Foreground="{DynamicResource ButtonText}" Height="30" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="{DynamicResource PhosphorFill}" Content="&#xeba6;"/>
+                            <Label Foreground="{DynamicResource ButtonText}" Height="30" VerticalContentAlignment="Center" FontFamily="{DynamicResource InterFont}" FontSize="14" Content="CONFIRM"/>
+                        </StackPanel>
+                    </Button>
+                    
+                </StackPanel>
+                
+                <Rectangle Fill="{DynamicResource LabelText}" Width="2" Height="385" VerticalAlignment="Top"/>
+                
+                <StackPanel Width="285" Margin="5,0,0,0">
+                    
+                    <!--Sample Name EX: Sample_1-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Sample Name"/>
+                    <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding SampleName}"/>
+                    
+                    <!--Patient First Name: John-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="First Name"/>
+                    <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding FirstName}"/>
+                    
+                    <!--Patient Last Name: Doe-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Last Name"/>
+                    <TextBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding LastName}"/>
+                    
+                    <!--Field Of Medicine: Not Implemented On Server Side-->
+                    <Label Margin="10,0,0,0" FontSize="16" FontWeight="Bold" Content="Field of Medicine"/>
+                    <ComboBox Width="260" HorizontalAlignment="Left" Margin="10,0,0,0" ItemsSource="{Binding MedicalField}" SelectedItem="{Binding FieldMedicine}"/>
+                    
+                    <!--Displays The Prediction From The Server-->
+                    <Label Margin="10,0,0,0" FontWeight="Bold" Content="Results"/>
+                    <TextBox Width="265" Height="105" HorizontalAlignment="Left" Margin="10,0,0,0" Text="{Binding OutputTranscription}"/>
+                </StackPanel>
+                
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>  
+    
+</UserControl>

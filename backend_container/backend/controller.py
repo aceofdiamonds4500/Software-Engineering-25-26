@@ -2,20 +2,24 @@ import socket
 import threading
 import json
 import command_handler as cmd
+import logging
+from transformers import logging as tf_logging
 from ai.inference import load_trained_model, predict
 from mysql_connect import db_startup
-import mysql.connector
 from mysql.connector import errorcode
 from transformers import AutoTokenizer
 from dotenv import load_dotenv
 
+#Mutes that warning about needing a token everytime the AI starts
+logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
+
+# Initialize the model, set it to use cpu, loads the labels, and creates the tokenizer
+model, id_to_label = load_trained_model("/app/backend/best", device="cpu")
+default_tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+
 HOST = socket.gethostbyname(socket.gethostname())
 PORT = 5867
-ADDR = (HOST, PORT)   
-
-#Initialize the model, set it to use cpu, loads the labels, and creates the tokenizer
-model, id_to_label = load_trained_model("/app/backend/best", device = "cpu")
-default_tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+ADDR = (HOST, PORT)
 
 #Method for handling thread for a client connection
 def handle_client(client, addr):
@@ -55,8 +59,6 @@ def handle_client(client, addr):
 #Initializes the database, then opens a network socket for connections
 #Prints out the server IP and Port(IP SHOWS CONTAINER IP, NOT HOST IP)
 def main():
-    #sqinit.initDoctors()
-    #sqinit.initMedData()
 
     rc = db_startup.test_connection()
 

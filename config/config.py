@@ -5,7 +5,7 @@ class TrainingConfig:
     """Training configuration parameters."""
     
     # Data paths
-    DATA_PATH = 'mtsamples.csv'
+    DATA_PATH = 'training_data/mtsamples.csv'
     
     # Model configuration
     MODEL_NAME = 'bert-base-uncased'

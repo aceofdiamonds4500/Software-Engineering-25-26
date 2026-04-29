@@ -1,7 +1,6 @@
 from mysql_connect import db_insert as sqinsert
 from mysql_connect import db_select as sqselect
 from ai.inference import predict
-from controller import default_tokenizer
 
 def handlecommand(json_data, model, id_to_label, default_tokenizer):
     try:
@@ -39,6 +38,9 @@ def handlecommand(json_data, model, id_to_label, default_tokenizer):
 
                     autocorrect = "NOT IMPLEMENTED"
                     keyterms = "NOT IMPLEMENTED"
+
+                    json_data['fields']['confidence'] = confidence_score
+                    sqinsert.insTrainingData(json_data['fields'])
 
                     return f"specialty: {predicted_label} | Confidence: {confidence_score:.2f}"
                 except:
@@ -122,11 +124,11 @@ def handlecommand(json_data, model, id_to_label, default_tokenizer):
 
             #-------------------------------------------------------------------
 
-            #Uses an ID to retrieve a specific transcription
+            #Unused command
             case "SELECTTRANSCRIPTION":
                 print("Selecting transcription data")
                 try:
-                    sqselect.getTranscription(json_data['fields']['p_ssn'])
+                    sqselect.getTranscription(json_data['fields']['description'])
                     return "Selected transcription from database"
                 except:
                     return "Error: Could not select transcription"

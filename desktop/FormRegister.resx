@@ -117,14 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>     The application does not provide medical, legal, or professional advice, and all generated 
-content must be independently reviewed by a qualified professional. To the fullest extent
-permitted by law, the developers shall not be liable for any damages arising from the use
-or misuse of this application, including but not limited to financial loss, data loss, bodily
-injury, permanent disability, loss of limbs, or death. Users acknowledge that information ente
-red into the application may not be secure and could potentially be accessed, intercepted,
-or disclosed by unauthorized third parties, including hostile actors or foreign entities. 
-The creation of an account in Transcription AI app constitutes to acceptance of these terms.</value>
-  </data>
 </root>

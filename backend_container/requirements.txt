@@ -1,4 +1,5 @@
 torch
 transformers
+requests
 mysql-connector-python
 python-dotenv

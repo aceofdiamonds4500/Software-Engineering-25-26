@@ -29,107 +29,87 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            button2 = new Button();
+            passwordTex = new TextBox();
+            emailTex = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            EmailTex = new TextBox();
-            PasswordTex = new TextBox();
-            button3 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.AutoSize = true;
-            button1.BackColor = Color.LightBlue;
+            button1.BackColor = Color.FromArgb(192, 192, 255);
             button1.Font = new Font("Microsoft Sans Serif", 12F);
-            button1.Location = new Point(229, 216);
+            button1.Location = new Point(246, 198);
             button1.Name = "button1";
-            button1.Size = new Size(75, 30);
+            button1.Size = new Size(84, 34);
             button1.TabIndex = 0;
             button1.Text = "Login";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
-            // button2
+            // passwordTex
             // 
-            button2.AutoSize = true;
-            button2.BackColor = Color.LightBlue;
-            button2.Font = new Font("Microsoft Sans Serif", 12F);
-            button2.Location = new Point(350, 216);
-            button2.Name = "button2";
-            button2.Size = new Size(79, 30);
-            button2.TabIndex = 1;
-            button2.Text = "Register";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            passwordTex.Location = new Point(321, 157);
+            passwordTex.Name = "passwordTex";
+            passwordTex.PasswordChar = '*';
+            passwordTex.Size = new Size(149, 23);
+            passwordTex.TabIndex = 1;
+            passwordTex.UseSystemPasswordChar = true;
+            // 
+            // emailTex
+            // 
+            emailTex.Location = new Point(321, 96);
+            emailTex.Name = "emailTex";
+            emailTex.Size = new Size(149, 23);
+            emailTex.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 11.25F);
-            label1.Location = new Point(220, 105);
+            label1.Font = new Font("Microsoft Sans Serif", 12F);
+            label1.Location = new Point(254, 96);
             label1.Name = "label1";
-            label1.Size = new Size(49, 18);
-            label1.TabIndex = 2;
+            label1.Size = new Size(52, 20);
+            label1.TabIndex = 3;
             label1.Text = "Email:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 11.25F);
-            label2.Location = new Point(190, 157);
+            label2.Font = new Font("Microsoft Sans Serif", 12F);
+            label2.Location = new Point(224, 159);
             label2.Name = "label2";
-            label2.Size = new Size(79, 18);
-            label2.TabIndex = 3;
+            label2.Size = new Size(82, 20);
+            label2.TabIndex = 4;
             label2.Text = "Password:";
             // 
-            // EmailTex
+            // button2
             // 
-            EmailTex.Location = new Point(275, 105);
-            EmailTex.Name = "EmailTex";
-            EmailTex.Size = new Size(154, 23);
-            EmailTex.TabIndex = 4;
-            // 
-            // PasswordTex
-            // 
-            PasswordTex.Location = new Point(275, 157);
-            PasswordTex.Name = "PasswordTex";
-            PasswordTex.Size = new Size(154, 23);
-            PasswordTex.TabIndex = 5;
-            PasswordTex.UseSystemPasswordChar = true;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.Transparent;
-            button3.BackgroundImageLayout = ImageLayout.None;
-            button3.CausesValidation = false;
-            button3.FlatAppearance.BorderColor = Color.FromArgb(220, 224, 228);
-            button3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
-            button3.ForeColor = SystemColors.Highlight;
-            button3.Location = new Point(435, 157);
-            button3.Name = "button3";
-            button3.Size = new Size(114, 23);
-            button3.TabIndex = 6;
-            button3.Text = "Forgot Password?";
-            button3.UseCompatibleTextRendering = true;
-            button3.UseVisualStyleBackColor = false;
+            button2.BackColor = Color.FromArgb(192, 192, 255);
+            button2.Font = new Font("Microsoft Sans Serif", 12F);
+            button2.Location = new Point(355, 198);
+            button2.Name = "button2";
+            button2.Size = new Size(84, 34);
+            button2.TabIndex = 5;
+            button2.Text = "Register";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             BackColor = Color.FromArgb(220, 224, 228);
-            ClientSize = new Size(700, 355);
-            Controls.Add(button3);
-            Controls.Add(PasswordTex);
-            Controls.Add(EmailTex);
+            ClientSize = new Size(700, 338);
+            Controls.Add(button2);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button2);
+            Controls.Add(emailTex);
+            Controls.Add(passwordTex);
             Controls.Add(button1);
             Name = "FormLogin";
-            Text = "FormLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -137,11 +117,10 @@
         #endregion
 
         private Button button1;
-        private Button button2;
+        private TextBox passwordTex;
+        private TextBox emailTex;
         private Label label1;
         private Label label2;
-        private TextBox EmailTex;
-        private TextBox PasswordTex;
-        private Button button3;
+        private Button button2;
     }
 }
