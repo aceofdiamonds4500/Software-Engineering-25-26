@@ -83,11 +83,23 @@ def insTrainingData(training_data):
         query = '''
             INSERT INTO training_data
             (DESCRIPTION, MEDICAL_SPECIALTY, SAMPLE_NAME, TRANSCRIPTION, KEYWORDS, CONFIDENCE)
-            VALUES (%(t_description)s,%(t_medicalspecialty)s,%(t_samplename)s,%(t_transcription)s,%(t_keywords)s,%(t_confidence)s)
+            VALUES (%s,%s,%s,%s,%s,%s)
         '''
 
-        cursor.execute(query, training_data)
+        print("Values Thing")
+        values = (
+            training_data["Description"],
+            training_data["MedicalSpecialty"],
+            training_data["SampleName"],
+            training_data["Transcription"],
+            training_data["Keywords"],
+            float(training_data["confidence"])
+        )
+
+        print("Starting to insert training data")
+        cursor.execute(query, values)
         cnx.commit()
+        print("Done")
 
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
