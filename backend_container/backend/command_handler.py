@@ -1,6 +1,8 @@
 from mysql_connect import db_insert as sqinsert
 from mysql_connect import db_select as sqselect
+from mysql_connect import db_export as sqexport
 from ai.inference import predict
+from ai.training import train
 
 from ai.nlp import nlp_autocorrect as nlp
 
@@ -156,6 +158,16 @@ def handlecommand(json_data, model, id_to_label, default_tokenizer):
                     return "Error: Could not select transcription"
 
             #-------------------------------------------------------------------
+
+            case "TRAINMODEL":
+                print("Exporting CSV")
+                sqexport.exportData()
+                print("Training model")
+                train.set_seed(42)
+                train.training()
+                return "Did The Thing"
+
+            # ---------------------------------------
 
             #???
             case "DATALENGTH":

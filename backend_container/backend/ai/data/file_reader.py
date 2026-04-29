@@ -5,7 +5,7 @@ import pandas as pd
 def pd_read(file):
     """Simple function to convert CSV file to a dataframe."""
     file_name = file
-    df = pd.read_csv(file_name)
+    df = pd.read_csv(file, header=None, names=['description', 'medical_specialty', 'sample_name', 'transcription', 'keywords'])
     return df
 
 

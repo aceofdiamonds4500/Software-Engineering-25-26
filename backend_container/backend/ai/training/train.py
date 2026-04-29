@@ -25,7 +25,7 @@ def set_seed(seed):
     torch.cuda.manual_seed_all(seed)
 
 
-def main():
+def training():
     """Main training function."""
     
     config = TrainingConfig()
@@ -228,7 +228,3 @@ def main():
     print(f"Final F1 (macro): {training_stats[-1]['F1 (macro)']:.2f}")
     print(f"Final F1 (weighted): {training_stats[-1]['F1 (weighted)']:.2f}")
     print("="*80)
-
-
-if __name__ == "__main__":
-    main()

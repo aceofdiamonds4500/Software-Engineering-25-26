@@ -29,6 +29,7 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./db/init:/docker-entrypoint-initdb.d:Z
+      - ./db/exports:/var/lib/mysql-files:Z
 
 
 volumes:
