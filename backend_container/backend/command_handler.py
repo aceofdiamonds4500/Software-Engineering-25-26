@@ -2,6 +2,15 @@ from mysql_connect import db_insert as sqinsert
 from mysql_connect import db_select as sqselect
 from ai.inference import predict
 
+from ai.nlp import nlp_autocorrect as nlp
+
+import sys
+import os
+
+#Imported to handle unique values
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from config import TrainingConfig
+
 def handlecommand(json_data, model, id_to_label, default_tokenizer):
     try:
         command = f"{json_data['command']}"
@@ -46,7 +55,20 @@ def handlecommand(json_data, model, id_to_label, default_tokenizer):
                 except:
                     return "Error: Invalid JSON for classification"
 
+            #---------------------------------------
+
+            case "AUTOCORRECT":
+                print("Attempting to autocorrect data")
+                try:
+                    uncorrected_text = json_data['fields']['Transcription']
+                    vocab = nlp.build_vocab(config.DATA_PATH, min_freq=5)
+                    suggestions = nlp.suggest_corrections(uncorrected_text, vocab)
+                    return suggestions
+                except:
+                    return "Error: Could not parse JSON for autocorrect"
+
             #-------------------------------------------------------------------
+
 
             #Retrieves the data of the current user from the database
             case "USERDATA":

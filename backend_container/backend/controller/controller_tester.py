@@ -10,18 +10,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     for i in range(10):
     
-        command = "INSERTPATIENT"
+        command = "AUTOCORRECT"
         data = {
             "command": command,
             "fields": {
-                'p_ssn': 42042067,
-                'd_id': 500,
-                'p_firstname': 'Controller',
-                'p_lastname': 'Tester',
-                'desc': 'Patient is a program that likes going to the doctor 10 times in a row',
-                'med_specialty': 'Laparoscopy',
-                'sample_name': 'yo mama',
-                'transcription': 'Patient presents with severe symptoms of goig to the hospital'
+                'transcription': "me speek worbs n stoof"
                 }
             }
         json_data = json.dumps(data)
