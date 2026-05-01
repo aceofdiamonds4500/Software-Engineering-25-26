@@ -18,7 +18,6 @@ public partial class TranscribeViewModel : ViewModelBase, IRecipient<UploadMessa
     [ObservableProperty] private string? _firstName;
     [ObservableProperty] private string? _lastName;
     [ObservableProperty] private string? _outputTranscription;
-    public float ConfPlaceholder = 0;
     
     public ObservableCollection<string>? MedicalField { get; } = new() { " Allergy / Immunology",
         " Bariatrics",
@@ -95,26 +94,6 @@ public partial class TranscribeViewModel : ViewModelBase, IRecipient<UploadMessa
         //Now Additionally Sends The Output To The History Tab
         OutputTranscription = _connection.ExchangeData(payload);
         WeakReferenceMessenger.Default.Send(new TranscriptionMessage(TranscriptionValue + "\n" + OutputTranscription));
-
-        if (IsAnyFieldEmpty() == false)
-        {
-            payload = $$"""
-                        {
-                            "command": "INSERTPATIENT",
-                            "timestamp": "{{DateTime.UtcNow:yyyy-MM-ddTHH:mm:ss}}",
-                            "fields": {
-                                "p_firstname": "{{FirstName}}",
-                                "p_lastname": "{{LastName}}",
-                                "desc": "{{DescriptionValue}}",
-                                "med_specialty": "{{FieldMedicine}}",
-                                "sample_name": "{{SampleName}}",
-                                "transcription": "{{TranscriptionValue}}"
-                              }
-                        }
-                        """;
-            
-            _connection.ExchangeData(payload);
-        }
         
     }
     

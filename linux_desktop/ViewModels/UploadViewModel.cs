@@ -22,26 +22,37 @@ public partial class UploadViewModel : ViewModelBase
     [RelayCommand]
     public void Upload(string filePath)
     {
-        using (var reader = new StreamReader(filePath))
-        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+        try
         {
-            //This Sets Up So That Only The First Case Is Read
-            var records = csv.GetRecords<PatientRecord>();
-            var firstPatient = records.FirstOrDefault();
-
-            //If The Values Exist, Set Them
-            if (firstPatient != null)
+            using (var reader = new StreamReader(filePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                SampleUpload = firstPatient.SampleName;
-                FieldUpload = firstPatient.MedicalSpecialty;
-                DescriptionUpload = firstPatient.Description;
-                TranscriptionUpload = firstPatient.Transcription;
-                KeyUpload = firstPatient.Keywords;
+                //This Sets Up So That Only The First Case Is Read
+                var records = csv.GetRecords<PatientRecord>();
+                var firstPatient = records.FirstOrDefault();
+
+                //If The Values Exist, Set Them
+                if (firstPatient != null)
+                {
+                    SampleUpload = firstPatient.SampleName;
+                    FieldUpload = firstPatient.MedicalSpecialty;
+                    DescriptionUpload = firstPatient.Description;
+                    TranscriptionUpload = firstPatient.Transcription;
+                    KeyUpload = firstPatient.Keywords;
+                }
             }
+
+            //Now We Broadcast The Message Which Will Be Received By Transcribe View
+            WeakReferenceMessenger.Default.Send(new UploadMessage(SampleUpload, FieldUpload, DescriptionUpload, TranscriptionUpload, KeyUpload));
         }
-        
-        //Now We Broadcast The Message Which Will Be Received By Transcribe View
-        WeakReferenceMessenger.Default.Send(new UploadMessage(SampleUpload, FieldUpload, DescriptionUpload, TranscriptionUpload, KeyUpload));
+        catch
+        {
+            SampleUpload = "";
+            FieldUpload = "";
+            DescriptionUpload = "";
+            TranscriptionUpload = "";
+            KeyUpload = "";
+        }
         
     }
     
