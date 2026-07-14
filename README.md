@@ -47,7 +47,7 @@ DevOps Tools:
 
 ### Description
 
-Transcriptive is a project for our 2025-26 Software Engineering course, which includes a locally hosted full stack application with a mobile/desktop frontend and a containerized backend. Running the software is simple and lightweight, and offers hospitals a tool for writing transcriptions faster and more effectively using a local AI model and Natural Language Processing for autocorrections.
+Transcriptive is a project for our 2025-26 Software Engineering course, which includes a locally hosted full stack application with a mobile/desktop frontend and containerized backend. Running the software is simple and lightweight, and offers hospitals a tool for writing transcriptions faster and more effectively using a local AI model and Natural Language Processing for autocorrections.
 
 ### Main Components
 - Client-Controller-Server Model
